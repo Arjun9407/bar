@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- SEO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Free Barcode Generator Online | Multi Barcode Creator</title>
+
+  <meta
+    name="description"
+    content="Generate unlimited barcodes online for free. Create CODE128, EAN13, UPC, CODE39 and multiple barcode rows instantly."
+  />
+
+  <meta
+    name="keywords"
+    content="barcode generator, free barcode generator, online barcode maker, code128, ean13, upc barcode"
+  />
+
+  <meta name="author" content="Barcode Generator" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Barcode Generator Online" />
+  <meta property="og:description" content="Generate multiple barcodes instantly online." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+  />
+
+  <!-- JsBarcode -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+      padding:20px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      background:#111827;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .navbar{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      background:linear-gradient(to right,#38bdf8,#8b5cf6);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:#cbd5e1;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO */
+
+    .hero{
+      max-width:1200px;
+      margin:auto;
+      padding:60px 20px;
+      text-align:center;
+    }
+
+    .hero h1{
+      font-size:55px;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero span{
+      background:linear-gradient(to right,#06b6d4,#8b5cf6);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      font-size:18px;
+      max-width:800px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* GENERATOR */
+
+    .generator{
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:25px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:10px;
+      color:#cbd5e1;
+      font-weight:bold;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:14px;
+      background:#334155;
+      color:white;
+      font-size:16px;
+      outline:none;
+    }
+
+    textarea{
+      resize:none;
+      height:150px;
+    }
+
+    .checkbox-group{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:15px;
+    }
+
+    button{
+      width:100%;
+      padding:16px;
+      margin-top:25px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(to right,#06b6d4,#8b5cf6);
+      color:white;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:translateY(-3px);
+    }
+
+    /* RESULT */
+
+    .barcode-container{
+      margin-top:40px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:25px;
+      justify-content:center;
+    }
+
+    .barcode-card{
+      background:white;
+      padding:20px;
+      border-radius:18px;
+      color:black;
+      text-align:center;
+      min-width:260px;
+      box-shadow:0 5px 25px rgba(0,0,0,0.3);
+      transition:0.3s;
+    }
+
+    .barcode-card:hover{
+      transform:translateY(-5px);
+    }
+
+    .barcode-text{
+      margin-top:15px;
+      font-weight:bold;
+      word-break:break-word;
+    }
+
+    /* FEATURES */
+
+    .features{
+      max-width:1200px;
+      margin:80px auto;
+      padding:20px;
+    }
+
+    .features h2{
+      text-align:center;
+      margin-bottom:40px;
+      font-size:40px;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .feature-card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+    }
+
+    .feature-card h3{
+      margin-bottom:15px;
+    }
+
+    .feature-card p{
+      color:#cbd5e1;
+      line-height:1.7;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111827;
+      padding:40px 20px;
+      margin-top:80px;
+      text-align:center;
+      color:#94a3b8;
+    }
+
+    footer p{
+      margin-top:10px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:36px;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .logo{
+        font-size:22px;
+      }
+
+      .features h2{
+        font-size:30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="navbar">
+
+      <div class="logo">BarcodePro</div>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Generator</a>
+        <a href="#">Features</a>
+        <a href="#">About</a>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>
+      Generate <span>Unlimited Barcodes</span> Online
+    </h1>
+
+    <p>
+      Create professional barcodes instantly with multiple formats like CODE128,
+      CODE39, EAN13, UPC, MSI and more. Generate multiple barcode rows at once
+      completely free.
+    </p>
+
+  </section>
+
+  <!-- GENERATOR -->
+
+  <section class="generator">
+
+    <div class="card">
+
+      <div class="grid">
+
+        <div>
+
+          <label>Barcode Type</label>
+
+          <select id="barcodeType">
+            <option value="CODE128">CODE128</option>
+            <option value="CODE39">CODE39</option>
+            <option value="EAN13">EAN13</option>
+            <option value="EAN8">EAN8</option>
+            <option value="UPC">UPC</option>
+            <option value="ITF14">ITF14</option>
+            <option value="MSI">MSI</option>
+            <option value="pharmacode">PHARMACODE</option>
+          </select>
+
+        </div>
+
+        <div>
+
+          <label>Width</label>
+
+          <input type="number" id="width" value="2" min="1" max="6">
+
+        </div>
+
+        <div>
+
+          <label>Height</label>
+
+          <input type="number" id="height" value="100" min="50" max="300">
+
+        </div>
+
+        <div>
+
+          <label>Text Font Size</label>
+
+          <input type="number" id="fontSize" value="20">
+
+        </div>
+
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="showText" checked>
+        <label for="showText">Show Barcode Text</label>
+      </div>
+
+      <br>
+
+      <label>Enter Multiple Barcode Values (One Per Line)</label>
+
+      <textarea
+        id="barcodeInput"
+        placeholder="Example:
+123456789
+HELLO123
+987654321"
+      ></textarea>
+
+      <button onclick="generateBarcodes()">
+        Generate Barcodes
+      </button>
+
+    </div>
+
+    <!-- RESULT -->
+
+    <div class="barcode-container" id="barcodeContainer"></div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features">
+
+    <h2>Why Use BarcodePro?</h2>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <h3>⚡ Fast Generation</h3>
+        <p>Create barcodes instantly with real-time rendering.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>📱 Mobile Friendly</h3>
+        <p>Fully responsive website works perfectly on mobile devices.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🔒 Free & Secure</h3>
+        <p>No signup required. Generate unlimited barcodes safely.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🎯 Multiple Formats</h3>
+        <p>Support for CODE128, CODE39, UPC, EAN13 and more.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>BarcodePro</h3>
+
+    <p>Free Online Barcode Generator Website</p>
+
+    <p>© 2026 BarcodePro. All Rights Reserved.</p>
+
+  </footer>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    function generateBarcodes(){
+
+      const container = document.getElementById("barcodeContainer");
+
+      const values = document
+        .getElementById("barcodeInput")
+        .value
+        .split("\n")
+        .filter(v => v.trim() !== "");
+
+      const type = document.getElementById("barcodeType").value;
+
+      const width = parseInt(
+        document.getElementById("width").value
+      );
+
+      const height = parseInt(
+        document.getElementById("height").value
+      );
+
+      const fontSize = parseInt(
+        document.getElementById("fontSize").value
+      );
+
+      const showText = document.getElementById("showText").checked;
+
+      container.innerHTML = "";
+
+      if(values.length === 0){
+
+        alert("Please enter barcode values");
+
+        return;
+      }
+
+      values.forEach(value => {
+
+        const card = document.createElement("div");
+
+        card.className = "barcode-card";
+
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+
+        try{
+
+          JsBarcode(svg, value, {
+
+            format:type,
+            lineColor:"#000",
+            width:width,
+            height:height,
+            displayValue:showText,
+            fontSize:fontSize,
+            margin:10
+
+          });
+
+        }catch(error){
+
+          card.innerHTML = `
+            <h3>Invalid Barcode</h3>
+            <p>${value}</p>
+          `;
+
+          container.appendChild(card);
+
+          return;
+        }
+
+        const text = document.createElement("div");
+
+        text.className = "barcode-text";
+
+        text.innerText = value;
+
+        card.appendChild(svg);
+
+        card.appendChild(text);
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
