@@ -19,7 +19,6 @@
   />
 
   <meta name="author" content="Barcode Generator" />
-  <meta name="google-site-verification" content="tYG55Rfwky7RYwKEQl4FXJ_9xypiZae7g05GIK6jbmQ" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Free Barcode Generator Online" />
@@ -202,21 +201,25 @@
 
     .barcode-container{
       margin-top:40px;
-      display:flex;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:25px;
-      justify-content:center;
     }
 
     .barcode-card{
       background:white;
       padding:20px;
-      border-radius:18px;
+      border-radius:20px;
       color:black;
       text-align:center;
-      min-width:260px;
-      box-shadow:0 5px 25px rgba(0,0,0,0.3);
-      transition:0.3s;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .barcode-card svg{
+      width:100% !important;
+      height:auto;
+      display:block;
     }
 
     .barcode-card:hover{
@@ -224,7 +227,8 @@
     }
 
     .barcode-text{
-      margin-top:15px;
+      margin-top:10px;
+      font-size:18px;
       font-weight:bold;
       word-break:break-word;
     }
@@ -370,7 +374,7 @@
 
           <label>Width</label>
 
-          <input type="number" id="width" value="2" min="1" max="6">
+          <input type="number" id="width" value="1.5" min="1" max="6">
 
         </div>
 
@@ -378,7 +382,7 @@
 
           <label>Height</label>
 
-          <input type="number" id="height" value="100" min="50" max="300">
+          <input type="number" id="height" value="80" min="50" max="300">
 
         </div>
 
@@ -386,7 +390,7 @@
 
           <label>Text Font Size</label>
 
-          <input type="number" id="fontSize" value="20">
+          <input type="number" id="fontSize" value="18">
 
         </div>
 
@@ -521,10 +525,10 @@ HELLO123
 
             format:type,
             lineColor:"#000",
-            width:width,
-            height:height,
+            width:1.5,
+            height:80,
             displayValue:showText,
-            fontSize:fontSize,
+            fontSize:18,
             margin:10
 
           });
