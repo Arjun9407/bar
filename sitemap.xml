@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://barcodepro.pages.dev/</loc>
-<priority>1.0</priority>
-<changefreq>weekly</changefreq>
 </url>
 
 <url>
-<loc>https://barcodepro.pages.dev/about</loc>
+<loc>https://barcodepro.pages.dev/about.html</loc>
 </url>
 
 <url>
-<loc>https://barcodepro.pages.dev/contact</loc>
+<loc>https://barcodepro.pages.dev/contact.html</loc>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/privacy.html</loc>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/terms.html</loc>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/faq.html</loc>
 </url>
 
 </urlset>
