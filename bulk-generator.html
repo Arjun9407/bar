@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FAQ | BarcodePro</title>
-<meta name="description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
-<link rel="canonical" href="https://barcodepro.pages.dev/faq.html">
+<title>Bulk Barcode &amp; QR Generator (CSV to ZIP) | BarcodePro</title>
+<meta name="description" content="Upload a CSV of values and generate hundreds of barcodes or QR codes at once, packaged into a downloadable ZIP file.">
+<link rel="canonical" href="https://barcodepro.pages.dev/bulk-generator.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <style>
 /* ============================================
@@ -639,15 +639,43 @@ footer.site-footer{
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <style>
-  .faq-item{
-    background:var(--card);
-    border-radius:16px;
-    padding:22px 26px;
-    margin-bottom:16px;
+  .bulk-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
   }
-  .faq-item h2{ font-size:18px; margin-bottom:8px; }
-  .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
+  @media(max-width:900px){ .bulk-layout{ grid-template-columns:1fr; } }
+  #csvFile{ display:none; }
+  .preview-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:16px;
+    font-size:13px;
+  }
+  .preview-table th, .preview-table td{
+    text-align:left;
+    padding:8px 10px;
+    border-bottom:1px solid var(--border);
+    color:var(--muted);
+  }
+  .preview-table th{ color:var(--text); }
+  .progress-wrap{
+    background:var(--input-bg);
+    border-radius:999px;
+    height:10px;
+    overflow:hidden;
+    margin-top:16px;
+  }
+  .progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+    transition:width 0.2s;
+  }
 </style>
 </head>
 <body>
@@ -659,7 +687,7 @@ footer.site-footer{
       <a href="index.html">Home</a>
       <a href="index.html#generator">Generator</a>
       <a href="qr-generator.html">QR Code</a>
-      <a href="bulk-generator.html">Bulk</a>
+      <a href="bulk-generator.html" class="active">Bulk</a>
       <a href="scanner.html">Scanner</a>
       <a href="blog.html">Blog</a>
       <a href="about.html">About</a>
@@ -669,47 +697,99 @@ footer.site-footer{
 </header>
 
 <section class="page-hero">
-  <span class="eyebrow">Support</span>
-  <h1>Frequently Asked <span class="gradient-text">Questions</span></h1>
+  <span class="eyebrow">Bulk Export</span>
+  <h1>Bulk <span class="gradient-text">Barcode &amp; QR Generator</span></h1>
+  <p>Upload a CSV with one value per row — SKUs, serial numbers, ticket IDs, URLs — and download every code at once as a ZIP of PNG files.</p>
 </section>
 
-<section class="wrap-narrow" style="padding-bottom:90px;">
+<section class="wrap" style="padding-bottom:80px;">
+  <div class="bulk-layout">
 
-  <div class="faq-item">
-    <h2>Is BarcodePro free?</h2>
-    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits.</p>
+    <div class="card">
+
+      <label>1. Choose Code Type</label>
+      <select id="bulkType">
+        <optgroup label="Barcode">
+          <option value="CODE128">CODE128</option>
+          <option value="CODE39">CODE39</option>
+          <option value="EAN13">EAN13</option>
+          <option value="EAN8">EAN8</option>
+          <option value="UPC">UPC</option>
+          <option value="ITF14">ITF14</option>
+        </optgroup>
+        <optgroup label="QR Code">
+          <option value="QR">QR Code</option>
+        </optgroup>
+      </select>
+
+      <div style="margin-top:18px;">
+        <label>2. Upload CSV (one value per line, or a "value" column)</label>
+        <div class="dropzone" id="dropzone">
+          <span class="icon">📄</span>
+          <p><strong>Click to upload</strong> or drag a .csv file here</p>
+        </div>
+        <input type="file" id="csvFile" accept=".csv,text/csv">
+      </div>
+
+      <div style="margin-top:18px;">
+        <label>...or paste values, one per line</label>
+        <textarea id="pasteValues" placeholder="SKU-00123
+SKU-00124
+SKU-00125"></textarea>
+      </div>
+
+      <div class="grid" style="margin-top:10px;">
+        <div>
+          <label>Filename Prefix</label>
+          <input type="text" id="filePrefix" value="code">
+        </div>
+        <div>
+          <label>Image Size (px)</label>
+          <input type="number" id="bulkSize" value="400" min="100" max="1000">
+        </div>
+      </div>
+
+      <button class="btn-full" style="margin-top:20px;" onclick="runBulkGenerate()">Generate &amp; Download ZIP</button>
+
+      <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+      <div id="bulkNotice"></div>
+    </div>
+
+    <div class="card">
+      <label>Preview (first 8 values)</label>
+      <table class="preview-table" id="previewTable">
+        <thead><tr><th>#</th><th>Value</th></tr></thead>
+        <tbody id="previewBody">
+          <tr><td colspan="2" style="color:var(--dim);">No values loaded yet.</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--dim);font-size:13px;margin-top:14px;">
+        Total values loaded: <strong id="totalCount">0</strong>
+      </p>
+    </div>
+
   </div>
+</section>
 
-  <div class="faq-item">
-    <h2>Do you store my barcodes or scanned images?</h2>
-    <p>No. Generation and decoding both happen locally in your browser; nothing is uploaded to a server.</p>
+<section class="wrap" style="padding-bottom:80px;">
+  <h2 class="section-title">How <span class="gradient-text">bulk generation</span> works</h2>
+  <div class="step-list">
+    <div class="step">
+      <div class="num">STEP 1</div>
+      <h4>Upload or paste values</h4>
+      <p>A CSV file, or a simple list pasted straight into the box — one value per row.</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 2</div>
+      <h4>Pick a code type</h4>
+      <p>Choose any supported barcode symbology, or QR code, applied to every row.</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 3</div>
+      <h4>Download the ZIP</h4>
+      <p>Every code renders locally in your browser and is packaged into one ZIP file — nothing is uploaded.</p>
+    </div>
   </div>
-
-  <div class="faq-item">
-    <h2>Can I use generated barcodes commercially?</h2>
-    <p>Yes, codes you generate are yours to use for any purpose, commercial included.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Which barcode types are supported?</h2>
-    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI, Pharmacode, QR Code, Data Matrix, PDF417, Aztec, GS1 and Codabar.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Can I download PNG and SVG?</h2>
-    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>How does the Bulk Generator work?</h2>
-    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>What image formats does the Scanner accept?</h2>
-    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably.</p>
-  </div>
-
 </section>
 
 <footer class="site-footer">
@@ -740,6 +820,172 @@ footer.site-footer{
   </div>
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
+
+<script>
+let loadedValues = [];
+
+const dropzone = document.getElementById("dropzone");
+const fileInput = document.getElementById("csvFile");
+
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("dragover", (e) => { e.preventDefault(); dropzone.classList.add("dragover"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("dragover"));
+dropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragover");
+  if(e.dataTransfer.files.length){
+    fileInput.files = e.dataTransfer.files;
+    handleFile(e.dataTransfer.files[0]);
+  }
+});
+fileInput.addEventListener("change", () => {
+  if(fileInput.files.length) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file){
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    parseCSV(e.target.result);
+  };
+  reader.readAsText(file);
+}
+
+function parseCSV(text){
+  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+  if(lines.length === 0){ loadedValues = []; updatePreview(); return; }
+
+  // If first row looks like a header containing "value", use that column; else treat every line as a value
+  const header = lines[0].split(",").map(h => h.trim().toLowerCase());
+  const valueIdx = header.indexOf("value");
+
+  if(valueIdx !== -1){
+    loadedValues = lines.slice(1).map(l => l.split(",")[valueIdx]?.trim()).filter(Boolean);
+  } else {
+    loadedValues = lines.map(l => l.split(",")[0].trim()).filter(Boolean);
+  }
+  updatePreview();
+}
+
+document.getElementById("pasteValues").addEventListener("input", (e) => {
+  const lines = e.target.value.split("\n").map(l => l.trim()).filter(Boolean);
+  if(lines.length > 0){
+    loadedValues = lines;
+    updatePreview();
+  }
+});
+
+function updatePreview(){
+  const body = document.getElementById("previewBody");
+  document.getElementById("totalCount").innerText = loadedValues.length;
+
+  if(loadedValues.length === 0){
+    body.innerHTML = `<tr><td colspan="2" style="color:var(--dim);">No values loaded yet.</td></tr>`;
+    return;
+  }
+
+  body.innerHTML = loadedValues.slice(0, 8).map((v, i) =>
+    `<tr><td>${i + 1}</td><td>${escapeHtml(v)}</td></tr>`
+  ).join("");
+}
+
+function escapeHtml(str){
+  const div = document.createElement("div");
+  div.innerText = str;
+  return div.innerHTML;
+}
+
+function showNotice(msg, type){
+  document.getElementById("bulkNotice").innerHTML = `<div class="notice notice-${type}">${msg}</div>`;
+}
+
+async function runBulkGenerate(){
+  if(loadedValues.length === 0){
+    showNotice("Load some values first — upload a CSV or paste a list.", "error");
+    return;
+  }
+  if(loadedValues.length > 500){
+    showNotice("Please keep bulk batches under 500 values for browser performance.", "error");
+    return;
+  }
+
+  const type = document.getElementById("bulkType").value;
+  const size = parseInt(document.getElementById("bulkSize").value) || 400;
+  const prefix = document.getElementById("filePrefix").value.trim() || "code";
+  const progressBar = document.getElementById("progressBar");
+
+  const zip = new JSZip();
+  let failures = 0;
+
+  for(let i = 0; i < loadedValues.length; i++){
+    const value = loadedValues[i];
+    try {
+      const dataUrl = await renderOne(value, type, size);
+      const base64 = dataUrl.split(",")[1];
+      zip.file(`${prefix}_${i + 1}_${sanitize(value)}.png`, base64, { base64: true });
+    } catch(err){
+      failures++;
+    }
+    progressBar.style.width = `${Math.round(((i + 1) / loadedValues.length) * 100)}%`;
+    // yield to the UI thread periodically
+    if(i % 25 === 0) await new Promise(r => setTimeout(r, 0));
+  }
+
+  const content = await zip.generateAsync({ type: "blob" });
+  const url = URL.createObjectURL(content);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${prefix}_batch.zip`;
+  link.click();
+  URL.revokeObjectURL(url);
+
+  progressBar.style.width = "100%";
+  if(failures > 0){
+    showNotice(`Done, with ${failures} value(s) skipped because they weren't valid for the chosen format.`, "error");
+  } else {
+    showNotice(`Generated ${loadedValues.length} codes and downloaded the ZIP.`, "success");
+  }
+}
+
+function sanitize(v){
+  return v.replace(/[^a-z0-9_-]/gi, "_").slice(0, 30);
+}
+
+function renderOne(value, type, size){
+  return new Promise((resolve, reject) => {
+    if(type === "QR"){
+      const canvas = document.createElement("canvas");
+      QRCode.toCanvas(canvas, value, { width: size, margin: 2 }, (err) => {
+        if(err) return reject(err);
+        resolve(canvas.toDataURL("image/png"));
+      });
+    } else {
+      try {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        JsBarcode(svg, value, { format: type, displayValue: true, width: 2, height: size / 3, margin: 10 });
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const img = new Image();
+        const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(svgBlob);
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width || size;
+          canvas.height = img.height || size / 3;
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(url);
+          resolve(canvas.toDataURL("image/png"));
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("render failed")); };
+        img.src = url;
+      } catch(err){
+        reject(err);
+      }
+    }
+  });
+}
+</script>
 
 </body>
 </html>

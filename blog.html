@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FAQ | BarcodePro</title>
-<meta name="description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
-<link rel="canonical" href="https://barcodepro.pages.dev/faq.html">
+<title>Blog | BarcodePro</title>
+<meta name="description" content="Guides on barcodes and QR codes: which format to use, how to print labels correctly, and how the technology works.">
+<link rel="canonical" href="https://barcodepro.pages.dev/blog.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <style>
 /* ============================================
@@ -639,16 +639,6 @@ footer.site-footer{
 }
 
 </style>
-<style>
-  .faq-item{
-    background:var(--card);
-    border-radius:16px;
-    padding:22px 26px;
-    margin-bottom:16px;
-  }
-  .faq-item h2{ font-size:18px; margin-bottom:8px; }
-  .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
-</style>
 </head>
 <body>
 
@@ -661,7 +651,7 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html" class="active">Blog</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -669,47 +659,48 @@ footer.site-footer{
 </header>
 
 <section class="page-hero">
-  <span class="eyebrow">Support</span>
-  <h1>Frequently Asked <span class="gradient-text">Questions</span></h1>
+  <span class="eyebrow">Guides</span>
+  <h1>The BarcodePro <span class="gradient-text">Blog</span></h1>
+  <p>Practical guides on barcodes and QR codes — which format to pick, how to print labels that actually scan, and how the technology works under the hood.</p>
 </section>
 
-<section class="wrap-narrow" style="padding-bottom:90px;">
+<section class="wrap" style="padding-bottom:90px;">
+  <div class="blog-grid">
 
-  <div class="faq-item">
-    <h2>Is BarcodePro free?</h2>
-    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits.</p>
+    <a href="blog-qr-vs-barcode.html" style="color:inherit;">
+      <div class="blog-card">
+        <div class="blog-card-body">
+          <span class="tag">Guide</span>
+          <h3>QR Code vs. Barcode: Which Should You Use?</h3>
+          <p>A practical breakdown of what each format is good at, so you can pick the right one for packaging, tickets, inventory or marketing.</p>
+          <span class="read-more">Read article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog-barcode-types-explained.html" style="color:inherit;">
+      <div class="blog-card">
+        <div class="blog-card-body">
+          <span class="tag">Reference</span>
+          <h3>Barcode Types Explained: CODE128, EAN, UPC and More</h3>
+          <p>A plain-English tour of the most common barcode symbologies and where each one is actually used in the real world.</p>
+          <span class="read-more">Read article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog-printing-barcode-labels.html" style="color:inherit;">
+      <div class="blog-card">
+        <div class="blog-card-body">
+          <span class="tag">How-To</span>
+          <h3>How to Print Barcode Labels That Actually Scan</h3>
+          <p>Sizing, contrast, quiet zones and printer settings — the small details that make the difference between a scan and a failed read.</p>
+          <span class="read-more">Read article →</span>
+        </div>
+      </div>
+    </a>
+
   </div>
-
-  <div class="faq-item">
-    <h2>Do you store my barcodes or scanned images?</h2>
-    <p>No. Generation and decoding both happen locally in your browser; nothing is uploaded to a server.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Can I use generated barcodes commercially?</h2>
-    <p>Yes, codes you generate are yours to use for any purpose, commercial included.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Which barcode types are supported?</h2>
-    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI, Pharmacode, QR Code, Data Matrix, PDF417, Aztec, GS1 and Codabar.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Can I download PNG and SVG?</h2>
-    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>How does the Bulk Generator work?</h2>
-    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>What image formats does the Scanner accept?</h2>
-    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably.</p>
-  </div>
-
 </section>
 
 <footer class="site-footer">

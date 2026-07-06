@@ -4,15 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Primary SEO -->
     <title>Free Barcode Generator Online | BarcodePro</title>
-
-    <meta name="google-adsense-account" content="ca-pub-2139458441522084" />
-
-    <script
-      src="https://5gvci.com/act/files/tag.min.js?z=11098159"
-      data-cfasync="false"
-      async
-    ></script>
 
     <meta name="title" content="Free Barcode Generator Online - BarcodePro" />
 
@@ -23,14 +16,14 @@
 
     <meta
       name="keywords"
-      content="barcode generator, qr code generator, code128 generator, code39 generator, ean13 generator, upc barcode, pdf417, data matrix, aztec barcode, isbn barcode"
+      content="barcode generator, qr code generator, code128 generator, code39 generator, ean13 generator, upc barcode, pdf417, data matrix, aztec barcode, isbn barcode, bulk barcode generator, barcode scanner"
     />
 
     <meta name="author" content="BarcodePro" />
 
     <meta name="robots" content="index,follow,max-image-preview:large" />
 
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#0b1220" />
 
     <meta name="language" content="English" />
 
@@ -40,17 +33,40 @@
       rel="icon"
       href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
     />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2139458441522084"
-     crossorigin="anonymous"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JsBarcode -->
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
 
     <style>
+      :root {
+        --bg: #0b1220;
+        --header-bg: #0f1626;
+        --card: #151f35;
+        --card-border: rgba(255, 255, 255, 0.06);
+        --input-bg: #1f2c47;
+        --text: #f1f5f9;
+        --muted: #a9b8d4;
+        --muted-2: #7c8db3;
+        --accent-1: #06b6d4;
+        --accent-2: #8b5cf6;
+        --accent-3: #38bdf8;
+        --laser: #fb4d4d;
+        --font-display: "Space Grotesk", Arial, sans-serif;
+        --font-body: "Inter", Arial, sans-serif;
+        --font-mono: "IBM Plex Mono", monospace;
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, sans-serif;
       }
 
       html {
@@ -58,24 +74,67 @@
       }
 
       body {
-        background: #0f172a;
-        color: white;
+        background: var(--bg);
+        color: var(--text);
         overflow-x: hidden;
+        font-family: var(--font-body);
+        line-height: 1.5;
       }
 
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--accent-3);
+        outline-offset: 3px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      /* EYEBROW / MONO LABELS */
+
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-1);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent-1);
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+      }
+
+      /* HEADER */
 
       header {
         position: sticky;
         top: 0;
         z-index: 1000;
-        background: #111827;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(15, 22, 38, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--card-border);
       }
 
       .navbar {
-        max-width: 1200px;
+        max-width: 1220px;
         margin: auto;
-        padding: 18px 20px;
+        padding: 16px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -84,83 +143,270 @@
       }
 
       .logo {
-        font-size: 30px;
-        font-weight: bold;
-        background: linear-gradient(to right, #38bdf8, #8b5cf6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-family: var(--font-display);
+        font-size: 21px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        letter-spacing: -0.01em;
+      }
+
+      .logo .mark {
+        display: inline-flex;
+        gap: 2px;
+        align-items: flex-end;
+        height: 18px;
+      }
+
+      .logo .mark span {
+        width: 3px;
+        display: block;
+        background: linear-gradient(180deg, var(--accent-3), var(--accent-2));
+        border-radius: 1px;
       }
 
       .nav-links {
         display: flex;
-        gap: 20px;
+        gap: 26px;
         flex-wrap: wrap;
+        align-items: center;
       }
 
       .nav-links a {
-        color: #cbd5e1;
+        color: var(--muted);
         text-decoration: none;
-        transition: 0.3s;
+        transition: 0.2s;
+        font-size: 14.5px;
+        font-weight: 500;
       }
 
       .nav-links a:hover {
-        color: #38bdf8;
+        color: var(--accent-3);
       }
 
+      .nav-links a.nav-cta {
+        background: linear-gradient(to right, var(--accent-1), var(--accent-2));
+        color: white;
+        padding: 9px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      /* HERO */
 
       .hero {
-        max-width: 1200px;
+        max-width: 1220px;
         margin: auto;
-        padding: 80px 20px;
-        text-align: center;
+        padding: 76px 24px 60px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .hero-copy p.eyebrow {
+        margin-bottom: 22px;
       }
 
       .hero h1 {
-        font-size: 60px;
-        line-height: 1.2;
-        margin-bottom: 20px;
+        font-size: 54px;
+        line-height: 1.08;
+        margin-bottom: 22px;
+        color: var(--text);
       }
 
-      .hero h1 span {
-        background: linear-gradient(to right, #06b6d4, #8b5cf6);
+      .hero h1 em {
+        font-style: normal;
+        background: linear-gradient(to right, var(--accent-1), var(--accent-2));
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .hero p {
-        color: #cbd5e1;
-        font-size: 18px;
-        line-height: 1.8;
-        max-width: 850px;
-        margin: auto;
+      .hero-copy p.lede {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.75;
+        max-width: 520px;
+        margin-bottom: 32px;
       }
 
-      .hero button {
-        margin-top: 30px;
-        padding: 16px 35px;
+      .hero-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 38px;
+      }
+
+      .hero-buttons button,
+      .hero-btn {
+        padding: 15px 28px;
         border: none;
-        border-radius: 16px;
-        background: linear-gradient(to right, #06b6d4, #8b5cf6);
+        border-radius: 13px;
+        background: linear-gradient(to right, var(--accent-1), var(--accent-2));
         color: white;
-        font-size: 18px;
+        font-size: 15.5px;
+        font-weight: 600;
         cursor: pointer;
-        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        font-family: var(--font-body);
       }
 
+      .hero-btn.outline {
+        background: transparent;
+        border: 1px solid var(--card-border);
+        color: var(--muted);
+      }
+
+      .hero-btn.outline:hover {
+        border-color: var(--accent-1);
+        color: var(--text);
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 34px;
+        flex-wrap: wrap;
+      }
+
+      .hero-stats div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .hero-stats .num {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .hero-stats .lbl {
+        font-size: 12.5px;
+        color: var(--muted-2);
+      }
+
+      /* HERO VISUAL: SIGNATURE BARCODE + SCAN LINE */
+
+      .hero-visual {
+        position: relative;
+        background: linear-gradient(160deg, var(--card) 0%, #101a30 100%);
+        border: 1px solid var(--card-border);
+        border-radius: 22px;
+        padding: 34px 30px 26px;
+        overflow: hidden;
+      }
+
+      .hero-visual .scan-label {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .barcode-visual {
+        position: relative;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 22px 18px 14px;
+        overflow: hidden;
+      }
+
+      .barcode-visual svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .barcode-visual .scan-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--laser);
+        box-shadow: 0 0 12px 2px rgba(251, 77, 77, 0.7);
+        top: 0;
+        animation: scan 2.6s ease-in-out infinite;
+      }
+
+      @keyframes scan {
+        0% {
+          top: 6%;
+          opacity: 0.9;
+        }
+        48% {
+          top: 88%;
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 0;
+        }
+        52% {
+          top: 6%;
+          opacity: 0;
+        }
+        60% {
+          opacity: 0.9;
+        }
+        100% {
+          top: 88%;
+          opacity: 0.9;
+        }
+      }
+
+      .barcode-visual .code-value {
+        text-align: center;
+        color: #0f172a;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        margin-top: 10px;
+      }
+
+      .visual-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .visual-tags span {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--card-border);
+        padding: 5px 10px;
+        border-radius: 999px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .barcode-visual .scan-line {
+          animation: none;
+          top: 50%;
+        }
+      }
+
+      /* GENERATOR */
 
       .generator {
-        max-width: 1200px;
+        max-width: 1220px;
         margin: auto;
-        padding: 20px;
+        padding: 10px 24px 20px;
       }
 
       .card {
-        background: #1e293b;
-        padding: 30px;
-        border-radius: 25px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        padding: 32px;
+        border-radius: 22px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
       }
 
       .grid {
@@ -171,83 +417,68 @@
 
       label {
         display: block;
-        margin-bottom: 10px;
-        color: #cbd5e1;
-        font-weight: bold;
+        margin-bottom: 9px;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 13.5px;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
       }
 
       input,
       textarea,
       select {
         width: 100%;
-        padding: 15px;
-        margin: 5px;
-        border: none;
-        border-radius: 14px;
-        background: #334155;
+        padding: 14px 15px;
+        margin: 5px 0;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: var(--input-bg);
         color: white;
-        font-size: 16px;
+        font-size: 15.5px;
         outline: none;
+        font-family: var(--font-body);
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--accent-1);
       }
 
       textarea {
         resize: none;
-        height: 160px;
+        height: 150px;
       }
 
-      input[type="color"] {
-        padding: 6px;
-        height: 54px;
-        cursor: pointer;
-      }
-
-      button {
+      button.generate {
         width: 100%;
         padding: 16px;
-        margin-top: 25px;
+        margin-top: 22px;
         border: none;
-        border-radius: 16px;
-        background: linear-gradient(to right, #06b6d4, #8b5cf6);
+        border-radius: 14px;
+        background: linear-gradient(to right, var(--accent-1), var(--accent-2));
         color: white;
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 16.5px;
+        font-weight: 600;
         cursor: pointer;
-        transition: 0.2s;
+        font-family: var(--font-body);
       }
 
-      button:hover {
-        opacity: 0.9;
-      }
-
-      .action-row {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 15px;
-      }
-
-      .secondary-btn {
-        background: #334155;
-        color: #e2e8f0;
-      }
-
-      @media (max-width: 600px) {
-        .action-row {
-          grid-template-columns: 1fr;
-        }
-      }
-
+      /* RESULT */
 
       .barcode-container {
-        margin-top: 40px;
+        margin-top: 36px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        gap: 18px;
       }
 
       .barcode-card {
         background: white;
         padding: 20px;
-        border-radius: 20px;
+        border-radius: 16px;
         text-align: center;
         overflow: hidden;
       }
@@ -258,130 +489,178 @@
       }
 
       .barcode-text {
-        margin-top: 15px;
+        margin-top: 14px;
         color: black;
-        font-weight: bold;
+        font-weight: 600;
         word-break: break-word;
+        font-family: var(--font-mono);
+        font-size: 13px;
       }
 
-      .download-row {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
+      /* SECTION HEADERS */
+
+      .section-head {
+        max-width: 640px;
+        margin: 0 auto 44px;
+        text-align: center;
       }
 
-      .download-row button {
-        margin-top: 0;
-        padding: 10px;
-        font-size: 14px;
-        border-radius: 10px;
-        background: #0f172a;
-        background-image: none;
+      .section-head .eyebrow {
+        margin-bottom: 14px;
+        justify-content: center;
       }
 
+      .section-head h2 {
+        font-size: 34px;
+        margin-bottom: 12px;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 15.5px;
+        line-height: 1.7;
+      }
+
+      /* FEATURES */
 
       .features {
-        max-width: 1200px;
-        margin: 80px auto;
-        padding: 20px;
-      }
-
-      .features h2 {
-        text-align: center;
-        font-size: 42px;
-        margin-bottom: 40px;
+        max-width: 1220px;
+        margin: 100px auto;
+        padding: 0 24px;
       }
 
       .feature-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
+        gap: 20px;
       }
 
       .feature-card {
-        background: #1e293b;
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        transition: 0.3s;
-        border: 1px solid transparent;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        padding: 28px;
+        border-radius: 18px;
+        transition: 0.25s;
       }
 
       .feature-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(56, 189, 248, 0.4);
-      }
-
-      .feature-icon {
-        width: 56px;
-        height: 56px;
-        margin: 0 auto 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 26px;
-        border-radius: 16px;
-        background: linear-gradient(
-          135deg,
-          rgba(6, 182, 212, 0.25),
-          rgba(139, 92, 246, 0.25)
-        );
+        transform: translateY(-4px);
+        border-color: rgba(6, 182, 212, 0.3);
       }
 
       .feature-card h3 {
-        margin-bottom: 15px;
-        font-size: 19px;
+        margin-bottom: 10px;
+        font-size: 17px;
       }
 
       .feature-card p {
-        color: #cbd5e1;
-        line-height: 1.7;
-        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 14.5px;
       }
 
+      /* TOOLS */
+
+      .tools-section {
+        max-width: 1220px;
+        margin: 100px auto;
+        padding: 0 24px;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .tool-box {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        padding: 26px;
+        text-align: left;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: 0.25s;
+      }
+
+      .tool-box:hover {
+        transform: translateY(-4px);
+        border-color: rgba(139, 92, 246, 0.4);
+      }
+
+      .tool-box .tag {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent-1);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .tool-box h3 {
+        margin-bottom: 8px;
+        font-size: 17.5px;
+      }
+
+      .tool-box p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* ABOUT */
 
       .about {
-        max-width: 1200px;
-        margin: 80px auto;
-        padding: 20px;
+        max-width: 1220px;
+        margin: 100px auto;
+        padding: 0 24px;
       }
 
       .about-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 50px;
         align-items: center;
       }
 
+      .about-text .eyebrow {
+        margin-bottom: 16px;
+      }
+
       .about-text h2 {
-        font-size: 42px;
-        margin-bottom: 20px;
-        background: linear-gradient(to right, #38bdf8, #8b5cf6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 34px;
+        margin-bottom: 18px;
       }
 
       .about-text p {
-        color: #cbd5e1;
-        line-height: 1.9;
-        margin-bottom: 20px;
+        color: var(--muted);
+        line-height: 1.85;
+        margin-bottom: 18px;
+        font-size: 15.5px;
       }
 
       .about-box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 16px;
       }
 
       .about-card {
-        background: #1e293b;
-        padding: 25px;
-        border-radius: 20px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        padding: 24px;
+        border-radius: 16px;
         text-align: center;
       }
 
+      .about-card h3 {
+        font-size: 16px;
+      }
 
+      /* CONTACT */
 
       .contact-form {
         display: flex;
@@ -389,47 +668,79 @@
         gap: 15px;
       }
 
+      /* FOOTER */
+
       footer {
-        background: #111827;
-        padding: 40px 20px;
-        margin-top: 80px;
-        text-align: center;
-        color: #94a3b8;
+        background: var(--header-bg);
+        padding: 56px 24px 32px;
+        margin-top: 100px;
+        border-top: 1px solid var(--card-border);
       }
 
-      footer hr {
-        border: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 20px;
+      .footer-grid {
+        max-width: 1220px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 34px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--card-border);
       }
 
-      footer nav a {
-        color: #94a3b8;
+      .footer-col h4 {
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 16px;
+      }
+
+      .footer-col p {
+        color: var(--muted-2);
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 280px;
+      }
+
+      .footer-col a {
+        display: block;
+        color: var(--muted-2);
         text-decoration: none;
-        margin: 0 6px;
-        transition: 0.3s;
+        font-size: 14px;
+        margin-bottom: 11px;
+        transition: 0.2s;
       }
 
-      footer nav a:hover {
-        color: #38bdf8;
+      .footer-col a:hover {
+        color: var(--accent-3);
       }
 
-      footer p {
-        margin-top: 15px;
-        color: #94a3b8;
+      .footer-bottom {
+        max-width: 1220px;
+        margin: auto;
+        padding-top: 24px;
+        text-align: center;
+        color: var(--muted-2);
+        font-size: 12.5px;
+        font-family: var(--font-mono);
       }
 
+      /* LIGHT MODE */
 
       .light {
-        background: white;
-        color: black;
+        background: #fbfbfe;
+        color: #0f172a;
       }
 
       .light .card,
       .light .feature-card,
-      .light .about-card {
+      .light .about-card,
+      .light .tool-box,
+      .light .hero-visual {
         background: #f1f5f9;
-        color: black;
+        color: #0f172a;
+        border-color: rgba(0, 0, 0, 0.06);
       }
 
       .light input,
@@ -440,9 +751,33 @@
         border: 1px solid #ccc;
       }
 
+      .light .hero h1,
+      .light .about-text h2 {
+        color: #0f172a;
+      }
+
+      .light .hero-copy p.lede,
+      .light .feature-card p,
+      .light .tool-box p,
+      .light .about-text p {
+        color: #475569;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 50px;
+        }
+        .hero-visual {
+          order: -1;
+        }
+      }
+
       @media (max-width: 768px) {
         .hero h1 {
-          font-size: 38px;
+          font-size: 36px;
         }
 
         .about-container {
@@ -453,9 +788,22 @@
           grid-template-columns: 1fr;
         }
 
-        .features h2,
+        .section-head h2,
         .about-text h2 {
-          font-size: 32px;
+          font-size: 28px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-stats {
+          gap: 22px;
         }
       }
     </style>
@@ -473,7 +821,7 @@
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Free online barcode and QR code generator supporting Code128, QR Code, UPC, EAN, PDF417, Data Matrix and more."
+        "description": "Free online barcode and QR code toolkit: generator, bulk CSV export, and scanner supporting Code128, QR Code, UPC, EAN, PDF417, Data Matrix and more."
       }
     </script>
 
@@ -505,14 +853,26 @@
   <body>
     <header>
       <div class="navbar">
-        <div class="logo">BarcodePro</div>
+        <div class="logo">
+          <span class="mark">
+            <span style="height: 100%"></span>
+            <span style="height: 60%"></span>
+            <span style="height: 85%"></span>
+            <span style="height: 45%"></span>
+            <span style="height: 100%"></span>
+          </span>
+          BarcodePro
+        </div>
 
         <div class="nav-links">
-          <a href="#">Home</a>
+          <a href="index.html">Home</a>
           <a href="#generator">Generator</a>
-          <a href="#features">Features</a>
+          <a href="qr-generator.html">QR Code</a>
+          <a href="bulk-generator.html">Bulk</a>
+          <a href="scanner.html">Scanner</a>
+          <a href="blog.html">Blog</a>
           <a href="about.html">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact" class="nav-cta">Contact</a>
         </div>
       </div>
     </header>
@@ -520,14 +880,125 @@
     <!-- HERO -->
 
     <section class="hero">
-      <h1>Generate <span>Unlimited Barcodes</span> Free</h1>
+      <div class="hero-copy">
+        <p class="eyebrow">13 formats · 100% free · 0 uploads</p>
 
-      <p>
-        Create CODE128, EAN13, UPC, CODE39 and multiple barcode rows instantly.
-        Fast, secure and mobile friendly online barcode generator website.
-      </p>
+        <h1>Turn any value into a <em>scannable code</em>, instantly.</h1>
 
-      <button onclick="toggleTheme()">Toggle Theme</button>
+        <p class="lede">
+          Generate CODE128, EAN, UPC, QR and more directly in your browser.
+          Batch hundreds from a CSV, or decode a code from a photo — no
+          installs, no accounts, nothing ever leaves your device.
+        </p>
+
+        <div class="hero-buttons">
+          <button
+            onclick="
+              document
+                .getElementById('generator')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Generate a Barcode
+          </button>
+          <a class="hero-btn outline" href="tools.html">See All Tools</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <span class="num">13+</span>
+            <span class="lbl">Code formats</span>
+          </div>
+          <div>
+            <span class="num">∞</span>
+            <span class="lbl">Codes per session</span>
+          </div>
+          <div>
+            <span class="num">0</span>
+            <span class="lbl">Server uploads</span>
+          </div>
+          <div>
+            <span class="num">$0</span>
+            <span class="lbl">Cost, always</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="scan-label">
+          <span>LIVE_PREVIEW.SVG</span>
+          <span>CODE128</span>
+        </div>
+        <div class="barcode-visual">
+          <div class="scan-line" aria-hidden="true"></div>
+          <svg
+            viewBox="0 0 334 220"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Decorative barcode illustration"
+          >
+            <defs>
+              <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0f172a" />
+                <stop offset="100%" stop-color="#1e293b" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="5" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="14" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="22" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="28" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="33" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="38" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="43" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="51" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="56" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="64" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="70" y="0" width="3" height="220" fill="url(#barGrad)" />
+            <rect x="76" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="84" y="0" width="3" height="220" fill="url(#barGrad)" />
+            <rect x="91" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="98" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="107" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="116" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="121" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="126" y="0" width="6" height="220" fill="url(#barGrad)" />
+            <rect x="137" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="145" y="0" width="3" height="220" fill="url(#barGrad)" />
+            <rect x="151" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="159" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="164" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="173" y="0" width="6" height="220" fill="url(#barGrad)" />
+            <rect x="182" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="190" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="195" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="204" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="210" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="218" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="229" y="0" width="6" height="220" fill="url(#barGrad)" />
+            <rect x="239" y="0" width="6" height="220" fill="url(#barGrad)" />
+            <rect x="250" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="258" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="267" y="0" width="2" height="220" fill="url(#barGrad)" />
+            <rect x="272" y="0" width="3" height="220" fill="url(#barGrad)" />
+            <rect x="278" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="286" y="0" width="3" height="220" fill="url(#barGrad)" />
+            <rect x="295" y="0" width="5" height="220" fill="url(#barGrad)" />
+            <rect x="304" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="312" y="0" width="6" height="220" fill="url(#barGrad)" />
+            <rect x="321" y="0" width="4" height="220" fill="url(#barGrad)" />
+            <rect x="328" y="0" width="6" height="220" fill="url(#barGrad)" />
+          </svg>
+          <div class="code-value">8 90123 45678 9</div>
+        </div>
+        <div class="visual-tags">
+          <span>CODE128</span>
+          <span>EAN-13</span>
+          <span>QR</span>
+          <span>PDF417</span>
+          <span>+9 more</span>
+        </div>
+      </div>
     </section>
 
     <!-- GENERATOR -->
@@ -567,18 +1038,6 @@
 
             <input type="number" id="fontSize" value="18" />
           </div>
-
-          <div>
-            <label>Bar Color</label>
-
-            <input type="color" id="lineColor" value="#000000" />
-          </div>
-
-          <div>
-            <label>Background Color</label>
-
-            <input type="color" id="bgColor" value="#ffffff" />
-          </div>
         </div>
 
         <br />
@@ -592,15 +1051,9 @@ HELLO123
 987654321"
         ></textarea>
 
-        <div class="action-row">
-          <button class="generate" onclick="generateBarcodes()">
-            Generate Barcodes
-          </button>
-
-          <button class="secondary-btn" onclick="clearBarcodes()">
-            Clear All
-          </button>
-        </div>
+        <button class="generate" onclick="generateBarcodes()">
+          Generate Barcodes
+        </button>
 
         <div class="barcode-container" id="barcodeContainer"></div>
       </div>
@@ -609,73 +1062,93 @@ HELLO123
     <!-- FEATURES -->
 
     <section class="features" id="features">
-      <h2>Features</h2>
+      <div class="section-head">
+        <p class="eyebrow">Why BarcodePro</p>
+        <h2>Built to stay out of your way</h2>
+        <p>
+          No signup, no watermark, no server round-trip — just a tool that does
+          one job well.
+        </p>
+      </div>
 
       <div class="feature-grid">
         <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Instant Generation</h3>
+          <h3>⚡ Fast</h3>
           <p>
-            Barcodes render the moment you click, no page reloads or waiting.
+            Codes render the instant you click generate — no network round-trip.
           </p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h3>Mobile Friendly</h3>
+          <h3>📱 Mobile Friendly</h3>
+          <p>Responsive design that works the same on a phone as a desktop.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔒 Secure</h3>
           <p>
-            A fully responsive layout that works on phones, tablets and
-            desktops.
+            Every code is built in your browser. Your data never touches a
+            server.
           </p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>Privacy First</h3>
+          <h3>🎯 Multi Format</h3>
           <p>
-            Everything runs in your browser. Nothing you type is uploaded or
-            stored.
+            13+ barcode and QR standards, from retail EAN to logistics ITF-14.
           </p>
         </div>
+      </div>
+    </section>
 
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>8 Barcode Formats</h3>
-          <p>CODE128, CODE39, EAN13, EAN8, UPC, ITF14, MSI and Pharmacode.</p>
-        </div>
+    <!-- MORE TOOLS -->
 
-        <div class="feature-card">
-          <div class="feature-icon">📦</div>
-          <h3>Bulk Generation</h3>
+    <section class="tools-section" id="more-tools">
+      <div class="section-head">
+        <p class="eyebrow">The full toolkit</p>
+        <h2>More than one generator</h2>
+        <p>
+          The barcode generator above is the start — four more tools cover the
+          rest of the workflow.
+        </p>
+      </div>
+
+      <div class="tool-grid">
+        <a class="tool-box" href="qr-generator.html">
+          <span class="tag">QR Tool</span>
+          <h3>QR Code Generator</h3>
           <p>
-            Paste a full list of values and generate dozens of barcodes at once.
+            Links, WiFi, contact cards and text — customizable colors, export as
+            PNG or SVG.
           </p>
-        </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-icon">🎨</div>
-          <h3>Custom Colors</h3>
+        <a class="tool-box" href="bulk-generator.html">
+          <span class="tag">Batch Export</span>
+          <h3>Bulk Generator</h3>
           <p>
-            Pick your own bar and background colors to match your brand or label
-            stock.
+            Upload a CSV and generate hundreds of codes at once, packaged into a
+            ZIP.
           </p>
-        </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-icon">⬇️</div>
-          <h3>PNG &amp; SVG Downloads</h3>
+        <a class="tool-box" href="scanner.html">
+          <span class="tag">Decoder</span>
+          <h3>Barcode &amp; QR Scanner</h3>
           <p>
-            Save each barcode individually as a crisp PNG or scalable SVG file.
+            Upload a photo of any code and decode its value instantly in your
+            browser.
           </p>
-        </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-icon">🌗</div>
-          <h3>Light &amp; Dark Mode</h3>
+        <a class="tool-box" href="blog.html">
+          <span class="tag">Reference</span>
+          <h3>Guides &amp; Blog</h3>
           <p>
-            Switch themes instantly to match your workflow or screen preference.
+            Barcode types explained, QR vs. barcode, and how to print labels
+            that scan.
           </p>
-        </div>
+        </a>
       </div>
     </section>
 
@@ -684,16 +1157,28 @@ HELLO123
     <section class="about" id="about">
       <div class="about-container">
         <div class="about-text">
-          <h2>About BarcodePro</h2>
+          <p class="eyebrow">About the project</p>
+
+          <h2>
+            A barcode toolkit for businesses, developers and inventory systems
+          </h2>
 
           <p>
-            BarcodePro is a professional online barcode generator platform for
-            businesses, inventory systems and personal use.
+            BarcodePro is a professional online barcode generator platform built
+            for businesses, inventory systems and personal use.
           </p>
 
           <p>
-            Create unlimited barcodes in seconds with modern responsive design.
+            Create unlimited barcodes in seconds, with every render happening
+            locally in your browser.
           </p>
+
+          <a
+            class="hero-btn"
+            href="about.html"
+            style="padding: 12px 26px; font-size: 14.5px"
+            >Learn More</a
+          >
         </div>
 
         <div class="about-box">
@@ -721,6 +1206,8 @@ HELLO123
     <section class="about" id="contact">
       <div class="about-container">
         <div class="about-text">
+          <p class="eyebrow">Get in touch</p>
+
           <h2>Contact Us</h2>
 
           <p>Email: dkonhack@gmail.com</p>
@@ -740,7 +1227,7 @@ HELLO123
               required
             ></textarea>
 
-            <button type="submit">Send Message</button>
+            <button type="submit" class="generate">Send Message</button>
           </form>
         </div>
       </div>
@@ -749,7 +1236,10 @@ HELLO123
     <!-- FAQ -->
 
     <section class="features">
-      <h2>FAQ</h2>
+      <div class="section-head">
+        <p class="eyebrow">Quick answers</p>
+        <h2>FAQ</h2>
+      </div>
 
       <div class="feature-grid">
         <div class="feature-card">
@@ -772,21 +1262,39 @@ HELLO123
     <!-- FOOTER -->
 
     <footer>
-      <hr />
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 14px">BarcodePro</div>
+          <p>
+            Free, unlimited barcode and QR code tools that run entirely in your
+            browser. Nothing you generate or scan is ever uploaded to a server.
+          </p>
+        </div>
 
-      <nav>
-        <a href="about.html">About</a> |
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <a href="#generator">Barcode Generator</a>
+          <a href="qr-generator.html">QR Code Generator</a>
+          <a href="bulk-generator.html">Bulk Generator</a>
+          <a href="scanner.html">Barcode Scanner</a>
+        </div>
 
-        <a href="faq.html">FAQ</a> |
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
 
-        <a href="privacy.html">Privacy Policy</a> |
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
 
-        <a href="terms.html">Terms</a> |
-
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <p>© 2026 BarcodePro. All rights reserved.</p>
+      <div class="footer-bottom">© 2026 BARCODEPRO. ALL RIGHTS RESERVED.</div>
     </footer>
 
     <!-- SCRIPT -->
@@ -808,10 +1316,6 @@ HELLO123
 
         const fontSize = parseInt(document.getElementById("fontSize").value);
 
-        const lineColor = document.getElementById("lineColor").value;
-
-        const bgColor = document.getElementById("bgColor").value;
-
         container.innerHTML = "";
 
         if (values.length === 0) {
@@ -820,11 +1324,10 @@ HELLO123
           return;
         }
 
-        values.forEach((value, index) => {
+        values.forEach((value) => {
           const card = document.createElement("div");
 
           card.className = "barcode-card";
-          card.style.background = bgColor;
 
           const svg = document.createElementNS(
             "http://www.w3.org/2000/svg",
@@ -834,12 +1337,11 @@ HELLO123
           try {
             JsBarcode(svg, value, {
               format: type,
-              lineColor: lineColor,
+              lineColor: "#000",
               width: width,
               height: height,
               displayValue: true,
               fontSize: fontSize,
-              background: bgColor,
               margin: 10,
             });
           } catch (error) {
@@ -868,109 +1370,8 @@ HELLO123
 
           card.appendChild(text);
 
-          const downloadRow = document.createElement("div");
-
-          downloadRow.className = "download-row";
-
-          const pngBtn = document.createElement("button");
-
-          pngBtn.innerText = "PNG";
-
-          pngBtn.onclick = () => downloadAsPNG(svg, value, index);
-
-          const svgBtn = document.createElement("button");
-
-          svgBtn.innerText = "SVG";
-
-          svgBtn.onclick = () => downloadAsSVG(svg, value, index);
-
-          downloadRow.appendChild(pngBtn);
-
-          downloadRow.appendChild(svgBtn);
-
-          card.appendChild(downloadRow);
-
           container.appendChild(card);
         });
-      }
-
-      function clearBarcodes() {
-        document.getElementById("barcodeContainer").innerHTML = "";
-
-        document.getElementById("barcodeInput").value = "";
-      }
-
-      function safeFileName(value, index) {
-        const cleaned = value.replace(/[^a-z0-9]/gi, "_").slice(0, 30);
-
-        return (cleaned || "barcode") + "_" + (index + 1);
-      }
-
-      function downloadAsSVG(svg, value, index) {
-        const serializer = new XMLSerializer();
-
-        const source = serializer.serializeToString(svg);
-
-        const blob = new Blob([source], { type: "image/svg+xml" });
-
-        const url = URL.createObjectURL(blob);
-
-        const link = document.createElement("a");
-
-        link.href = url;
-
-        link.download = safeFileName(value, index) + ".svg";
-
-        link.click();
-
-        URL.revokeObjectURL(url);
-      }
-
-      function downloadAsPNG(svg, value, index) {
-        const serializer = new XMLSerializer();
-
-        const source = serializer.serializeToString(svg);
-
-        const svgBlob = new Blob([source], {
-          type: "image/svg+xml;charset=utf-8",
-        });
-
-        const url = URL.createObjectURL(svgBlob);
-
-        const img = new Image();
-
-        img.onload = function () {
-          const canvas = document.createElement("canvas");
-
-          const box = svg.viewBox.baseVal;
-
-          canvas.width = box && box.width ? box.width : svg.width.baseVal.value;
-
-          canvas.height =
-            box && box.height ? box.height : svg.height.baseVal.value;
-
-          const ctx = canvas.getContext("2d");
-
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-          URL.revokeObjectURL(url);
-
-          canvas.toBlob(function (blob) {
-            const pngUrl = URL.createObjectURL(blob);
-
-            const link = document.createElement("a");
-
-            link.href = pngUrl;
-
-            link.download = safeFileName(value, index) + ".png";
-
-            link.click();
-
-            URL.revokeObjectURL(pngUrl);
-          });
-        };
-
-        img.src = url;
       }
 
       function toggleTheme() {
@@ -994,7 +1395,7 @@ HELLO123
             alert("Message sent successfully!");
             form.reset();
           })
-          .catch(() => {
+          .catch((error) => {
             alert("Failed to send message. Please try again.");
             console.log(error);
           });

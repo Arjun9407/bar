@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FAQ | BarcodePro</title>
-<meta name="description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
-<link rel="canonical" href="https://barcodepro.pages.dev/faq.html">
+<title>Barcode Types Explained: CODE128, EAN, UPC and More | BarcodePro Blog</title>
+<meta name="description" content="A plain-English reference for the most common barcode symbologies — CODE128, CODE39, EAN-13, UPC, ITF, Data Matrix, PDF417 and Aztec — and where each is used.">
+<link rel="canonical" href="https://barcodepro.pages.dev/blog-barcode-types-explained.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <style>
 /* ============================================
@@ -639,16 +639,6 @@ footer.site-footer{
 }
 
 </style>
-<style>
-  .faq-item{
-    background:var(--card);
-    border-radius:16px;
-    padding:22px 26px;
-    margin-bottom:16px;
-  }
-  .faq-item h2{ font-size:18px; margin-bottom:8px; }
-  .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
-</style>
 </head>
 <body>
 
@@ -661,56 +651,70 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html" class="active">Blog</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
-<section class="page-hero">
-  <span class="eyebrow">Support</span>
-  <h1>Frequently Asked <span class="gradient-text">Questions</span></h1>
+<section class="page-hero" style="padding-bottom:10px;">
+  <span class="eyebrow">Reference</span>
+  <h1>Barcode Types Explained</h1>
 </section>
 
-<section class="wrap-narrow" style="padding-bottom:90px;">
+<article class="article">
+  <p class="meta">BarcodePro Team · Updated July 2026 · 6 min read</p>
 
-  <div class="faq-item">
-    <h2>Is BarcodePro free?</h2>
-    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits.</p>
-  </div>
+  <p>
+    "Barcode" isn't one format — it's a family of symbologies, each designed for a different job. Here's a plain-English rundown of the ones you'll actually run into.
+  </p>
 
-  <div class="faq-item">
-    <h2>Do you store my barcodes or scanned images?</h2>
-    <p>No. Generation and decoding both happen locally in your browser; nothing is uploaded to a server.</p>
-  </div>
+  <h2>CODE128</h2>
+  <p>
+    A compact, high-density format that can encode the full ASCII character set — letters, numbers and symbols. It's the default choice for shipping labels, internal inventory codes, and anywhere you need a flexible, general-purpose barcode.
+  </p>
 
-  <div class="faq-item">
-    <h2>Can I use generated barcodes commercially?</h2>
-    <p>Yes, codes you generate are yours to use for any purpose, commercial included.</p>
-  </div>
+  <h2>CODE39</h2>
+  <p>
+    An older, less dense format limited to uppercase letters, digits and a handful of symbols. It's still common in government, defense and some manufacturing settings because it doesn't require a checksum to read reliably.
+  </p>
 
-  <div class="faq-item">
-    <h2>Which barcode types are supported?</h2>
-    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI, Pharmacode, QR Code, Data Matrix, PDF417, Aztec, GS1 and Codabar.</p>
-  </div>
+  <h2>EAN-13 and EAN-8</h2>
+  <p>
+    The standard retail barcode used across Europe and most of the world — that's the code printed on nearly every product you buy in a supermarket. EAN-13 encodes a 13-digit product number; EAN-8 is a shorter version for small packaging.
+  </p>
 
-  <div class="faq-item">
-    <h2>Can I download PNG and SVG?</h2>
-    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool.</p>
-  </div>
+  <h2>UPC-A and UPC-E</h2>
+  <p>
+    The North American counterpart to EAN, found on retail products throughout the US and Canada. UPC-E is a compressed version used when shelf space is tight.
+  </p>
 
-  <div class="faq-item">
-    <h2>How does the Bulk Generator work?</h2>
-    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP.</p>
-  </div>
+  <h2>ITF (Interleaved 2 of 5)</h2>
+  <p>
+    Common on cardboard shipping cartons and pallets. It's tolerant of the lower print quality typical of corrugated packaging.
+  </p>
 
-  <div class="faq-item">
-    <h2>What image formats does the Scanner accept?</h2>
-    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably.</p>
-  </div>
+  <h2>Data Matrix</h2>
+  <p>
+    A compact 2D format that packs a lot of data into a very small square — used heavily in electronics manufacturing and to mark small medical or pharmaceutical items where space is extremely limited.
+  </p>
 
-</section>
+  <h2>PDF417</h2>
+  <p>
+    A 2D stacked format capable of storing large amounts of data, used on driver's licenses, boarding passes, and shipping documents that need to carry structured information offline.
+  </p>
+
+  <h2>Aztec</h2>
+  <p>
+    Another 2D format, popular for airline boarding passes and event tickets because it scans reliably even on a small phone screen.
+  </p>
+
+  <h2>Choosing the right one</h2>
+  <p>
+    If you're printing something for retail shelves, EAN or UPC is almost always mandatory. For internal logistics or inventory, CODE128 is the flexible default. If you need to pack in a lot of structured data on a small label, look at a 2D format like Data Matrix or PDF417. BarcodePro's <a href="index.html#generator" style="color:var(--accent-3);">generator</a> supports the most common symbologies for free — try a few and see which prints cleanest for your use case.
+  </p>
+</article>
 
 <footer class="site-footer">
   <div class="footer-grid">

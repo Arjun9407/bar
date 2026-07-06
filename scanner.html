@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FAQ | BarcodePro</title>
-<meta name="description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
-<link rel="canonical" href="https://barcodepro.pages.dev/faq.html">
+<title>Free Barcode &amp; QR Code Scanner | BarcodePro</title>
+<meta name="description" content="Decode barcodes and QR codes from any uploaded photo or screenshot, right in your browser. No app install, no upload to a server.">
+<link rel="canonical" href="https://barcodepro.pages.dev/scanner.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <style>
 /* ============================================
@@ -639,15 +639,44 @@ footer.site-footer{
 }
 
 </style>
+<script src="https://unpkg.com/@zxing/library@0.20.0/umd/index.min.js"></script>
 <style>
-  .faq-item{
-    background:var(--card);
-    border-radius:16px;
-    padding:22px 26px;
-    margin-bottom:16px;
+  .scan-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:start;
   }
-  .faq-item h2{ font-size:18px; margin-bottom:8px; }
-  .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
+  @media(max-width:900px){ .scan-layout{ grid-template-columns:1fr; } }
+  #scanFile{ display:none; }
+  #previewImg{
+    max-width:100%;
+    border-radius:14px;
+    margin-top:16px;
+    display:none;
+  }
+  .result-line{
+    background:var(--input-bg);
+    border-radius:14px;
+    padding:16px;
+    margin-top:14px;
+    word-break:break-word;
+    font-size:15px;
+  }
+  .result-line .label{
+    display:block;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--accent-1);
+    margin-bottom:6px;
+  }
+  .copy-btn{
+    margin-top:10px;
+    padding:8px 14px;
+    font-size:13px;
+    border-radius:10px;
+  }
 </style>
 </head>
 <body>
@@ -660,7 +689,7 @@ footer.site-footer{
       <a href="index.html#generator">Generator</a>
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
-      <a href="scanner.html">Scanner</a>
+      <a href="scanner.html" class="active">Scanner</a>
       <a href="blog.html">Blog</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -669,47 +698,60 @@ footer.site-footer{
 </header>
 
 <section class="page-hero">
-  <span class="eyebrow">Support</span>
-  <h1>Frequently Asked <span class="gradient-text">Questions</span></h1>
+  <span class="eyebrow">Decode Instantly</span>
+  <h1>Barcode &amp; QR <span class="gradient-text">Scanner</span></h1>
+  <p>Upload a photo or screenshot containing a barcode or QR code and read its value instantly. Decoding happens locally in your browser.</p>
 </section>
 
-<section class="wrap-narrow" style="padding-bottom:90px;">
+<section class="wrap" style="padding-bottom:80px;">
+  <div class="scan-layout">
 
-  <div class="faq-item">
-    <h2>Is BarcodePro free?</h2>
-    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits.</p>
+    <div class="card">
+      <label>Upload an image</label>
+      <div class="dropzone" id="scanDrop">
+        <span class="icon">📷</span>
+        <p><strong>Click to upload</strong> or drag an image here</p>
+        <p style="font-size:12px;">JPG, PNG or WEBP — clear, well-lit photos decode best</p>
+      </div>
+      <input type="file" id="scanFile" accept="image/*">
+      <img id="previewImg" alt="Uploaded code preview">
+      <div id="scanNotice"></div>
+    </div>
+
+    <div class="card">
+      <label>Result</label>
+      <div id="resultArea">
+        <p style="color:var(--dim);">Upload an image to see the decoded value here.</p>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <div class="faq-item">
-    <h2>Do you store my barcodes or scanned images?</h2>
-    <p>No. Generation and decoding both happen locally in your browser; nothing is uploaded to a server.</p>
+<section class="wrap" style="padding-bottom:80px;">
+  <h2 class="section-title">Tips for a <span class="gradient-text">clean scan</span></h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="icon">💡</span>
+      <h3>Good lighting</h3>
+      <p>Avoid glare and shadows across the code — even lighting decodes far more reliably.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🔍</span>
+      <h3>Fill the frame</h3>
+      <p>Crop the photo so the code takes up most of the image before uploading.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📐</span>
+      <h3>Keep it flat</h3>
+      <p>Steep angles distort the pattern. Shoot as straight-on as possible.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🔒</span>
+      <h3>Stays on your device</h3>
+      <p>Images are decoded locally in the browser and are never uploaded anywhere.</p>
+    </div>
   </div>
-
-  <div class="faq-item">
-    <h2>Can I use generated barcodes commercially?</h2>
-    <p>Yes, codes you generate are yours to use for any purpose, commercial included.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Which barcode types are supported?</h2>
-    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI, Pharmacode, QR Code, Data Matrix, PDF417, Aztec, GS1 and Codabar.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>Can I download PNG and SVG?</h2>
-    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>How does the Bulk Generator work?</h2>
-    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP.</p>
-  </div>
-
-  <div class="faq-item">
-    <h2>What image formats does the Scanner accept?</h2>
-    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably.</p>
-  </div>
-
 </section>
 
 <footer class="site-footer">
@@ -740,6 +782,84 @@ footer.site-footer{
   </div>
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
+
+<script>
+const scanDrop = document.getElementById("scanDrop");
+const scanFile = document.getElementById("scanFile");
+const previewImg = document.getElementById("previewImg");
+
+scanDrop.addEventListener("click", () => scanFile.click());
+scanDrop.addEventListener("dragover", (e) => { e.preventDefault(); scanDrop.classList.add("dragover"); });
+scanDrop.addEventListener("dragleave", () => scanDrop.classList.remove("dragover"));
+scanDrop.addEventListener("drop", (e) => {
+  e.preventDefault();
+  scanDrop.classList.remove("dragover");
+  if(e.dataTransfer.files.length){
+    scanFile.files = e.dataTransfer.files;
+    handleImage(e.dataTransfer.files[0]);
+  }
+});
+scanFile.addEventListener("change", () => {
+  if(scanFile.files.length) handleImage(scanFile.files[0]);
+});
+
+function showNotice(msg, type){
+  document.getElementById("scanNotice").innerHTML = `<div class="notice notice-${type}">${msg}</div>`;
+}
+
+function handleImage(file){
+  if(!file.type.startsWith("image/")){
+    showNotice("Please upload an image file.", "error");
+    return;
+  }
+
+  const url = URL.createObjectURL(file);
+  previewImg.src = url;
+  previewImg.style.display = "block";
+  document.getElementById("scanNotice").innerHTML = "";
+  document.getElementById("resultArea").innerHTML = `<p style="color:var(--dim);">Decoding…</p>`;
+
+  previewImg.onload = async () => {
+    try {
+      const codeReader = new ZXing.BrowserMultiFormatReader();
+      const result = await codeReader.decodeFromImageElement(previewImg);
+      const text = result.getText();
+      const format = result.getBarcodeFormat ? result.getBarcodeFormat() : "";
+      renderResult(text, format);
+    } catch(err){
+      document.getElementById("resultArea").innerHTML =
+        `<p style="color:var(--dim);">No code could be decoded from that image. Try a clearer, more direct photo.</p>`;
+    }
+  };
+}
+
+function renderResult(text, format){
+  const area = document.getElementById("resultArea");
+  area.innerHTML = `
+    <div class="result-line">
+      <span class="label">${format || "Decoded"}</span>
+      ${escapeHtml(text)}
+    </div>
+    <button class="copy-btn btn-outline" onclick="copyResult()">Copy Value</button>
+  `;
+  area.dataset.value = text;
+}
+
+function copyResult(){
+  const area = document.getElementById("resultArea");
+  navigator.clipboard.writeText(area.dataset.value || "").then(() => {
+    showNotice("Copied to clipboard.", "success");
+  }).catch(() => {
+    showNotice("Could not copy automatically — please select and copy manually.", "error");
+  });
+}
+
+function escapeHtml(str){
+  const div = document.createElement("div");
+  div.innerText = str;
+  return div.innerHTML;
+}
+</script>
 
 </body>
 </html>
