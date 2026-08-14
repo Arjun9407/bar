@@ -658,7 +658,11 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -674,37 +678,67 @@ footer.site-footer{
 
   <div class="faq-item">
     <h2>Is BarcodePro free?</h2>
-    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits.</p>
+    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits, no account, and no watermark on the output. We don't have a paid tier; the site is supported by advertising rather than subscriptions.</p>
   </div>
 
   <div class="faq-item">
     <h2>Do you store my barcodes or scanned images?</h2>
-    <p>No. Generation and decoding both happen locally in your browser; nothing is uploaded to a server.</p>
+    <p>No. Generation and decoding both happen locally in your browser using JavaScript; the values you type and the images you upload to the scanner are never transmitted to a server. You can verify this yourself by opening your browser's network tab while generating or scanning a code — you won't see any request carrying that data.</p>
   </div>
 
   <div class="faq-item">
     <h2>Can I use generated barcodes commercially?</h2>
-    <p>Yes, codes you generate are yours to use for any purpose, commercial included.</p>
+    <p>Yes, codes you generate are yours to use for any purpose, commercial included, with no attribution required. One caveat worth knowing: generating a valid EAN-13 or UPC-A barcode does not register a product number with GS1 or any retail authority. If you plan to sell through a major retailer or marketplace that validates GS1-issued numbers, you'll need an officially assigned prefix from GS1 — our generator will happily encode any 12–13 digit number you give it, but it doesn't check whether that number is registered to you.</p>
   </div>
 
   <div class="faq-item">
     <h2>Which barcode types are supported?</h2>
-    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI, Pharmacode, QR Code, Data Matrix, PDF417, Aztec, GS1 and Codabar.</p>
+    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI and Pharmacode on the linear side, plus QR Code as our 2D format. See our <a href="blog-barcode-types-explained.html" style="color:var(--accent-3);">barcode types guide</a> for what each one is actually used for and how to pick between them.</p>
   </div>
 
   <div class="faq-item">
     <h2>Can I download PNG and SVG?</h2>
-    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool.</p>
+    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool. PNG is the safer default for most printing workflows; SVG is worth using if you're placing the code into a vector design tool like Illustrator or Figma, since it scales without any loss of sharpness.</p>
   </div>
 
   <div class="faq-item">
     <h2>How does the Bulk Generator work?</h2>
-    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP.</p>
+    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP, with each file named after its source value. It's built for batches up to about 500 values — past that, browser memory becomes the limiting factor, so very large runs are best split into a few smaller batches.</p>
   </div>
 
   <div class="faq-item">
     <h2>What image formats does the Scanner accept?</h2>
-    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably.</p>
+    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably — see the tips on the <a href="scanner.html" style="color:var(--accent-3);">scanner page</a> for what tends to trip up a decode (glare, steep angles, motion blur, and a code that only fills a small part of the frame are the usual culprits).</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Why did my barcode fail to scan after I printed it?</h2>
+    <p>This is almost always a printing issue rather than an encoding one. The most common causes, in order of frequency: the code was shrunk below its symbology's minimum reliable size, the "quiet zone" margin around the code got cropped off, the printed contrast was too low (grey-on-white, or a busy background image), or the file was compressed as a low-quality JPEG before printing. Our <a href="blog-printing-barcode-labels.html" style="color:var(--accent-3);">printing guide</a> walks through each of these in detail.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>What's the difference between a barcode and a QR code, and which should I use?</h2>
+    <p>A linear barcode (CODE128, EAN-13, UPC-A, etc.) stores a short ID and is read by cheap, extremely fast dedicated scanners — the standard for retail checkout and warehouse logistics. A QR code stores far more data (a full URL, WiFi credentials, a contact card) and is read by any phone camera, which makes it the better fit for anything a consumer scans with their own device. Our <a href="blog-qr-vs-barcode.html" style="color:var(--accent-3);">QR vs. barcode comparison</a> covers this in more depth.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Do I need an internet connection to use BarcodePro?</h2>
+    <p>You need a connection to load the page the first time, but generation and scanning themselves happen entirely in your browser's JavaScript engine. In practice this means the tools are fast even on a slow or unstable connection, since there's no round-trip to a server involved once the page has loaded.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Can I customize the color of a QR code?</h2>
+    <p>Yes, the <a href="qr-generator.html" style="color:var(--accent-3);">QR code generator</a> lets you set both a foreground and background color. Keep in mind that scanners rely on strong contrast between the two — a QR code with low contrast between foreground and background (light grey on white, for instance) can fail to scan even though it looks fine on a bright screen. Dark-on-light combinations with a clear contrast difference are the safest choice.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>What's the maximum amount of text a QR code can hold?</h2>
+    <p>It depends on the error-correction level and content type, but a QR code can realistically hold a few thousand alphanumeric characters at the largest module count. In practice, most real-world uses — a URL, a WiFi password, a short vCard — use only a small fraction of that capacity. Cramming in unnecessarily long text does increase the module count and makes the resulting code visually denser and slightly harder to scan from a distance, so shorter payloads (like a short link instead of a long tracking URL) tend to scan more reliably.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Does BarcodePro work on mobile devices?</h2>
+    <p>Yes, all four tools are fully responsive and work on phone and tablet browsers, including uploading a photo directly from your camera roll into the scanner.</p>
   </div>
 
 </section>
@@ -721,11 +755,15 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -738,5 +776,34 @@ footer.site-footer{
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -648,7 +648,11 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html" class="active">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -674,7 +678,7 @@ footer.site-footer{
 
   <h2>Don't shrink it too far</h2>
   <p>
-    Every barcode has a minimum reliable size, usually described as a percentage of its "nominal" size in the format's specification. Shrinking a barcode below that threshold blurs the thin bars together on most printers, especially at typical office-printer resolution. When in doubt, print it larger, not smaller.
+    Every barcode has a minimum reliable size, usually described as a percentage of its "nominal" size in the format's specification. Shrinking a barcode below that threshold blurs the thin bars together on most printers, especially at typical office-printer resolution. When in doubt, print it larger, not smaller — our <a href="size-calculator.html" style="color:var(--accent-3);">size &amp; DPI calculator</a> can estimate a safe minimum width for your symbology and printer resolution.
   </p>
 
   <h2>Maximize contrast</h2>
@@ -723,11 +727,15 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -740,5 +748,34 @@ footer.site-footer{
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>

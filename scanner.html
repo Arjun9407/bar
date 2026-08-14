@@ -687,7 +687,11 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html" class="active">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -751,6 +755,38 @@ footer.site-footer{
   </div>
 </section>
 
+<section class="wrap-narrow article" style="padding-bottom:80px;">
+  <h2>How the scanner works</h2>
+  <p>
+    The scanner uses a browser-based decoding library that analyzes the pixel data of your uploaded image directly, looking for the finder patterns and timing markers that identify a barcode or QR code region, then reading the encoded bars or modules within it. Because this all happens inside your browser's JavaScript engine, the image itself is never transmitted anywhere — it's loaded into memory, decoded, and can be discarded the moment you navigate away.
+  </p>
+
+  <h2>What formats can it read?</h2>
+  <p>
+    The decoder recognizes both major families: linear barcodes (CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Codabar) and 2D formats (QR Code, Data Matrix, Aztec, PDF417). It automatically detects which format it's looking at — you don't need to tell it in advance what kind of code is in the photo.
+  </p>
+
+  <h2>Common reasons a scan fails</h2>
+  <p>
+    If an upload doesn't decode, it's almost always one of a handful of predictable issues rather than a bug in the tool itself:
+  </p>
+  <ul>
+    <li><strong>The code is too small in the frame.</strong> If the barcode or QR code occupies only a tiny fraction of the photo, crop the image so it fills most of the frame before uploading.</li>
+    <li><strong>Motion blur or poor focus.</strong> A slightly blurry photo can look fine to a human eye but confuse a decoder that relies on sharp bar edges or module boundaries.</li>
+    <li><strong>Glare or uneven lighting.</strong> A bright reflection across part of the code — common with glossy packaging under indoor lighting — can wash out enough of the pattern to break the read.</li>
+    <li><strong>Steep viewing angle.</strong> Photos taken at a sharp angle distort the geometry of the code. Straight-on, parallel-to-the-surface shots decode far more reliably.</li>
+    <li><strong>Low contrast in the original print.</strong> A faded or low-quality printed code carries the problem into any photo of it, no matter how good the shot is.</li>
+  </ul>
+  <p>
+    If a code consistently won't scan, try recropping tighter around just the code, retaking the photo in better light, or holding the camera flatter and closer — one of the three usually resolves it.
+  </p>
+
+  <h2>Is this a replacement for a dedicated barcode scanner?</h2>
+  <p>
+    For occasional or one-off decoding — checking what a code links to, pulling a serial number off a product photo, verifying a code before printing a batch — this tool is a fast, no-install option. For high-volume, repetitive scanning (a retail till, a warehouse dock), a dedicated laser or camera-based scanner gun is still faster and more reliable, since it's purpose-built hardware rather than general image analysis.
+  </p>
+</section>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-col">
@@ -763,11 +799,15 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -858,5 +898,34 @@ function escapeHtml(str){
 }
 </script>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>

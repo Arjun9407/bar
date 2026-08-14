@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>QR Code vs. Barcode: Which Should You Use? | BarcodePro Blog</title>
-<meta name="description" content="A practical comparison of QR codes and traditional barcodes — capacity, use cases, scanning equipment, and which one fits your project.">
-<link rel="canonical" href="https://barcodepro.pages.dev/blog-qr-vs-barcode.html">
+<title>Barcode Size &amp; Print DPI Calculator | BarcodePro</title>
+<meta name="description" content="Work out the minimum recommended print size for a barcode based on symbology, magnification and printer DPI, so it scans reliably.">
+<link rel="canonical" href="https://barcodepro.pages.dev/size-calculator.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <style>
-
 
 :root{
   --bg:#0f172a;
@@ -146,7 +145,6 @@ header.site-header{
   max-width:750px;
   margin:auto;
 }
-
 
 
 .wrap{
@@ -377,7 +375,6 @@ button:disabled{
   font-size:12px;
   border-radius:10px;
 }
-
 
 
 .blog-grid{
@@ -617,7 +614,6 @@ footer.site-footer{
 }
 
 
-
 @media(max-width:768px){
   .page-hero h1{ font-size:32px; }
   .section-title{ font-size:28px; }
@@ -628,7 +624,6 @@ footer.site-footer{
   .footer-grid{ grid-template-columns:1fr; }
   .navbar{ padding:14px; }
 }
-
 
 
 @media (prefers-reduced-motion: reduce){
@@ -649,8 +644,8 @@ footer.site-footer{
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
       <a href="check-digit-calculator.html">Check Digit</a>
-      <a href="size-calculator.html">Size Calculator</a>
-      <a href="blog.html" class="active">Blog</a>
+      <a href="size-calculator.html" class="active">Size Calculator</a>
+      <a href="blog.html">Blog</a>
       <a href="use-cases.html">Use Cases</a>
       <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
@@ -659,51 +654,64 @@ footer.site-footer{
   </div>
 </header>
 
-<section class="page-hero" style="padding-bottom:10px;">
-  <span class="eyebrow">Guide</span>
-  <h1>QR Code vs. Barcode: <span class="gradient-text">Which Should You Use?</span></h1>
+<section class="page-hero">
+  <span class="eyebrow">Free Utility</span>
+  <h1>Barcode Size &amp; <span class="gradient-text">Print DPI Calculator</span></h1>
+  <p>Estimate the minimum reliable print size for a linear barcode based on its symbology, magnification, and your printer's resolution.</p>
 </section>
 
-<article class="article">
-  <p class="meta">BarcodePro Team · Updated July 2026 · 5 min read</p>
+<section class="wrap-narrow" style="padding-bottom:40px;">
+  <div class="card">
 
-  <p>
-    Both QR codes and traditional linear barcodes exist to do the same basic job: turn information into a pattern a machine can read faster and more reliably than a person typing it in. The right choice depends on how much data you need to store, what's scanning it, and where the code will live.
-  </p>
+    <div class="grid">
+      <div>
+        <label>Symbology</label>
+        <select id="szType">
+          <option value="0.33">CODE128 (nominal X ≈ 0.33mm)</option>
+          <option value="0.33">CODE39 (nominal X ≈ 0.33mm)</option>
+          <option value="0.33">EAN-13 / UPC-A (nominal X ≈ 0.33mm)</option>
+          <option value="0.5">ITF-14 (nominal X ≈ 0.5mm, cartons)</option>
+        </select>
+      </div>
+      <div>
+        <label>Magnification</label>
+        <select id="szMag">
+          <option value="80">80% (minimum — dense labels only)</option>
+          <option value="100" selected>100% (nominal size)</option>
+          <option value="150">150% (recommended safety margin)</option>
+          <option value="200">200% (large / distance scanning)</option>
+        </select>
+      </div>
+      <div>
+        <label>Number of characters encoded</label>
+        <input type="number" id="szChars" value="12" min="1" max="48">
+      </div>
+      <div>
+        <label>Printer resolution (DPI)</label>
+        <select id="szDpi">
+          <option value="150">150 DPI (basic inkjet)</option>
+          <option value="203">203 DPI (common thermal label printer)</option>
+          <option value="300" selected>300 DPI (standard laser / high-res thermal)</option>
+          <option value="600">600 DPI (high-res laser)</option>
+        </select>
+      </div>
+    </div>
 
-  <h2>What a barcode is good at</h2>
-  <p>
-    A traditional linear barcode — CODE128, EAN-13, UPC-A and similar formats — stores a short string, usually a numeric or alphanumeric ID. Retail checkout, warehouse inventory, and shipping labels rely on these formats because the scanning hardware is cheap, extremely fast, and works reliably even on low-quality thermal-printed labels.
-  </p>
-  <p>
-    Linear barcodes are the right call when you're plugging into an existing system — a point-of-sale scanner, an inventory database, or a shipping carrier's tracking format — that already expects a specific symbology.
-  </p>
+    <button class="btn-full" style="margin-top:20px;" onclick="calcSize()">Calculate</button>
+    <div id="szResult"></div>
 
-  <h2>What a QR code is good at</h2>
-  <p>
-    A QR code is two-dimensional, so it can hold far more data: a full URL, a WiFi login, a vCard, or several hundred characters of text. It's also readable by any modern smartphone camera, which makes it the better choice for anything aimed at a general consumer rather than a dedicated scanner gun.
-  </p>
-  <p>
-    Restaurant menus, event check-in, packaging that links to a product page, and marketing materials almost always reach for QR codes today because no extra hardware is required — just a phone.
-  </p>
+  </div>
+</section>
 
-  <h2>Quick comparison</h2>
-  <ul>
-    <li><strong>Data capacity:</strong> Barcodes hold a short ID; QR codes can hold full URLs, contact cards, or paragraphs of text.</li>
-    <li><strong>Scanning hardware:</strong> Barcodes are read by cheap laser or CCD scanners; QR codes are read by any camera, including phones.</li>
-    <li><strong>Damage tolerance:</strong> QR codes include error correction and can still scan with partial damage; barcodes are less forgiving.</li>
-    <li><strong>Industry standards:</strong> Retail, logistics and pharma have decades-old barcode standards (UPC, EAN, GS1) that systems expect.</li>
-    <li><strong>Consumer-facing use:</strong> QR codes win for anything a shopper or attendee scans with their own phone.</li>
-  </ul>
-
-  <h2>The short version</h2>
+<section class="wrap-narrow article" style="padding-bottom:90px;">
+  <h2>How to read the result</h2>
   <p>
-    If you're integrating with retail, logistics, or any system that already speaks a specific barcode standard, use that barcode format. If you're linking a physical object to something digital — a website, a WiFi network, a form — for an everyday person to scan with their phone, use a QR code.
+    This calculator estimates the minimum physical width a barcode needs based on its "X-dimension" (the width of its narrowest bar), the number of characters it encodes, and your chosen magnification. It also checks whether your printer's resolution has enough dots-per-bar to render that X-dimension cleanly — as a rule of thumb, you want at least 2–3 printer dots per X-dimension unit to avoid bars blurring together.
   </p>
   <p>
-    Both tools are free and unlimited on BarcodePro: try the <a href="index.html#generator" style="color:var(--accent-3);">barcode generator</a> or the <a href="qr-generator.html" style="color:var(--accent-3);">QR code generator</a> to see the difference for yourself.
+    These are estimates based on commonly used nominal values, not a substitute for testing an actual printed sample with your target scanner — always print and <a href="scanner.html" style="color:var(--accent-3);">scan a test label</a> before committing to a full run. See our <a href="blog-printing-barcode-labels.html" style="color:var(--accent-3);">printing guide</a> for the other factors — contrast, quiet zone, file format — that matter just as much as size.
   </p>
-</article>
+</section>
 
 <footer class="site-footer">
   <div class="footer-grid">
@@ -766,6 +774,40 @@ footer.site-footer{
     }
   });
 })();
+</script>
+
+<script>
+function calcSize(){
+  const xDim = parseFloat(document.getElementById("szType").value);
+  const mag = parseFloat(document.getElementById("szMag").value) / 100;
+  const chars = parseInt(document.getElementById("szChars").value) || 12;
+  const dpi = parseFloat(document.getElementById("szDpi").value);
+
+  const effectiveX = xDim * mag; // mm
+  // Rough estimate: ~11 modules per character for CODE128-class symbologies, plus quiet zones (~20 modules) and start/stop.
+  const modules = chars * 11 + 40;
+  const widthMm = (modules * effectiveX) / 10; // rough scale-down for realistic width estimate
+  const widthIn = widthMm / 25.4;
+
+  const dotsPerX = (dpi / 25.4) * effectiveX;
+  let dpiWarning = "";
+  if(dotsPerX < 2){
+    dpiWarning = `<br><strong>Warning:</strong> at this size and DPI, each bar is only ~${dotsPerX.toFixed(1)} printer dots wide — bars will likely blur together. Increase magnification or DPI.`;
+  } else if(dotsPerX < 3){
+    dpiWarning = `<br>Each bar is ~${dotsPerX.toFixed(1)} printer dots wide — usable, but on the low side. 3+ dots per bar is safer.`;
+  }
+
+  const quietZoneMm = effectiveX * 10;
+
+  document.getElementById("szResult").innerHTML = `
+    <div class="notice notice-info" style="margin-top:18px;">
+      Estimated minimum barcode width: <strong>${widthMm.toFixed(1)} mm</strong> (${widthIn.toFixed(2)} in)<br>
+      Recommended quiet zone (each side): <strong>${quietZoneMm.toFixed(2)} mm</strong><br>
+      Effective X-dimension at this magnification: <strong>${effectiveX.toFixed(3)} mm</strong>
+      ${dpiWarning}
+    </div>
+  `;
+}
 </script>
 </body>
 </html>

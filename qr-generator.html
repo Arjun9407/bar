@@ -2942,7 +2942,11 @@ var qrcode = function() {
       <a href="qr-generator.html" class="active">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -3109,6 +3113,36 @@ var qrcode = function() {
   </div>
 </section>
 
+<section class="wrap-narrow article" style="padding-bottom:80px;">
+  <h2>Choosing an error correction level</h2>
+  <p>
+    Every QR code has a built-in error-correction level — Low, Medium, Quartile or High — that determines how much of the code can be damaged, dirty, or obscured before it stops scanning. Higher correction levels add redundant data, which makes the code denser (more modules) for the same content, but means it will still scan even if part of it is torn, smudged, or has a small logo placed over the center.
+  </p>
+  <p>
+    For most everyday uses — a link on a flyer, a WiFi card, a menu on a laminated table tent — Medium (15%) is a reasonable default. If the code is going somewhere it might get scuffed, printed small, or partially covered (a sticker on outdoor equipment, a code stamped near a product's rough edge), step up to Quartile or High. If you're only ever displaying the code on a clean screen and space is at a premium, Low (7%) keeps the module count as small as possible.
+  </p>
+
+  <h2>Picking the right content type</h2>
+  <p>
+    The tool above supports five payload types, each of which produces a different underlying data format inside the QR code:
+  </p>
+  <ul>
+    <li><strong>Link:</strong> encodes a plain URL. This is the most common use — packaging, posters, and business cards that point to a webpage.</li>
+    <li><strong>Text:</strong> encodes arbitrary plain text with no special formatting. Useful for instructions, a short message, or a serial/reference number you want a phone to be able to read and copy.</li>
+    <li><strong>WiFi:</strong> encodes network name, password and security type in the standard WIFI: format that iOS and Android both recognize automatically, letting a guest join your network with a single scan instead of typing a password on a small keyboard.</li>
+    <li><strong>Email:</strong> pre-fills a "mailto:" link with a recipient, subject and body, so scanning opens the user's mail app with a message already drafted.</li>
+    <li><strong>Contact Card:</strong> encodes a vCard, which most phones offer to save directly into the address book rather than just opening a link — the standard choice for a digital business card.</li>
+  </ul>
+
+  <h2>Sizing and contrast tips for printed QR codes</h2>
+  <p>
+    A QR code needs a certain minimum physical size to scan reliably, and that minimum scales with how much data it holds — a code encoding a full vCard needs to be printed larger than one encoding a short URL, because it has more modules packed into the same shape. As a rough starting point, aim for at least 2 cm (about 0.8 in) per side for a simple URL viewed from a normal reading distance, and size up for anything with more content or that will be scanned from farther away (like a billboard or a shop window).
+  </p>
+  <p>
+    Keep a clear quiet zone — blank space — around the code, and stick to strong contrast between the foreground and background colors. Light-on-light or two similarly-toned colors can look fine on a monitor but fail to scan once printed, especially on lower-end inkjet or thermal printers.
+  </p>
+</section>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-col">
@@ -3121,11 +3155,15 @@ var qrcode = function() {
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -3281,5 +3319,34 @@ function downloadSVG(){
 renderQR();
 </script>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>

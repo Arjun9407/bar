@@ -643,7 +643,11 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html" class="active">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -658,12 +662,43 @@ footer.site-footer{
   </p>
 </section>
 
-<section class="wrap-narrow" style="padding-bottom:20px;">
-  <p style="color:var(--muted);line-height:1.9;font-size:17px;margin-bottom:20px;">
+<section class="wrap-narrow article" style="padding-bottom:20px;">
+  <p>
     Every tool on this site — the barcode generator, QR code generator, bulk CSV export and the scanner — runs entirely in your browser. Nothing you type, upload or generate is sent to a server, which means it's private by default and works even on a slow connection.
   </p>
-  <p style="color:var(--muted);line-height:1.9;font-size:17px;">
+  <p>
     Our goal is simple: make barcode and QR tools that are fast, free, and don't get in your way with logins, limits, or watermarks.
+  </p>
+
+  <h2>Why we built BarcodePro</h2>
+  <p>
+    Most people who need a barcode need it for five minutes, not for a subscription. A small shop owner labelling a shelf of new stock, a student finishing a packaging design project, a warehouse clerk who needs one ITF-14 case code before a truck leaves — none of these people want to create an account, hit a "3 free codes" paywall, or download software just to get a single scannable image. We built BarcodePro because that gap between "I need a barcode" and "I have a barcode" was, for years, filled mostly by clunky desktop tools or paid SaaS products charging monthly fees for something that a browser can compute in milliseconds.
+  </p>
+  <p>
+    Everything here is rendered client-side using open barcode and QR encoding libraries running directly in JavaScript. That's a deliberate architectural choice, not just a privacy feature: it means there's no backend to rate-limit you, no queue, and no risk of your product SKUs or customer contact details passing through a third-party server.
+  </p>
+
+  <h2>Who actually uses these tools</h2>
+  <p>
+    We hear from a fairly wide mix of people, and we've shaped the toolset around the patterns that come up most often:
+  </p>
+  <ul>
+    <li><strong>Small retailers and Etsy sellers</strong> generating EAN-13 or UPC-A codes for products before they go on a shelf or into a marketplace listing.</li>
+    <li><strong>Warehouse and logistics teams</strong> using CODE128 or ITF-14 for internal SKUs, pallet labels, and case codes that don't need to match a retail standard.</li>
+    <li><strong>Event organizers</strong> generating QR codes for ticket check-in, printed programs, or table signage that links to a menu or schedule.</li>
+    <li><strong>Developers and QA testers</strong> who need a quick batch of realistic-looking barcodes to test a scanner integration or point-of-sale system without wiring up a real database.</li>
+    <li><strong>Students and educators</strong> putting together packaging design coursework or teaching examples of how encoding formats work.</li>
+    <li><strong>Restaurants and cafés</strong> building QR codes for digital menus, WiFi login cards, and review-page links for table tents.</li>
+  </ul>
+
+  <h2>How the tools fit together</h2>
+  <p>
+    The <a href="index.html#generator" style="color:var(--accent-3);">barcode generator</a> handles one-off linear codes — CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI and Pharmacode — with control over bar width, height and label font size, which matters more than people expect: a barcode sized for a shipping label will smear or fail to scan if it's shrunk down for a small product tag. The <a href="qr-generator.html" style="color:var(--accent-3);">QR code generator</a> covers the newer, denser format used for links, WiFi credentials, plain text, email drafts and vCard contact cards, with adjustable error correction so you can trade code density for damage tolerance depending on where the code will be printed. When you need more than a handful of codes, the <a href="bulk-generator.html" style="color:var(--accent-3);">bulk generator</a> takes a CSV or a pasted list and turns it into a ZIP of individually named PNGs in one pass — useful for anyone labelling a whole inventory batch at once. And the <a href="scanner.html" style="color:var(--accent-3);">scanner</a> closes the loop: upload a photo of any barcode or QR code and it decodes the value locally, no app install required.
+  </p>
+
+  <h2>Our approach to accuracy</h2>
+  <p>
+    Barcode symbologies are unforgiving — a single encoding mistake and a scanner simply won't read the code, with no partial credit. We rely on established, widely used open-source encoding libraries (JsBarcode for linear formats and a standards-compliant QR encoder) rather than writing our own encoding logic from scratch, precisely because barcode correctness isn't a place to improvise. If you generate a code here and it fails to scan, it's almost always a printing issue rather than an encoding one — see our <a href="blog-printing-barcode-labels.html" style="color:var(--accent-3);">guide to print settings</a> for the most common causes.
   </p>
 </section>
 
@@ -707,11 +742,15 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -724,5 +763,34 @@ footer.site-footer{
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>

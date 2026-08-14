@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>QR Code vs. Barcode: Which Should You Use? | BarcodePro Blog</title>
-<meta name="description" content="A practical comparison of QR codes and traditional barcodes — capacity, use cases, scanning equipment, and which one fits your project.">
-<link rel="canonical" href="https://barcodepro.pages.dev/blog-qr-vs-barcode.html">
+<title>Barcode &amp; QR Code Glossary | BarcodePro</title>
+<meta name="description" content="Plain-English definitions of barcode and QR code terms: GTIN, quiet zone, symbology, checksum, error correction, module, GS1 and more.">
+<link rel="canonical" href="https://barcodepro.pages.dev/glossary.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <style>
 
@@ -636,6 +636,16 @@ footer.site-footer{
 }
 
 </style>
+<style>
+  .faq-item{
+    background:var(--card);
+    border-radius:16px;
+    padding:22px 26px;
+    margin-bottom:16px;
+  }
+  .faq-item h2{ font-size:18px; margin-bottom:8px; }
+  .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
+</style>
 </head>
 <body>
 
@@ -650,60 +660,103 @@ footer.site-footer{
       <a href="scanner.html">Scanner</a>
       <a href="check-digit-calculator.html">Check Digit</a>
       <a href="size-calculator.html">Size Calculator</a>
-      <a href="blog.html" class="active">Blog</a>
-      <a href="use-cases.html">Use Cases</a>
-      <a href="glossary.html">Glossary</a>
+      <a href="blog.html">Blog</a>
+      <a href="glossary.html" class="active">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
-<section class="page-hero" style="padding-bottom:10px;">
-  <span class="eyebrow">Guide</span>
-  <h1>QR Code vs. Barcode: <span class="gradient-text">Which Should You Use?</span></h1>
+<section class="page-hero">
+  <span class="eyebrow">Reference</span>
+  <h1>Barcode &amp; QR <span class="gradient-text">Glossary</span></h1>
+  <p>Plain-English definitions for the terms you'll run into when working with barcodes and QR codes — from symbology to quiet zone to GTIN.</p>
 </section>
 
-<article class="article">
-  <p class="meta">BarcodePro Team · Updated July 2026 · 5 min read</p>
+<section class="wrap-narrow" style="padding-bottom:90px;">
 
-  <p>
-    Both QR codes and traditional linear barcodes exist to do the same basic job: turn information into a pattern a machine can read faster and more reliably than a person typing it in. The right choice depends on how much data you need to store, what's scanning it, and where the code will live.
-  </p>
+  <div class="faq-item">
+    <h2>Symbology</h2>
+    <p>The technical term for a specific barcode encoding standard — CODE128, EAN-13 and QR Code are all different symbologies. Each defines its own rules for how characters map to bars, spaces or modules.</p>
+  </div>
 
-  <h2>What a barcode is good at</h2>
-  <p>
-    A traditional linear barcode — CODE128, EAN-13, UPC-A and similar formats — stores a short string, usually a numeric or alphanumeric ID. Retail checkout, warehouse inventory, and shipping labels rely on these formats because the scanning hardware is cheap, extremely fast, and works reliably even on low-quality thermal-printed labels.
-  </p>
-  <p>
-    Linear barcodes are the right call when you're plugging into an existing system — a point-of-sale scanner, an inventory database, or a shipping carrier's tracking format — that already expects a specific symbology.
-  </p>
+  <div class="faq-item">
+    <h2>Quiet Zone</h2>
+    <p>The blank margin required on either side of a barcode (or around a QR code). Scanners use this empty space to detect where the code starts and ends — cropping it too tight is one of the most common causes of a failed scan.</p>
+  </div>
 
-  <h2>What a QR code is good at</h2>
-  <p>
-    A QR code is two-dimensional, so it can hold far more data: a full URL, a WiFi login, a vCard, or several hundred characters of text. It's also readable by any modern smartphone camera, which makes it the better choice for anything aimed at a general consumer rather than a dedicated scanner gun.
-  </p>
-  <p>
-    Restaurant menus, event check-in, packaging that links to a product page, and marketing materials almost always reach for QR codes today because no extra hardware is required — just a phone.
-  </p>
+  <div class="faq-item">
+    <h2>Check Digit</h2>
+    <p>A final digit added to formats like EAN-13 and UPC-A, calculated from the preceding digits using a fixed formula. It lets a scanner detect a misread or mistyped digit rather than silently recording the wrong number. Use our <a href="check-digit-calculator.html" style="color:var(--accent-3);">check digit calculator</a> to compute or validate one.</p>
+  </div>
 
-  <h2>Quick comparison</h2>
-  <ul>
-    <li><strong>Data capacity:</strong> Barcodes hold a short ID; QR codes can hold full URLs, contact cards, or paragraphs of text.</li>
-    <li><strong>Scanning hardware:</strong> Barcodes are read by cheap laser or CCD scanners; QR codes are read by any camera, including phones.</li>
-    <li><strong>Damage tolerance:</strong> QR codes include error correction and can still scan with partial damage; barcodes are less forgiving.</li>
-    <li><strong>Industry standards:</strong> Retail, logistics and pharma have decades-old barcode standards (UPC, EAN, GS1) that systems expect.</li>
-    <li><strong>Consumer-facing use:</strong> QR codes win for anything a shopper or attendee scans with their own phone.</li>
-  </ul>
+  <div class="faq-item">
+    <h2>GTIN (Global Trade Item Number)</h2>
+    <p>The umbrella term GS1 uses for the product identification numbers encoded in retail barcodes, including UPC-A (GTIN-12) and EAN-13 (GTIN-13). See our <a href="blog-gs1-ean-upc-explained.html" style="color:var(--accent-3);">GS1 guide</a> for how these numbers are assigned.</p>
+  </div>
 
-  <h2>The short version</h2>
-  <p>
-    If you're integrating with retail, logistics, or any system that already speaks a specific barcode standard, use that barcode format. If you're linking a physical object to something digital — a website, a WiFi network, a form — for an everyday person to scan with their phone, use a QR code.
-  </p>
-  <p>
-    Both tools are free and unlimited on BarcodePro: try the <a href="index.html#generator" style="color:var(--accent-3);">barcode generator</a> or the <a href="qr-generator.html" style="color:var(--accent-3);">QR code generator</a> to see the difference for yourself.
-  </p>
-</article>
+  <div class="faq-item">
+    <h2>GS1</h2>
+    <p>The nonprofit organization that administers global product barcode standards and assigns company prefixes, from which businesses generate their own range of GTINs.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Module</h2>
+    <p>The smallest single unit of a 2D code like a QR code — one of the individual black or white squares that make up the grid. A "module count" or "version" describes how many modules wide the whole code is.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Error Correction (QR Codes)</h2>
+    <p>Redundant data built into a QR code that lets it still be read correctly even if part of the code is damaged, dirty, or obscured. QR codes support four levels — L (7%), M (15%), Q (25%) and H (30%) — referring to the approximate percentage of the code that can be lost and still scan.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Finder Pattern</h2>
+    <p>The three large square markers in the corners of a QR code. Scanners use them to instantly locate the code in an image and determine its orientation, even if the photo is taken at a slight angle.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>1D vs. 2D Barcode</h2>
+    <p>1D (linear) barcodes like CODE128 or EAN-13 encode data in a single horizontal line of bars and spaces. 2D barcodes like QR Code, Data Matrix and PDF417 encode data across a two-dimensional grid, allowing far more data in the same physical space.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>CODE128</h2>
+    <p>A dense, general-purpose linear symbology that can encode the full ASCII character set. The default choice for shipping labels and internal inventory codes that don't need to match a retail standard.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>EAN-13 / UPC-A</h2>
+    <p>The standard retail barcode formats — EAN-13 is used across Europe and most of the world, UPC-A primarily in the US and Canada. Both encode a numeric product identifier plus a check digit.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>ITF-14</h2>
+    <p>A variant of the Interleaved 2 of 5 format sized and designed for printing on corrugated cardboard shipping cartons and pallets, tolerant of lower print quality than retail-shelf formats.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Data Matrix</h2>
+    <p>A compact 2D symbology that packs data into a very small square, commonly used to mark small electronics components or pharmaceutical packaging where space is extremely limited.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>PDF417</h2>
+    <p>A 2D stacked symbology capable of storing large amounts of structured data, used on driver's licenses, boarding passes and shipping documents.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>vCard</h2>
+    <p>A standard file format for encoding contact information (name, phone, email, company). QR codes can encode a vCard directly so a phone offers to save it straight into the address book instead of just opening a link.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Symbology Density</h2>
+    <p>How tightly a symbology packs data relative to its physical size. Denser symbologies fit more information into less space but require higher-resolution printing to stay scannable.</p>
+  </div>
+
+</section>
 
 <footer class="site-footer">
   <div class="footer-grid">
@@ -724,6 +777,8 @@ footer.site-footer{
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="use-cases.html">Use Cases</a>
       <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>

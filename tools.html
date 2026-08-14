@@ -648,7 +648,11 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -658,7 +662,7 @@ footer.site-footer{
 <section class="page-hero">
   <span class="eyebrow">Free &amp; Unlimited</span>
   <h1>Every tool, <span class="gradient-text">one toolbox</span></h1>
-  <p>Barcode generator, QR generator, bulk CSV export, and a scanner that decodes codes from any image. All of it runs in your browser — nothing you type or upload is ever sent to a server.</p>
+  <p>Barcode generator, QR generator, bulk CSV export, a scanner that decodes codes from any image, plus a check digit calculator and a print-size calculator. All of it runs in your browser — nothing you type or upload is ever sent to a server.</p>
 </section>
 
 <section class="wrap" style="padding-top:20px;padding-bottom:80px;">
@@ -692,6 +696,20 @@ footer.site-footer{
       <a class="btn" href="scanner.html">Open Scanner</a>
     </div>
 
+    <div class="tool-card">
+      <div class="icon">✓</div>
+      <h3>Check Digit Calculator</h3>
+      <p>Calculate the correct check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or validate whether a full barcode number is correctly formed.</p>
+      <a class="btn" href="check-digit-calculator.html">Open Calculator</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="icon">📐</div>
+      <h3>Size &amp; DPI Calculator</h3>
+      <p>Work out the minimum reliable print size for a barcode based on symbology, magnification and your printer's resolution.</p>
+      <a class="btn" href="size-calculator.html">Open Calculator</a>
+    </div>
+
   </div>
 </section>
 
@@ -707,11 +725,15 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -724,5 +746,34 @@ footer.site-footer{
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>

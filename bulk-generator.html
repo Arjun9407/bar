@@ -686,7 +686,11 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html" class="active">Bulk</a>
       <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -789,6 +793,31 @@ SKU-00125"></textarea>
   </div>
 </section>
 
+<section class="wrap-narrow article" style="padding-bottom:80px;">
+  <h2>Formatting your CSV correctly</h2>
+  <p>
+    The bulk tool accepts two layouts. The simplest is one value per line with no header — just a plain list of SKUs, serial numbers, or URLs. If your spreadsheet export includes a header row, add a column literally named <strong>value</strong> (lowercase); the tool will detect it and pull data from that column specifically, ignoring any other columns in the file. This is useful if you're exporting straight from an inventory spreadsheet that also has price, description or quantity columns you don't want encoded.
+  </p>
+  <p>
+    Each line becomes exactly one code, so make sure the values are already in their final form before uploading — the tool doesn't pad, reformat, or validate check digits for you beyond what the underlying symbology requires to render at all.
+  </p>
+
+  <h2>Why some values get skipped</h2>
+  <p>
+    Different barcode symbologies accept different character sets. CODE39, for example, only supports uppercase letters, digits and a small set of symbols — lowercase letters or special punctuation will cause that row to fail. EAN-13 and UPC-A expect a specific digit count and will reject values that are too short, too long, or contain non-numeric characters. If your batch finishes with some values skipped, switching to CODE128 (which accepts the full ASCII range) is usually the fastest fix, provided your downstream system can read that format.
+  </p>
+
+  <h2>Choosing between barcode and QR for a bulk batch</h2>
+  <p>
+    If every row is a short ID that needs to integrate with an existing scanner or point-of-sale system, a linear format like CODE128 or EAN-13 is almost always the right call — that's what the receiving hardware expects. If each row is actually a full URL (for example, generating a unique tracking link per product), QR is the better fit, since a linear barcode can't practically encode a long web address. It's worth deciding this before running a batch of 300 codes, since re-running with a different format means starting over.
+  </p>
+
+  <h2>Working with large batches</h2>
+  <p>
+    Because every code renders in your browser rather than on a server, very large batches are limited by your device's memory rather than any account quota. We cap batches at 500 values as a practical ceiling for smooth performance across most laptops and phones; if you have a larger list, splitting it into a few CSV files and running each separately avoids slowdowns and keeps each ZIP download to a manageable size.
+  </p>
+</section>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-col">
@@ -801,11 +830,15 @@ SKU-00125"></textarea>
       <a href="qr-generator.html">QR Code Generator</a>
       <a href="bulk-generator.html">Bulk Generator</a>
       <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
@@ -984,5 +1017,34 @@ function renderOne(value, type, size){
 }
 </script>
 
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
 </body>
 </html>
