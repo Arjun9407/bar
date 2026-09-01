@@ -3,90 +3,177 @@
 
 <url>
 <loc>https://barcodepro.pages.dev/</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/tools.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/qr-generator.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/bulk-generator.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/scanner.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/check-digit-calculator.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/size-calculator.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/serial-generator.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/label-sheet-generator.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/qr-contrast-checker.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-qr-vs-barcode.html</loc>
+<lastmod>2026-07-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-barcode-types-explained.html</loc>
+<lastmod>2026-07-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-printing-barcode-labels.html</loc>
+<lastmod>2026-07-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-gs1-ean-upc-explained.html</loc>
+<lastmod>2026-08-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-how-scanners-work.html</loc>
+<lastmod>2026-08-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-history-of-barcodes.html</loc>
+<lastmod>2026-08-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/blog-barcodes-ecommerce-shipping.html</loc>
+<lastmod>2026-08-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/glossary.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/use-cases.html</loc>
-</url>
-
-<url>
-<loc>https://barcodepro.pages.dev/about.html</loc>
-</url>
-
-<url>
-<loc>https://barcodepro.pages.dev/contact.html</loc>
-</url>
-
-<url>
-<loc>https://barcodepro.pages.dev/privacy.html</loc>
-</url>
-
-<url>
-<loc>https://barcodepro.pages.dev/terms.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://barcodepro.pages.dev/faq.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/about.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.4</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/contact.html</loc>
+<lastmod>2026-08-29</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/privacy.html</loc>
+<lastmod>2026-01-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.2</priority>
+</url>
+
+<url>
+<loc>https://barcodepro.pages.dev/terms.html</loc>
+<lastmod>2026-01-01</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.2</priority>
 </url>
 
 </urlset>

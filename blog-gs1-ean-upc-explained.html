@@ -7,6 +7,74 @@
 <meta name="description" content="What GS1 prefixes, EAN-13 and UPC-A check digits actually mean, why marketplaces validate them, and when you do (and don't) need an official number.">
 <link rel="canonical" href="https://barcodepro.pages.dev/blog-gs1-ean-upc-explained.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="GS1, EAN and UPC Explained: How Retail Barcode Numbers Actually Work | BarcodePro Blog">
+<meta property="og:description" content="What GS1 prefixes, EAN-13 and UPC-A check digits actually mean, why marketplaces validate them, and when you do (and don't) need an official number.">
+<meta property="og:url" content="https://barcodepro.pages.dev/blog-gs1-ean-upc-explained.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta property="article:published_time" content="2026-08-01">
+<meta property="article:modified_time" content="2026-08-01">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GS1, EAN and UPC Explained: How Retail Barcode Numbers Actually Work | BarcodePro Blog">
+<meta name="twitter:description" content="What GS1 prefixes, EAN-13 and UPC-A check digits actually mean, why marketplaces validate them, and when you do (and don't) need an official number.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "GS1, EAN and UPC Explained",
+  "description": "What GS1 prefixes, EAN-13 and UPC-A check digits actually mean, why marketplaces validate them, and when you do (and don't) need an official number.",
+  "url": "https://barcodepro.pages.dev/blog-gs1-ean-upc-explained.html",
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01",
+  "author": {
+    "@type": "Organization",
+    "name": "BarcodePro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BarcodePro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barcodepro.pages.dev/blog-gs1-ean-upc-explained.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://barcodepro.pages.dev/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "GS1, EAN and UPC Explained",
+      "item": "https://barcodepro.pages.dev/blog-gs1-ean-upc-explained.html"
+    }
+  ]
+}
+</script>
+
 <style>
 
 
@@ -471,6 +539,28 @@ button:disabled{
   margin-bottom:10px;
 }
 
+.article-figure{
+  margin:30px 0;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+
+.article-figure svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.article-figure figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+}
+
 
 
 .step-list{
@@ -650,6 +740,9 @@ footer.site-footer{
       <a href="scanner.html">Scanner</a>
       <a href="check-digit-calculator.html">Check Digit</a>
       <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
       <a href="blog.html" class="active">Blog</a>
       <a href="use-cases.html">Use Cases</a>
       <a href="glossary.html">Glossary</a>
@@ -666,6 +759,40 @@ footer.site-footer{
 
 <article class="article">
   <p class="meta">BarcodePro Team · Updated August 2026 · 6 min read</p>
+
+  <figure class="article-figure">
+    <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Breakdown of an EAN-13 number into country prefix, company prefix, product number and check digit">
+      <rect width="800" height="240" fill="#161f32"/>
+      <text x="400" y="35" fill="#38bdf8" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Anatomy of an EAN-13 number</text>
+
+      <g font-family="Arial, sans-serif">
+        <rect x="60" y="70" width="90" height="46" rx="6" fill="#06b6d4" opacity="0.85"/>
+        <text x="105" y="99" fill="#0f172a" font-size="18" font-weight="bold" text-anchor="middle">0 12</text>
+        <text x="105" y="140" fill="#a5e6f2" font-size="11.5" text-anchor="middle">Country /</text>
+        <text x="105" y="154" fill="#a5e6f2" font-size="11.5" text-anchor="middle">GS1 prefix</text>
+
+        <rect x="160" y="70" width="150" height="46" rx="6" fill="#8b5cf6" opacity="0.85"/>
+        <text x="235" y="99" fill="#0f172a" font-size="18" font-weight="bold" text-anchor="middle">34567</text>
+        <text x="235" y="140" fill="#d8c9fb" font-size="11.5" text-anchor="middle">Company prefix</text>
+        <text x="235" y="154" fill="#d8c9fb" font-size="11.5" text-anchor="middle">(assigned by GS1)</text>
+
+        <rect x="320" y="70" width="150" height="46" rx="6" fill="#38bdf8" opacity="0.85"/>
+        <text x="395" y="99" fill="#0f172a" font-size="18" font-weight="bold" text-anchor="middle">89012</text>
+        <text x="395" y="140" fill="#a5e6f2" font-size="11.5" text-anchor="middle">Product number</text>
+        <text x="395" y="154" fill="#a5e6f2" font-size="11.5" text-anchor="middle">(set by the company)</text>
+
+        <rect x="480" y="70" width="70" height="46" rx="6" fill="#f87171" opacity="0.9"/>
+        <text x="515" y="99" fill="#1e293b" font-size="18" font-weight="bold" text-anchor="middle">6</text>
+        <text x="515" y="140" fill="#fca5a5" font-size="11.5" text-anchor="middle">Check</text>
+        <text x="515" y="154" fill="#fca5a5" font-size="11.5" text-anchor="middle">digit</text>
+
+        <rect x="600" y="60" width="150" height="66" fill="#ffffff" rx="4"/>
+        <g transform="translate(608,70)" fill="#0f172a"><rect x="0" width="3" height="46"/><rect x="6" width="6" height="46"/><rect x="16" width="3" height="46"/><rect x="24" width="7" height="46"/><rect x="36" width="3" height="46"/><rect x="43" width="6" height="46"/><rect x="55" width="3" height="46"/><rect x="63" width="7" height="46"/><rect x="75" width="3" height="46"/><rect x="83" width="6" height="46"/><rect x="95" width="3" height="46"/><rect x="103" width="7" height="46"/><rect x="115" width="3" height="46"/><rect x="122" width="6" height="46"/></g>
+        <text x="675" y="145" fill="#96a9c7" font-size="11.5" text-anchor="middle">printed &amp; scanned</text>
+      </g>
+    </svg>
+    <figcaption>Only the last digit is a checksum — everything else is a structured identifier, most of it assigned once by GS1.</figcaption>
+  </figure>
 
   <p>
     If you've ever generated a barcode for a product and wondered why a marketplace rejected it, the answer usually comes down to one thing: the difference between a barcode that's correctly formatted and a barcode number that's officially registered. These are not the same thing, and mixing them up is one of the most common mistakes first-time sellers make.
@@ -722,6 +849,9 @@ footer.site-footer{
       <a href="scanner.html">Barcode Scanner</a>
       <a href="check-digit-calculator.html">Check Digit Calculator</a>
       <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>

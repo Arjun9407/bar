@@ -3,31 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Barcode Check Digit Calculator &amp; Validator | BarcodePro</title>
-<meta name="description" content="Calculate the check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or validate whether an existing barcode number is correctly formed.">
-<link rel="canonical" href="https://barcodepro.pages.dev/check-digit-calculator.html">
+<title>Serial &amp; Batch Code Generator | BarcodePro</title>
+<meta name="description" content="Generate a sequential run of SKUs, ticket IDs or serial numbers, with correct check digits calculated automatically for EAN/UPC/ITF-14, ready to paste into the bulk generator.">
+<link rel="canonical" href="https://barcodepro.pages.dev/serial-generator.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BarcodePro">
-<meta property="og:title" content="Barcode Check Digit Calculator &amp; Validator | BarcodePro">
-<meta property="og:description" content="Calculate the check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or validate whether an existing barcode number is correctly formed.">
-<meta property="og:url" content="https://barcodepro.pages.dev/check-digit-calculator.html">
+<meta property="og:title" content="Serial &amp; Batch Code Generator | BarcodePro">
+<meta property="og:description" content="Generate a sequential run of SKUs, ticket IDs or serial numbers, with correct check digits calculated automatically for EAN/UPC/ITF-14, ready to paste into the bulk generator.">
+<meta property="og:url" content="https://barcodepro.pages.dev/serial-generator.html">
 <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Barcode Check Digit Calculator &amp; Validator | BarcodePro">
-<meta name="twitter:description" content="Calculate the check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or validate whether an existing barcode number is correctly formed.">
+<meta name="twitter:title" content="Serial &amp; Batch Code Generator | BarcodePro">
+<meta name="twitter:description" content="Generate a sequential run of SKUs, ticket IDs or serial numbers, with correct check digits calculated automatically for EAN/UPC/ITF-14, ready to paste into the bulk generator.">
 <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Barcode Check Digit Calculator",
-  "url": "https://barcodepro.pages.dev/check-digit-calculator.html",
+  "name": "Serial & Batch Code Generator",
+  "url": "https://barcodepro.pages.dev/serial-generator.html",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Any (runs in browser)",
-  "description": "Calculate the check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or validate whether an existing barcode number is correctly formed.",
+  "description": "Generate a sequential run of SKUs, ticket IDs or serial numbers, with correct check digits calculated automatically for EAN/UPC/ITF-14, ready to paste into the bulk generator.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -55,8 +55,8 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Barcode Check Digit Calculator",
-      "item": "https://barcodepro.pages.dev/check-digit-calculator.html"
+      "name": "Serial & Batch Code Generator",
+      "item": "https://barcodepro.pages.dev/serial-generator.html"
     }
   ]
 }
@@ -107,8 +107,6 @@ a{ text-decoration:none; }
   -webkit-text-fill-color:transparent;
 }
 
-
-
 header.site-header{
   position:sticky;
   top:0;
@@ -156,17 +154,6 @@ header.site-header{
   color:var(--accent-3);
 }
 
-.nav-links a.nav-cta{
-  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
-  color:white;
-  padding:9px 16px;
-  border-radius:999px;
-  font-weight:bold;
-  font-size:14px;
-}
-
-
-
 .page-hero{
   max-width:1000px;
   margin:auto;
@@ -201,7 +188,6 @@ header.site-header{
   margin:auto;
 }
 
-
 .wrap{
   max-width:1200px;
   margin:auto;
@@ -223,7 +209,7 @@ header.site-header{
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:20px;
 }
 
@@ -258,7 +244,9 @@ select:focus{
 
 textarea{
   resize:vertical;
-  height:140px;
+  height:160px;
+  font-family:"Courier New", monospace;
+  font-size:14px;
 }
 
 button, .btn{
@@ -276,11 +264,6 @@ button, .btn{
 
 button:hover, .btn:hover{ filter:brightness(1.08); }
 
-button:disabled{
-  opacity:0.5;
-  cursor:not-allowed;
-}
-
 .btn-outline{
   background:transparent;
   border:1px solid var(--border);
@@ -288,204 +271,6 @@ button:disabled{
 }
 
 .btn-full{ width:100%; }
-
-
-
-.section-title{
-  text-align:center;
-  font-size:38px;
-  margin-bottom:14px;
-}
-
-.section-sub{
-  text-align:center;
-  color:var(--muted);
-  max-width:650px;
-  margin:0 auto 40px;
-  line-height:1.7;
-}
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
-}
-
-.feature-card{
-  background:var(--card);
-  padding:28px;
-  border-radius:20px;
-  text-align:left;
-  transition:0.25s;
-  border:1px solid transparent;
-}
-
-.feature-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(139,92,246,0.35);
-}
-
-.feature-card .icon{
-  font-size:28px;
-  margin-bottom:12px;
-  display:block;
-}
-
-.feature-card h3{
-  margin-bottom:10px;
-  font-size:19px;
-}
-
-.feature-card p{
-  color:var(--muted);
-  line-height:1.65;
-  font-size:15px;
-}
-
-
-
-.tool-card{
-  background:var(--card);
-  border-radius:22px;
-  padding:32px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  border:1px solid var(--border);
-  transition:0.25s;
-}
-
-.tool-card:hover{
-  border-color:rgba(6,182,212,0.4);
-  transform:translateY(-4px);
-}
-
-.tool-card .icon{
-  width:50px;
-  height:50px;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-}
-
-.tool-card h3{ font-size:21px; }
-
-.tool-card p{
-  color:var(--muted);
-  line-height:1.6;
-  font-size:15px;
-  flex-grow:1;
-}
-
-.tool-card .btn{
-  align-self:flex-start;
-}
-
-
-
-.result-container{
-  margin-top:35px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-
-.result-card{
-  background:white;
-  padding:20px;
-  border-radius:20px;
-  text-align:center;
-  overflow:hidden;
-}
-
-.result-card svg,
-.result-card img,
-.result-card canvas{
-  width:100% !important;
-  height:auto;
-  max-width:280px;
-}
-
-.result-text{
-  margin-top:14px;
-  color:black;
-  font-weight:bold;
-  word-break:break-word;
-  font-size:14px;
-}
-
-.result-card .mini-actions{
-  margin-top:12px;
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.result-card .mini-actions button{
-  padding:8px 14px;
-  font-size:12px;
-  border-radius:10px;
-}
-
-
-.blog-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-}
-
-.blog-card{
-  background:var(--card);
-  border-radius:20px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  border:1px solid var(--border);
-  transition:0.25s;
-}
-
-.blog-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(6,182,212,0.35);
-}
-
-.blog-card .tag{
-  display:inline-block;
-  font-size:12px;
-  color:var(--accent-1);
-  background:rgba(6,182,212,0.1);
-  padding:4px 10px;
-  border-radius:999px;
-  margin-bottom:12px;
-  width:fit-content;
-}
-
-.blog-card-body{
-  padding:26px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  flex-grow:1;
-}
-
-.blog-card h3{ font-size:19px; line-height:1.35; }
-
-.blog-card p{
-  color:var(--muted);
-  font-size:14.5px;
-  line-height:1.6;
-  flex-grow:1;
-}
-
-.blog-card .read-more{
-  color:var(--accent-3);
-  font-weight:bold;
-  font-size:14px;
-}
 
 .article{
   max-width:760px;
@@ -506,52 +291,14 @@ button:disabled{
   margin-bottom:18px;
 }
 
-.article ul,
-.article ol{
+.article ul{
   color:var(--muted);
   font-size:17px;
   line-height:1.85;
   margin:0 0 18px 22px;
 }
 
-.article ul li,
-.article ol li{ margin-bottom:8px; }
-
-.article .meta{
-  color:var(--dim);
-  font-size:14px;
-  margin-bottom:10px;
-}
-
-
-
-.step-list{
-  display:grid;
-  gap:18px;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  margin:30px 0;
-}
-
-.step{
-  background:var(--card-alt);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:22px;
-}
-
-.step .num{
-  font-size:13px;
-  color:var(--accent-1);
-  font-weight:bold;
-  letter-spacing:1px;
-  margin-bottom:8px;
-}
-
-.step h4{ margin-bottom:8px; font-size:16px; }
-
-.step p{ color:var(--muted); font-size:14px; line-height:1.6; }
-
-
+.article ul li{ margin-bottom:8px; }
 
 .notice{
   padding:16px 18px;
@@ -579,28 +326,30 @@ button:disabled{
   color:#86efac;
 }
 
-
-
-.dropzone{
-  border:2px dashed var(--border);
-  border-radius:18px;
-  padding:40px 20px;
-  text-align:center;
-  cursor:pointer;
-  transition:0.2s;
-  background:var(--card-alt);
+.preview-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:16px;
+  font-size:13px;
 }
 
-.dropzone:hover,
-.dropzone.dragover{
-  border-color:var(--accent-1);
-  background:rgba(6,182,212,0.06);
+.preview-table th, .preview-table td{
+  text-align:left;
+  padding:8px 10px;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);
+  font-family:"Courier New", monospace;
 }
 
-.dropzone p{ color:var(--muted); margin-top:8px; }
-.dropzone .icon{ font-size:34px; }
+.preview-table th{ color:var(--text); font-family:Arial, sans-serif; }
 
+.gen-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
 
+@media(max-width:900px){ .gen-layout{ grid-template-columns:1fr; } }
 
 footer.site-footer{
   background:var(--header-bg);
@@ -650,28 +399,8 @@ footer.site-footer{
   font-size:13px;
 }
 
-
-
-.light{ background:white; color:black; }
-
-.light .card,
-.light .feature-card,
-.light .tool-card,
-.light .step,
-.light .blog-card{ background:#f1f5f9; color:black; }
-
-.light input,
-.light textarea,
-.light select{
-  background:white;
-  color:black;
-  border:1px solid #ccc;
-}
-
-
 @media(max-width:768px){
   .page-hero h1{ font-size:32px; }
-  .section-title{ font-size:28px; }
   .footer-grid{ grid-template-columns:1fr 1fr; }
 }
 
@@ -679,7 +408,6 @@ footer.site-footer{
   .footer-grid{ grid-template-columns:1fr; }
   .navbar{ padding:14px; }
 }
-
 
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; animation:none !important; }
@@ -698,9 +426,9 @@ footer.site-footer{
       <a href="qr-generator.html">QR Code</a>
       <a href="bulk-generator.html">Bulk</a>
       <a href="scanner.html">Scanner</a>
-      <a href="check-digit-calculator.html" class="active">Check Digit</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
       <a href="size-calculator.html">Size Calculator</a>
-      <a href="serial-generator.html">Serial Generator</a>
+      <a href="serial-generator.html" class="active">Serial Generator</a>
       <a href="label-sheet-generator.html">Label Sheets</a>
       <a href="qr-contrast-checker.html">Contrast Checker</a>
       <a href="blog.html">Blog</a>
@@ -714,50 +442,86 @@ footer.site-footer{
 
 <section class="page-hero">
   <span class="eyebrow">Free Utility</span>
-  <h1>Check Digit <span class="gradient-text">Calculator &amp; Validator</span></h1>
-  <p>Calculate the correct check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or paste in a full number to check whether it's valid.</p>
+  <h1>Serial &amp; Batch <span class="gradient-text">Code Generator</span></h1>
+  <p>Generate a sequential run of SKUs, ticket IDs or serial numbers — with correct check digits calculated automatically for UPC-A, EAN-13, EAN-8 or ITF-14 — ready to paste into the <a href="bulk-generator.html" style="color:var(--accent-3);">bulk generator</a>.</p>
 </section>
 
-<section class="wrap-narrow" style="padding-bottom:40px;">
-  <div class="card">
+<section class="wrap" style="padding-bottom:40px;">
+  <div class="gen-layout">
 
-    <label>Barcode Type</label>
-    <select id="cdType">
-      <option value="upca">UPC-A (12 digits)</option>
-      <option value="ean13">EAN-13 (13 digits)</option>
-      <option value="ean8">EAN-8 (8 digits)</option>
-      <option value="itf14">ITF-14 (14 digits)</option>
-    </select>
+    <div class="card">
+      <div class="grid">
+        <div>
+          <label>Prefix (optional)</label>
+          <input type="text" id="serPrefix" placeholder="SKU-">
+        </div>
+        <div>
+          <label>Suffix (optional)</label>
+          <input type="text" id="serSuffix" placeholder="">
+        </div>
+        <div>
+          <label>Start number</label>
+          <input type="number" id="serStart" value="1" min="0">
+        </div>
+        <div>
+          <label>How many codes</label>
+          <input type="number" id="serCount" value="20" min="1" max="5000">
+        </div>
+        <div>
+          <label>Zero-pad number to</label>
+          <input type="number" id="serPad" value="5" min="0" max="14">
+        </div>
+        <div>
+          <label>Add check digit</label>
+          <select id="serCheck">
+            <option value="none">None (any format)</option>
+            <option value="upca">UPC-A (12 digits total)</option>
+            <option value="ean13">EAN-13 (13 digits total)</option>
+            <option value="ean8">EAN-8 (8 digits total)</option>
+            <option value="itf14">ITF-14 (14 digits total)</option>
+          </select>
+        </div>
+      </div>
 
-    <div class="grid" style="margin-top:18px;">
-      <div>
-        <label>Calculate check digit</label>
-        <input type="text" id="cdPartial" placeholder="Enter digits WITHOUT the check digit" inputmode="numeric">
-        <button class="btn-full" style="margin-top:10px;" onclick="calcCheckDigit()">Calculate</button>
-      </div>
-      <div>
-        <label>Validate a full number</label>
-        <input type="text" id="cdFull" placeholder="Enter the FULL number, including check digit" inputmode="numeric">
-        <button class="btn-full" style="margin-top:10px;" onclick="validateCheckDigit()">Validate</button>
-      </div>
+      <button class="btn-full" style="margin-top:14px;" onclick="generateSerial()">Generate Codes</button>
+      <div id="serNotice"></div>
     </div>
 
-    <div id="cdResult"></div>
+    <div class="card">
+      <label>Preview (first 8)</label>
+      <table class="preview-table" id="serPreviewTable">
+        <thead><tr><th>#</th><th>Code</th></tr></thead>
+        <tbody id="serPreviewBody">
+          <tr><td colspan="2" style="color:var(--dim);">Nothing generated yet.</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--dim);font-size:13px;margin-top:14px;">Total generated: <strong id="serTotal">0</strong></p>
+
+      <label style="margin-top:18px;">All codes</label>
+      <textarea id="serOutput" readonly placeholder="Generated codes will appear here, one per line."></textarea>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+        <button class="btn-outline" style="flex:1;" onclick="copySerial()">Copy All</button>
+        <button class="btn-outline" style="flex:1;" onclick="downloadSerial('csv')">Download CSV</button>
+        <button class="btn-outline" style="flex:1;" onclick="downloadSerial('txt')">Download TXT</button>
+      </div>
+    </div>
 
   </div>
 </section>
 
 <section class="wrap-narrow article" style="padding-bottom:90px;">
-  <h2>How the check digit is calculated</h2>
+  <h2>What this is for</h2>
   <p>
-    UPC-A, EAN-13, EAN-8 and ITF-14 all use the same underlying method (a "modulo 10" or "Luhn-style" weighted checksum), just with different digit counts. Starting from the rightmost digit and working left, each digit is alternately multiplied by 3 and by 1, the results are summed, and the check digit is whatever number needs to be added to bring that sum up to the next multiple of 10.
+    Most test batches and inventory rollouts don't need one code typed at a time — they need a clean, predictable sequence: <code>SKU-00001</code> through <code>SKU-00500</code>, ticket IDs for an event, or a run of internally consistent product numbers before you've registered anything with GS1. This tool builds that sequence in one pass, with the numeric portion zero-padded to a consistent width so everything sorts and prints cleanly.
   </p>
+  <h2>Using the check digit option</h2>
   <p>
-    This means a single mistyped or misprinted digit — or two digits swapped — will almost always produce a sum that doesn't reach a clean multiple of 10, which is exactly what lets a scanner detect the error instead of silently recording the wrong product.
+    If you turn on a check digit format, your prefix, padded number and suffix combined must be all-digits and exactly one character short of that format's full length (11 digits for UPC-A, 12 for EAN-13, 7 for EAN-8, 13 for ITF-14) — the tool then calculates and appends the correct trailing check digit using the same mod-10 algorithm as our <a href="check-digit-calculator.html" style="color:var(--accent-3);">check digit calculator</a>. Any codes that don't fit that length are skipped and reported, so adjust your padding width if you see codes skipped.
   </p>
-  <h2>When you'd use this</h2>
+  <h2>Where the output goes next</h2>
   <p>
-    If you're assembling barcode numbers manually — say, generating a range of internal product codes in a spreadsheet — you can calculate the correct trailing check digit for each one here before feeding the full numbers into the <a href="index.html#generator" style="color:var(--accent-3);">barcode generator</a> or <a href="bulk-generator.html" style="color:var(--accent-3);">bulk generator</a>. If you already have a full number from somewhere else and want to confirm it's valid before printing, use the validator instead.
+    Copy the list straight into the <a href="index.html#generator" style="color:var(--accent-3);">barcode generator</a> textarea for a quick batch, or download it as a CSV with a <code>value</code> header and drop it into the <a href="bulk-generator.html" style="color:var(--accent-3);">bulk generator</a> for a ZIP of individually named PNGs. If your sequence is meant to represent real retail products rather than an internal or test system, see our <a href="blog-gs1-ean-upc-explained.html" style="color:var(--accent-3);">GS1 guide</a> on when you actually need an officially registered number.
   </p>
 </section>
 
@@ -797,7 +561,6 @@ footer.site-footer{
   <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
 </footer>
 
-
 <div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
     <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
@@ -828,16 +591,9 @@ footer.site-footer{
 </script>
 
 <script>
-function digitsOnly(s){ return (s || "").replace(/\D/g, ""); }
-
-function expectedLength(type){
-  return { upca: 12, ean13: 13, ean8: 8, itf14: 14 }[type];
-}
+let serialCodes = [];
 
 function computeCheckDigit(digitsWithoutCheck){
-  // Standard mod-10 weighted algorithm used by UPC-A / EAN-13 / EAN-8 / ITF-14.
-  // Weighting is applied from the RIGHTMOST digit of the (check-digit-included) number:
-  // rightmost non-check digit gets weight 3, next gets weight 1, alternating.
   let sum = 0;
   let weight = 3;
   for(let i = digitsWithoutCheck.length - 1; i >= 0; i--){
@@ -848,46 +604,115 @@ function computeCheckDigit(digitsWithoutCheck){
   return mod === 0 ? 0 : 10 - mod;
 }
 
-function showResult(html, type){
-  document.getElementById("cdResult").innerHTML =
-    '<div class="notice notice-' + type + '" style="margin-top:18px;">' + html + '</div>';
+function showSerNotice(msg, type){
+  document.getElementById("serNotice").innerHTML = `<div class="notice notice-${type}">${msg}</div>`;
 }
 
-function calcCheckDigit(){
-  const type = document.getElementById("cdType").value;
-  const raw = digitsOnly(document.getElementById("cdPartial").value);
-  const expectedFull = expectedLength(type);
-  const expectedPartial = expectedFull - 1;
+function generateSerial(){
+  const prefix = document.getElementById("serPrefix").value || "";
+  const suffix = document.getElementById("serSuffix").value || "";
+  const start = parseInt(document.getElementById("serStart").value, 10);
+  const count = parseInt(document.getElementById("serCount").value, 10);
+  const pad = parseInt(document.getElementById("serPad").value, 10) || 0;
+  const checkType = document.getElementById("serCheck").value;
 
-  if(raw.length !== expectedPartial){
-    showResult(`Enter exactly ${expectedPartial} digits (without the check digit) for ${type.toUpperCase()}. You entered ${raw.length}.`, "error");
+  if(isNaN(start) || isNaN(count) || count < 1){
+    showSerNotice("Enter a valid start number and count.", "error");
+    return;
+  }
+  if(count > 5000){
+    showSerNotice("Please keep batches to 5000 codes or fewer for browser performance.", "error");
     return;
   }
 
-  const check = computeCheckDigit(raw);
-  const full = raw + check;
-  showResult(`Check digit: <strong>${check}</strong><br>Full number: <strong>${full}</strong>`, "success");
-}
+  const expectedFullMap = { upca: 12, ean13: 13, ean8: 8, itf14: 14 };
+  const expectedFull = expectedFullMap[checkType];
+  const codes = [];
+  let skipped = 0;
 
-function validateCheckDigit(){
-  const type = document.getElementById("cdType").value;
-  const raw = digitsOnly(document.getElementById("cdFull").value);
-  const expectedFull = expectedLength(type);
+  for(let i = 0; i < count; i++){
+    const num = (start + i).toString().padStart(pad, "0");
+    let body = prefix + num + suffix;
 
-  if(raw.length !== expectedFull){
-    showResult(`Enter exactly ${expectedFull} digits for ${type.toUpperCase()}. You entered ${raw.length}.`, "error");
-    return;
+    if(checkType !== "none"){
+      const expectedPartial = expectedFull - 1;
+      if(!/^\d+$/.test(body) || body.length !== expectedPartial){
+        skipped++;
+        continue;
+      }
+      body = body + computeCheckDigit(body);
+    }
+    codes.push(body);
   }
 
-  const body = raw.slice(0, -1);
-  const providedCheck = parseInt(raw.slice(-1), 10);
-  const correctCheck = computeCheckDigit(body);
+  serialCodes = codes;
+  renderSerialPreview(codes);
 
-  if(providedCheck === correctCheck){
-    showResult(`Valid. The check digit (${providedCheck}) matches ${type.toUpperCase()} rules.`, "success");
+  if(checkType !== "none" && skipped > 0){
+    const expectedPartial = expectedFull - 1;
+    showSerNotice(`${skipped} code(s) skipped — with this check digit format, prefix + number + suffix must be all digits and exactly ${expectedPartial} characters long before the check digit is added. Adjust the padding width, prefix or suffix and try again.`, "error");
+  } else if(codes.length === 0){
+    showSerNotice("No codes were generated. Check your settings.", "error");
   } else {
-    showResult(`Not valid. Provided check digit is ${providedCheck}, but the correct value is <strong>${correctCheck}</strong>.`, "error");
+    showSerNotice(`Generated ${codes.length} code(s).`, "success");
   }
+}
+
+function renderSerialPreview(codes){
+  document.getElementById("serTotal").innerText = codes.length;
+  const body = document.getElementById("serPreviewBody");
+
+  if(codes.length === 0){
+    body.innerHTML = `<tr><td colspan="2" style="color:var(--dim);">Nothing generated yet.</td></tr>`;
+  } else {
+    body.innerHTML = codes.slice(0, 8).map((v, i) =>
+      `<tr><td>${i + 1}</td><td>${escapeHtml(v)}</td></tr>`
+    ).join("");
+  }
+
+  document.getElementById("serOutput").value = codes.join("\n");
+}
+
+function escapeHtml(str){
+  const div = document.createElement("div");
+  div.innerText = str;
+  return div.innerHTML;
+}
+
+function copySerial(){
+  if(serialCodes.length === 0){
+    showSerNotice("Generate some codes first.", "error");
+    return;
+  }
+  navigator.clipboard.writeText(serialCodes.join("\n")).then(() => {
+    showSerNotice("Copied to clipboard.", "success");
+  }).catch(() => {
+    showSerNotice("Could not copy automatically — select the text in the box and copy manually.", "error");
+  });
+}
+
+function downloadSerial(format){
+  if(serialCodes.length === 0){
+    showSerNotice("Generate some codes first.", "error");
+    return;
+  }
+  let content, filename, mime;
+  if(format === "csv"){
+    content = "value\n" + serialCodes.join("\n");
+    filename = "serial_codes.csv";
+    mime = "text/csv";
+  } else {
+    content = serialCodes.join("\n");
+    filename = "serial_codes.txt";
+    mime = "text/plain";
+  }
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
 }
 </script>
 </body>

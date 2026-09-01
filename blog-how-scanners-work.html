@@ -7,6 +7,74 @@
 <meta name="description" content="A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.">
 <link rel="canonical" href="https://barcodepro.pages.dev/blog-how-scanners-work.html">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="How Barcode Scanners Actually Read a Code | BarcodePro Blog">
+<meta property="og:description" content="A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.">
+<meta property="og:url" content="https://barcodepro.pages.dev/blog-how-scanners-work.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta property="article:published_time" content="2026-08-01">
+<meta property="article:modified_time" content="2026-08-01">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How Barcode Scanners Actually Read a Code | BarcodePro Blog">
+<meta name="twitter:description" content="A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Barcode Scanners Actually Read a Code",
+  "description": "A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.",
+  "url": "https://barcodepro.pages.dev/blog-how-scanners-work.html",
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01",
+  "author": {
+    "@type": "Organization",
+    "name": "BarcodePro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BarcodePro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barcodepro.pages.dev/blog-how-scanners-work.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://barcodepro.pages.dev/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How Barcode Scanners Actually Read a Code",
+      "item": "https://barcodepro.pages.dev/blog-how-scanners-work.html"
+    }
+  ]
+}
+</script>
+
 <style>
 
 
@@ -471,6 +539,28 @@ button:disabled{
   margin-bottom:10px;
 }
 
+.article-figure{
+  margin:30px 0;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+
+.article-figure svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.article-figure figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+}
+
 
 
 .step-list{
@@ -650,6 +740,9 @@ footer.site-footer{
       <a href="scanner.html">Scanner</a>
       <a href="check-digit-calculator.html">Check Digit</a>
       <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
       <a href="blog.html" class="active">Blog</a>
       <a href="use-cases.html">Use Cases</a>
       <a href="glossary.html">Glossary</a>
@@ -666,6 +759,41 @@ footer.site-footer{
 
 <article class="article">
   <p class="meta">BarcodePro Team · Updated August 2026 · 6 min read</p>
+
+  <figure class="article-figure">
+    <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a laser scanner reading a barcode and a camera scanner reading a QR code via finder patterns">
+      <rect width="800" height="260" fill="#161f32"/>
+
+      <text x="200" y="35" fill="#38bdf8" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Laser sweep (1D)</text>
+      <rect x="90" y="70" width="220" height="90" fill="#ffffff" rx="4"/>
+      <g transform="translate(100,80)" fill="#0f172a"><rect x="0" width="3" height="70"/><rect x="7" width="6" height="70"/><rect x="18" width="3" height="70"/><rect x="26" width="8" height="70"/><rect x="40" width="3" height="70"/><rect x="48" width="6" height="70"/><rect x="59" width="3" height="70"/><rect x="67" width="8" height="70"/><rect x="81" width="3" height="70"/><rect x="89" width="6" height="70"/><rect x="100" width="3" height="70"/><rect x="108" width="8" height="70"/><rect x="122" width="3" height="70"/><rect x="130" width="6" height="70"/><rect x="141" width="3" height="70"/><rect x="149" width="8" height="70"/><rect x="163" width="3" height="70"/><rect x="171" width="6" height="70"/><rect x="182" width="3" height="70"/><rect x="190" width="8" height="70"/></g>
+      <line x1="90" y1="115" x2="310" y2="115" stroke="#ef4444" stroke-width="2" opacity="0.85"/>
+      <circle cx="90" cy="115" r="4" fill="#ef4444"/>
+      <circle cx="310" cy="115" r="4" fill="#ef4444"/>
+      <text x="200" y="190" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Beam measures reflected light</text>
+      <text x="200" y="206" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">across a single line</text>
+
+      <line x1="400" y1="30" x2="400" y2="230" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+      <text x="600" y="35" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Camera capture (2D)</text>
+      <rect x="530" y="65" width="140" height="140" fill="#ffffff" rx="4"/>
+      <g transform="translate(545,80)" fill="#0f172a">
+        <rect x="0" y="0" width="28" height="28"/><rect x="7" y="7" width="14" height="14" fill="#ffffff"/><rect x="10" y="10" width="8" height="8" fill="#0f172a"/>
+        <rect x="82" y="0" width="28" height="28"/><rect x="89" y="7" width="14" height="14" fill="#ffffff"/><rect x="92" y="10" width="8" height="8" fill="#0f172a"/>
+        <rect x="0" y="82" width="28" height="28"/><rect x="7" y="89" width="14" height="14" fill="#ffffff"/><rect x="10" y="92" width="8" height="8" fill="#0f172a"/>
+        <rect x="40" y="6" width="6" height="6"/><rect x="52" y="10" width="6" height="6"/><rect x="64" y="6" width="6" height="6"/>
+        <rect x="36" y="40" width="6" height="6"/><rect x="50" y="48" width="6" height="6"/><rect x="64" y="40" width="6" height="6"/><rect x="76" y="52" width="6" height="6"/>
+        <rect x="40" y="82" width="6" height="6"/><rect x="52" y="90" width="6" height="6"/><rect x="64" y="82" width="6" height="6"/>
+        <rect x="82" y="40" width="6" height="6"/><rect x="94" y="50" width="6" height="6"/><rect x="82" y="62" width="6" height="6"/><rect x="100" y="70" width="6" height="6"/>
+      </g>
+      <rect x="540" y="75" width="24" height="24" fill="none" stroke="#f87171" stroke-width="2"/>
+      <rect x="626" y="75" width="24" height="24" fill="none" stroke="#f87171" stroke-width="2"/>
+      <rect x="540" y="161" width="24" height="24" fill="none" stroke="#f87171" stroke-width="2"/>
+      <text x="600" y="222" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Finder patterns locate &amp;</text>
+      <text x="600" y="238" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">orient the whole grid</text>
+    </svg>
+    <figcaption>A laser measures reflected light along one line; a camera captures a full grid and finds it using corner markers.</figcaption>
+  </figure>
 
   <p>
     A barcode scanner turning a pattern of black bars into a product name feels almost instant, but there are a few distinct steps happening behind that beep — and understanding them explains why some perfectly legible-looking codes still fail to scan.
@@ -723,6 +851,9 @@ footer.site-footer{
       <a href="scanner.html">Barcode Scanner</a>
       <a href="check-digit-calculator.html">Check Digit Calculator</a>
       <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Barcode &amp; QR Label Sheet Generator | BarcodePro</title>
+<meta name="description" content="Arrange dozens of barcodes or QR codes onto a printable label sheet. Set rows, columns and label size, then print or save as PDF.">
+<link rel="canonical" href="https://barcodepro.pages.dev/label-sheet-generator.html">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="Barcode &amp; QR Label Sheet Generator | BarcodePro">
+<meta property="og:description" content="Arrange dozens of barcodes or QR codes onto a printable label sheet. Set rows, columns and label size, then print or save as PDF.">
+<meta property="og:url" content="https://barcodepro.pages.dev/label-sheet-generator.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Barcode &amp; QR Label Sheet Generator | BarcodePro">
+<meta name="twitter:description" content="Arrange dozens of barcodes or QR codes onto a printable label sheet. Set rows, columns and label size, then print or save as PDF.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Label Sheet Generator",
+  "url": "https://barcodepro.pages.dev/label-sheet-generator.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Arrange dozens of barcodes or QR codes onto a printable label sheet. Set rows, columns and label size, then print or save as PDF.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://barcodepro.pages.dev/tools.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Label Sheet Generator",
+      "item": "https://barcodepro.pages.dev/label-sheet-generator.html"
+    }
+  ]
+}
+</script>
+
+<style>
+
+:root{
+  --bg:#0f172a;
+  --header-bg:#111827;
+  --card:#1e293b;
+  --card-alt:#161f32;
+  --input-bg:#334155;
+  --text:#e2e8f0;
+  --muted:#cbd5e1;
+  --muted-2:#96a9c7;
+  --dim:#94a3b8;
+  --accent-1:#06b6d4;
+  --accent-2:#8b5cf6;
+  --accent-3:#38bdf8;
+  --border:rgba(255,255,255,0.08);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ text-decoration:none; }
+
+.gradient-text{
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-3);
+}
+
+.page-hero{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  border:1px solid rgba(6,182,212,0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.page-hero h1{
+  font-size:46px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.page-hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  max-width:750px;
+  margin:auto;
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.wrap-narrow{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:13.5px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:13px 14px;
+  margin:4px 0;
+  border:none;
+  border-radius:14px;
+  background:var(--input-bg);
+  color:white;
+  font-size:15px;
+  outline:none;
+  font-family:Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:2px solid var(--accent-1);
+}
+
+textarea{
+  resize:vertical;
+  height:130px;
+}
+
+button, .btn{
+  padding:15px 20px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  text-align:center;
+}
+
+button:hover, .btn:hover{ filter:brightness(1.08); }
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+
+.btn-full{ width:100%; }
+
+.checkbox-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:14px 0 4px;
+}
+.checkbox-row input[type="checkbox"]{
+  width:auto;
+  margin:0;
+}
+.checkbox-row label{ margin:0; color:var(--muted); font-weight:normal; font-size:14.5px; }
+
+.dropzone{
+  border:2px dashed var(--border);
+  border-radius:18px;
+  padding:26px 16px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--card-alt);
+}
+.dropzone:hover, .dropzone.dragover{
+  border-color:var(--accent-1);
+  background:rgba(6,182,212,0.06);
+}
+.dropzone p{ color:var(--muted); margin-top:6px; font-size:13.5px; }
+.dropzone .icon{ font-size:26px; }
+#sheetFile{ display:none; }
+
+.notice{
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin:16px 0;
+}
+.notice-info{ background:rgba(6,182,212,0.08); border:1px solid rgba(6,182,212,0.3); color:#a5e6f2; }
+.notice-error{ background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); color:#fca5a5; }
+.notice-success{ background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.3); color:#86efac; }
+
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+.article h2{ font-size:26px; margin:40px 0 16px; color:var(--text); }
+.article p{ color:var(--muted); font-size:17px; line-height:1.85; margin-bottom:18px; }
+.article ul{ color:var(--muted); font-size:17px; line-height:1.85; margin:0 0 18px 22px; }
+.article ul li{ margin-bottom:8px; }
+
+/* --- sheet preview / print --- */
+#sheetOutputWrap{
+  margin-top:30px;
+  padding:24px;
+  background:#334155;
+  border-radius:20px;
+  overflow-x:auto;
+}
+.sheet-page{
+  background:#ffffff;
+  margin:0 auto 24px;
+  box-shadow:0 6px 24px rgba(0,0,0,0.4);
+  display:grid;
+}
+.sheet-cell{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px dashed #cbd5e1;
+}
+.sheet-cell img{
+  max-width:92%;
+  max-height:75%;
+  object-fit:contain;
+}
+.sheet-cell .cap{
+  font-size:8px;
+  color:#111827;
+  margin-top:2px;
+  text-align:center;
+  word-break:break-all;
+  font-family:Arial, sans-serif;
+  padding:0 2px;
+}
+
+#printBtn{ display:none; }
+
+@media print{
+  body *{ visibility:hidden; }
+  #sheetOutputWrap, #sheetOutputWrap *{ visibility:visible; }
+  #sheetOutputWrap{
+    position:absolute;
+    left:0; top:0;
+    margin:0; padding:0;
+    background:white;
+    border-radius:0;
+    overflow:visible;
+  }
+  .sheet-page{
+    box-shadow:none;
+    margin:0;
+    page-break-after:always;
+  }
+  @page{ margin:0; }
+}
+
+footer.site-footer{
+  background:var(--header-bg);
+  padding:50px 20px 30px;
+  margin-top:80px;
+}
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+.footer-col h4{ color:var(--text); font-size:15px; margin-bottom:14px; }
+.footer-col p{ color:var(--dim); font-size:14px; line-height:1.7; max-width:280px; }
+.footer-col a{ display:block; color:var(--dim); font-size:14px; margin-bottom:10px; transition:0.2s; }
+.footer-col a:hover{ color:var(--accent-3); }
+.footer-bottom{ max-width:1200px; margin:auto; padding-top:24px; text-align:center; color:var(--dim); font-size:13px; }
+
+@media(max-width:768px){
+  .page-hero h1{ font-size:32px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .navbar{ padding:14px; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">BarcodePro</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#generator">Generator</a>
+      <a href="qr-generator.html">QR Code</a>
+      <a href="bulk-generator.html">Bulk</a>
+      <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html" class="active">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <span class="eyebrow">Free Utility</span>
+  <h1>Label Sheet <span class="gradient-text">Generator</span></h1>
+  <p>Paste or upload a list of values and lay them out on a printable sheet — set the rows, columns, and label size to match the labels or paper you actually have, then print or save as PDF.</p>
+</section>
+
+<section class="wrap" style="padding-bottom:40px;">
+  <div class="card">
+
+    <div class="grid">
+      <div>
+        <label>Code Type</label>
+        <select id="sheetType">
+          <optgroup label="Barcode">
+            <option value="CODE128">CODE128</option>
+            <option value="CODE39">CODE39</option>
+            <option value="EAN13">EAN13</option>
+            <option value="EAN8">EAN8</option>
+            <option value="UPC">UPC</option>
+            <option value="ITF14">ITF14</option>
+          </optgroup>
+          <optgroup label="QR Code">
+            <option value="QR">QR Code</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <label>Page Size</label>
+        <select id="sheetPageSize">
+          <option value="letter">US Letter (215.9 × 279.4mm)</option>
+          <option value="a4">A4 (210 × 297mm)</option>
+        </select>
+      </div>
+      <div>
+        <label>Preset Layout</label>
+        <select id="sheetPreset" onchange="applyPreset()">
+          <option value="custom">Custom (set manually)</option>
+          <option value="3x10">3 × 10 — small address-style labels</option>
+          <option value="2x8">2 × 8 — medium shipping labels</option>
+          <option value="1x1">1 × 1 — full-page label</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:6px;">
+      <div>
+        <label>Columns</label>
+        <input type="number" id="sheetCols" value="3" min="1" max="10">
+      </div>
+      <div>
+        <label>Rows per page</label>
+        <input type="number" id="sheetRows" value="10" min="1" max="20">
+      </div>
+      <div>
+        <label>Label width (mm)</label>
+        <input type="number" id="sheetLabelW" value="63.5" min="10" max="200" step="0.1">
+      </div>
+      <div>
+        <label>Label height (mm)</label>
+        <input type="number" id="sheetLabelH" value="25.4" min="10" max="200" step="0.1">
+      </div>
+      <div>
+        <label>Gap between labels (mm)</label>
+        <input type="number" id="sheetGap" value="3" min="0" max="30" step="0.5">
+      </div>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="sheetShowCaption" checked>
+      <label for="sheetShowCaption">Show the value as text under each code</label>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+
+    <label>Values (one per line)</label>
+    <div class="dropzone" id="sheetDropzone">
+      <span class="icon">📄</span>
+      <p><strong>Click to upload</strong> or drag a .csv file here</p>
+    </div>
+    <input type="file" id="sheetFile" accept=".csv,text/csv">
+
+    <label style="margin-top:14px;">...or paste values, one per line</label>
+    <textarea id="sheetPaste" placeholder="SKU-00123
+SKU-00124
+SKU-00125"></textarea>
+
+    <p style="color:var(--dim);font-size:13px;margin-top:6px;">Loaded values: <strong id="sheetCount">0</strong></p>
+
+    <button class="btn-full" style="margin-top:14px;" onclick="generateSheet()">Generate Sheet</button>
+    <button class="btn-outline btn-full" id="printBtn" style="margin-top:10px;" onclick="window.print()">Print / Save as PDF</button>
+
+    <div id="sheetNotice"></div>
+  </div>
+</section>
+
+<section class="wrap" id="sheetOutputSection" style="padding-bottom:60px;display:none;">
+  <div id="sheetOutputWrap">
+    <div id="sheetOutput"></div>
+  </div>
+</section>
+
+<section class="wrap-narrow article" style="padding-bottom:90px;">
+  <h2>Matching real label sheets</h2>
+  <p>
+    The rows, columns and dimensions here are deliberately manual rather than tied to a specific brand of label paper, since sheet layouts vary by region and supplier. Measure your actual label sheet (or check its product page) for the exact label width, height and gap, and set the page size to match what your printer expects — most home and office printers default to US Letter in North America and A4 elsewhere.
+  </p>
+  <h2>Getting a clean print</h2>
+  <p>
+    Before running a full batch of labels, print a single test page and check it against your physical sheet without loading real labels into the printer — many printers let you preview or print to PDF first. If the grid is slightly offset, adjust your printer's scaling to "100% / Actual size" rather than "Fit to page," since scaling changes the physical label size and can misalign everything after the first row.
+  </p>
+  <h2>Where the values come from</h2>
+  <p>
+    Paste a plain list, upload a CSV with a <code>value</code> column, or drop in a file exported from the <a href="serial-generator.html" style="color:var(--accent-3);">serial generator</a>. For very large runs, the <a href="bulk-generator.html" style="color:var(--accent-3);">bulk generator</a> is still the better choice for producing individual PNG files — this tool is specifically for arranging codes onto a physical sheet you intend to print and cut or peel apart.
+  </p>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">BarcodePro</div>
+      <p>Free, unlimited barcode and QR code tools that run entirely in your browser. Nothing you generate or scan is ever uploaded to a server.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="index.html#generator">Barcode Generator</a>
+      <a href="qr-generator.html">QR Code Generator</a>
+      <a href="bulk-generator.html">Bulk Generator</a>
+      <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
+</footer>
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
+
+<script>
+let loadedValues = [];
+
+const dropzone = document.getElementById("sheetDropzone");
+const fileInput = document.getElementById("sheetFile");
+
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("dragover", (e) => { e.preventDefault(); dropzone.classList.add("dragover"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("dragover"));
+dropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragover");
+  if(e.dataTransfer.files.length){
+    fileInput.files = e.dataTransfer.files;
+    handleFile(e.dataTransfer.files[0]);
+  }
+});
+fileInput.addEventListener("change", () => {
+  if(fileInput.files.length) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file){
+  const reader = new FileReader();
+  reader.onload = (e) => parseCSV(e.target.result);
+  reader.readAsText(file);
+}
+
+function parseCSV(text){
+  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+  if(lines.length === 0){ loadedValues = []; updateCount(); return; }
+
+  const header = lines[0].split(",").map(h => h.trim().toLowerCase());
+  const valueIdx = header.indexOf("value");
+
+  if(valueIdx !== -1){
+    loadedValues = lines.slice(1).map(l => l.split(",")[valueIdx]?.trim()).filter(Boolean);
+  } else {
+    loadedValues = lines.map(l => l.split(",")[0].trim()).filter(Boolean);
+  }
+  document.getElementById("sheetPaste").value = loadedValues.join("\n");
+  updateCount();
+}
+
+document.getElementById("sheetPaste").addEventListener("input", (e) => {
+  const lines = e.target.value.split("\n").map(l => l.trim()).filter(Boolean);
+  loadedValues = lines;
+  updateCount();
+});
+
+function updateCount(){
+  document.getElementById("sheetCount").innerText = loadedValues.length;
+}
+
+function applyPreset(){
+  const preset = document.getElementById("sheetPreset").value;
+  const map = {
+    "3x10": { cols: 3, rows: 10, w: 63.5, h: 25.4, gap: 3 },
+    "2x8": { cols: 2, rows: 8, w: 99.1, h: 33.9, gap: 2 },
+    "1x1": { cols: 1, rows: 1, w: 190, h: 260, gap: 0 }
+  };
+  if(map[preset]){
+    document.getElementById("sheetCols").value = map[preset].cols;
+    document.getElementById("sheetRows").value = map[preset].rows;
+    document.getElementById("sheetLabelW").value = map[preset].w;
+    document.getElementById("sheetLabelH").value = map[preset].h;
+    document.getElementById("sheetGap").value = map[preset].gap;
+  }
+}
+
+function showSheetNotice(msg, type){
+  document.getElementById("sheetNotice").innerHTML = `<div class="notice notice-${type}">${msg}</div>`;
+}
+
+function renderOne(value, type, size){
+  return new Promise((resolve, reject) => {
+    if(type === "QR"){
+      const canvas = document.createElement("canvas");
+      QRCode.toCanvas(canvas, value, { width: size, margin: 1 }, (err) => {
+        if(err) return reject(err);
+        resolve(canvas.toDataURL("image/png"));
+      });
+    } else {
+      try {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        JsBarcode(svg, value, { format: type, displayValue: false, width: 2, height: size / 2.6, margin: 6 });
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const img = new Image();
+        const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(svgBlob);
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width || size;
+          canvas.height = img.height || size / 2.6;
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(url);
+          resolve(canvas.toDataURL("image/png"));
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("render failed")); };
+        img.src = url;
+      } catch(err){
+        reject(err);
+      }
+    }
+  });
+}
+
+async function generateSheet(){
+  if(loadedValues.length === 0){
+    showSheetNotice("Load some values first — upload a CSV or paste a list.", "error");
+    return;
+  }
+
+  const type = document.getElementById("sheetType").value;
+  const cols = Math.max(1, parseInt(document.getElementById("sheetCols").value) || 1);
+  const rows = Math.max(1, parseInt(document.getElementById("sheetRows").value) || 1);
+  const labelWmm = parseFloat(document.getElementById("sheetLabelW").value) || 60;
+  const labelHmm = parseFloat(document.getElementById("sheetLabelH").value) || 30;
+  const gapMm = parseFloat(document.getElementById("sheetGap").value) || 0;
+  const pageSize = document.getElementById("sheetPageSize").value;
+  const showCaption = document.getElementById("sheetShowCaption").checked;
+
+  const pageDims = pageSize === "a4" ? { w: 210, h: 297 } : { w: 215.9, h: 279.4 };
+  const perPage = cols * rows;
+  const totalPages = Math.ceil(loadedValues.length / perPage);
+
+  if(totalPages > 25){
+    showSheetNotice(`That layout would need ${totalPages} pages for ${loadedValues.length} values. Increase rows/columns per page or reduce your list.`, "error");
+    return;
+  }
+
+  const output = document.getElementById("sheetOutput");
+  output.innerHTML = "";
+  document.getElementById("sheetOutputSection").style.display = "block";
+  document.getElementById("printBtn").style.display = "none";
+  showSheetNotice("Rendering codes…", "info");
+
+  const renderSize = Math.max(200, Math.round((Math.min(labelWmm, labelHmm) / 25.4) * 250));
+
+  let idx = 0;
+  let failures = 0;
+
+  for(let p = 0; p < totalPages; p++){
+    const page = document.createElement("div");
+    page.className = "sheet-page";
+    page.style.width = pageDims.w + "mm";
+    page.style.height = pageDims.h + "mm";
+    page.style.gridTemplateColumns = `repeat(${cols}, ${labelWmm}mm)`;
+    page.style.gridTemplateRows = `repeat(${rows}, ${labelHmm}mm)`;
+    page.style.gap = gapMm + "mm";
+    page.style.padding = gapMm + "mm";
+    page.style.justifyContent = "center";
+
+    for(let c = 0; c < perPage && idx < loadedValues.length; c++, idx++){
+      const value = loadedValues[idx];
+      const cell = document.createElement("div");
+      cell.className = "sheet-cell";
+      try {
+        const dataUrl = await renderOne(value, type, renderSize);
+        const img = document.createElement("img");
+        img.src = dataUrl;
+        cell.appendChild(img);
+      } catch(err){
+        failures++;
+        cell.innerHTML = '<span style="font-size:10px;color:#b91c1c;">invalid value</span>';
+      }
+      if(showCaption){
+        const cap = document.createElement("div");
+        cap.className = "cap";
+        cap.textContent = value;
+        cell.appendChild(cap);
+      }
+      page.appendChild(cell);
+    }
+    output.appendChild(page);
+
+    if(p % 2 === 0) await new Promise(r => setTimeout(r, 0));
+  }
+
+  document.getElementById("printBtn").style.display = "block";
+  if(failures > 0){
+    showSheetNotice(`Generated ${totalPages} page(s). ${failures} value(s) weren't valid for the chosen format and were skipped.`, "error");
+  } else {
+    showSheetNotice(`Generated ${totalPages} page(s) covering ${loadedValues.length} code(s). Scroll down, then use Print / Save as PDF.`, "success");
+  }
+
+  document.getElementById("sheetOutputSection").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+</body>
+</html>
