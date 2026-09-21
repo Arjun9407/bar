@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bulk Barcode &amp; QR Generator (CSV to ZIP) | BarcodePro</title>
+<meta name="description" content="Upload a CSV of values and generate hundreds of barcodes or QR codes at once, packaged into a downloadable ZIP file.">
+<link rel="canonical" href="https://barcodepro.pages.dev/bulk-generator.html">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="Bulk Barcode &amp; QR Generator (CSV to ZIP) | BarcodePro">
+<meta property="og:description" content="Upload a CSV of values and generate hundreds of barcodes or QR codes at once, packaged into a downloadable ZIP file.">
+<meta property="og:url" content="https://barcodepro.pages.dev/bulk-generator.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bulk Barcode &amp; QR Generator (CSV to ZIP) | BarcodePro">
+<meta name="twitter:description" content="Upload a CSV of values and generate hundreds of barcodes or QR codes at once, packaged into a downloadable ZIP file.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Bulk Barcode & QR Generator",
+  "url": "https://barcodepro.pages.dev/bulk-generator.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Upload a CSV of values and generate hundreds of barcodes or QR codes at once, packaged into a downloadable ZIP file.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://barcodepro.pages.dev/tools.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Bulk Barcode & QR Generator",
+      "item": "https://barcodepro.pages.dev/bulk-generator.html"
+    }
+  ]
+}
+</script>
+
+<style>
+
+
+:root{
+  --bg:#0f172a;
+  --header-bg:#111827;
+  --card:#1e293b;
+  --card-alt:#161f32;
+  --input-bg:#334155;
+  --text:#e2e8f0;
+  --muted:#cbd5e1;
+  --muted-2:#96a9c7;
+  --dim:#94a3b8;
+  --accent-1:#06b6d4;
+  --accent-2:#8b5cf6;
+  --accent-3:#38bdf8;
+  --border:rgba(255,255,255,0.08);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ text-decoration:none; }
+
+.gradient-text{
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-3);
+}
+
+.nav-links a.nav-cta{
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  padding:9px 16px;
+  border-radius:999px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+
+
+.page-hero{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  border:1px solid rgba(6,182,212,0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.page-hero h1{
+  font-size:46px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.page-hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  max-width:750px;
+  margin:auto;
+}
+
+
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.wrap-narrow{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:14px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:14px 15px;
+  margin:5px 0;
+  border:none;
+  border-radius:14px;
+  background:var(--input-bg);
+  color:white;
+  font-size:16px;
+  outline:none;
+  font-family:Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:2px solid var(--accent-1);
+}
+
+textarea{
+  resize:vertical;
+  height:140px;
+}
+
+button, .btn{
+  padding:15px 20px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  text-align:center;
+}
+
+button:hover, .btn:hover{ filter:brightness(1.08); }
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+
+.btn-full{ width:100%; }
+
+
+
+.section-title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  text-align:center;
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 40px;
+  line-height:1.7;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+
+.feature-card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  text-align:left;
+  transition:0.25s;
+  border:1px solid transparent;
+}
+
+.feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(139,92,246,0.35);
+}
+
+.feature-card .icon{
+  font-size:28px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.feature-card h3{
+  margin-bottom:10px;
+  font-size:19px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:15px;
+}
+
+
+
+.tool-card{
+  background:var(--card);
+  border-radius:22px;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.tool-card:hover{
+  border-color:rgba(6,182,212,0.4);
+  transform:translateY(-4px);
+}
+
+.tool-card .icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+.tool-card h3{ font-size:21px; }
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:15px;
+  flex-grow:1;
+}
+
+.tool-card .btn{
+  align-self:flex-start;
+}
+
+
+
+.result-container{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.result-card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.result-card svg,
+.result-card img,
+.result-card canvas{
+  width:100% !important;
+  height:auto;
+  max-width:280px;
+}
+
+.result-text{
+  margin-top:14px;
+  color:black;
+  font-weight:bold;
+  word-break:break-word;
+  font-size:14px;
+}
+
+.result-card .mini-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.result-card .mini-actions button{
+  padding:8px 14px;
+  font-size:12px;
+  border-radius:10px;
+}
+
+
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+.blog-card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.blog-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(6,182,212,0.35);
+}
+
+.blog-card .tag{
+  display:inline-block;
+  font-size:12px;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  width:fit-content;
+}
+
+.blog-card-body{
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex-grow:1;
+}
+
+.blog-card h3{ font-size:19px; line-height:1.35; }
+
+.blog-card p{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+  flex-grow:1;
+}
+
+.blog-card .read-more{
+  color:var(--accent-3);
+  font-weight:bold;
+  font-size:14px;
+}
+
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+
+.article h2{
+  font-size:26px;
+  margin:40px 0 16px;
+  color:var(--text);
+}
+
+.article p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin-bottom:18px;
+}
+
+.article ul,
+.article ol{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin:0 0 18px 22px;
+}
+
+.article ul li,
+.article ol li{ margin-bottom:8px; }
+
+.article .meta{
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+
+
+.step-list{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  margin:30px 0;
+}
+
+.step{
+  background:var(--card-alt);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+}
+
+.step .num{
+  font-size:13px;
+  color:var(--accent-1);
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.step h4{ margin-bottom:8px; font-size:16px; }
+
+.step p{ color:var(--muted); font-size:14px; line-height:1.6; }
+
+
+
+.notice{
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin:16px 0;
+}
+
+.notice-info{
+  background:rgba(6,182,212,0.08);
+  border:1px solid rgba(6,182,212,0.3);
+  color:#a5e6f2;
+}
+
+.notice-error{
+  background:rgba(239,68,68,0.08);
+  border:1px solid rgba(239,68,68,0.3);
+  color:#fca5a5;
+}
+
+.notice-success{
+  background:rgba(34,197,94,0.08);
+  border:1px solid rgba(34,197,94,0.3);
+  color:#86efac;
+}
+
+
+
+.dropzone{
+  border:2px dashed var(--border);
+  border-radius:18px;
+  padding:40px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--card-alt);
+}
+
+.dropzone:hover,
+.dropzone.dragover{
+  border-color:var(--accent-1);
+  background:rgba(6,182,212,0.06);
+}
+
+.dropzone p{ color:var(--muted); margin-top:8px; }
+.dropzone .icon{ font-size:34px; }
+
+
+
+footer.site-footer{
+  background:var(--header-bg);
+  padding:50px 20px 30px;
+  margin-top:80px;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+
+.footer-col h4{
+  color:var(--text);
+  font-size:15px;
+  margin-bottom:14px;
+}
+
+.footer-col p{
+  color:var(--dim);
+  font-size:14px;
+  line-height:1.7;
+  max-width:280px;
+}
+
+.footer-col a{
+  display:block;
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+  transition:0.2s;
+}
+
+.footer-col a:hover{ color:var(--accent-3); }
+
+.footer-bottom{
+  max-width:1200px;
+  margin:auto;
+  padding-top:24px;
+  text-align:center;
+  color:var(--dim);
+  font-size:13px;
+}
+
+
+
+.light{ background:white; color:black; }
+
+.light .card,
+.light .feature-card,
+.light .tool-card,
+.light .step,
+.light .blog-card{ background:#f1f5f9; color:black; }
+
+.light input,
+.light textarea,
+.light select{
+  background:white;
+  color:black;
+  border:1px solid #ccc;
+}
+
+
+
+@media(max-width:768px){
+  .page-hero h1{ font-size:32px; }
+  .section-title{ font-size:28px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:480px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .navbar{ padding:14px; }
+}
+
+
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<style>
+  .bulk-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  @media(max-width:900px){ .bulk-layout{ grid-template-columns:1fr; } }
+  #csvFile{ display:none; }
+  .preview-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:16px;
+    font-size:13px;
+  }
+  .preview-table th, .preview-table td{
+    text-align:left;
+    padding:8px 10px;
+    border-bottom:1px solid var(--border);
+    color:var(--muted);
+  }
+  .preview-table th{ color:var(--text); }
+  .progress-wrap{
+    background:var(--input-bg);
+    border-radius:999px;
+    height:10px;
+    overflow:hidden;
+    margin-top:16px;
+  }
+  .progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+    transition:width 0.2s;
+  }
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">BarcodePro</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#generator">Generator</a>
+      <a href="qr-generator.html">QR Code</a>
+      <a href="bulk-generator.html" class="active">Bulk</a>
+      <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <span class="eyebrow">Bulk Export</span>
+  <h1>Bulk <span class="gradient-text">Barcode &amp; QR Generator</span></h1>
+  <p>Upload a CSV with one value per row — SKUs, serial numbers, ticket IDs, URLs — and download every code at once as a ZIP of PNG files.</p>
+</section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow: a CSV file becomes many barcodes, packaged into a ZIP file">
+    <rect width="800" height="200" fill="#161f32"/>
+    <g font-family="Arial, sans-serif">
+      <g transform="translate(50,55)">
+        <rect width="110" height="90" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+        <text x="55" y="35" fill="#06b6d4" font-size="13" font-weight="bold" text-anchor="middle">.csv</text>
+        <line x1="20" y1="50" x2="90" y2="50" stroke="#334155" stroke-width="2"/>
+        <line x1="20" y1="62" x2="90" y2="62" stroke="#334155" stroke-width="2"/>
+        <line x1="20" y1="74" x2="70" y2="74" stroke="#334155" stroke-width="2"/>
+      </g>
+      <path d="M175,100 L245,100" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow)"/>
+
+      <g transform="translate(270,45)">
+        <rect x="0" y="0" width="55" height="35" fill="#ffffff" rx="3"/>
+        <g transform="translate(5,5)" fill="#0f172a"><rect x="0" width="2" height="24"/><rect x="4" width="3" height="24"/><rect x="9" width="2" height="24"/><rect x="13" width="4" height="24"/><rect x="19" width="2" height="24"/><rect x="23" width="3" height="24"/><rect x="28" width="2" height="24"/><rect x="32" width="4" height="24"/></g>
+        <rect x="70" y="0" width="35" height="35" fill="#ffffff" rx="3"/>
+        <g transform="translate(75,5)" fill="#0f172a"><rect width="8" height="8"/><rect x="18" width="8" height="8"/><rect y="18" width="8" height="8"/><rect x="10" y="10" width="6" height="6"/></g>
+        <rect x="0" y="60" width="55" height="35" fill="#ffffff" rx="3"/>
+        <g transform="translate(5,65)" fill="#0f172a"><rect x="0" width="3" height="24"/><rect x="6" width="2" height="24"/><rect x="11" width="4" height="24"/><rect x="18" width="3" height="24"/><rect x="24" width="2" height="24"/><rect x="29" width="4" height="24"/></g>
+        <rect x="70" y="60" width="35" height="35" fill="#ffffff" rx="3"/>
+        <g transform="translate(75,65)" fill="#0f172a"><rect width="8" height="8"/><rect x="18" width="8" height="8"/><rect y="18" width="8" height="8"/><rect x="10" y="10" width="6" height="6"/></g>
+      </g>
+      <text x="325" y="15" fill="#96a9c7" font-size="11" text-anchor="middle">one code per row</text>
+
+      <path d="M430,100 L500,100" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow)"/>
+
+      <g transform="translate(530,50)">
+        <path d="M0,15 L15,0 L85,0 L85,85 L15,85 Z" fill="#38bdf8" opacity="0.9"/>
+        <rect x="30" y="0" width="14" height="14" fill="#0f172a" opacity="0.35"/>
+        <rect x="30" y="20" width="14" height="14" fill="#0f172a" opacity="0.35"/>
+        <text x="50" y="55" fill="#0f172a" font-size="13" font-weight="bold" text-anchor="middle">ZIP</text>
+      </g>
+      <text x="575" y="150" fill="#a5e6f2" font-size="12" text-anchor="middle">one download,</text>
+      <text x="575" y="166" fill="#a5e6f2" font-size="12" text-anchor="middle">every file named</text>
+    </g>
+    <defs>
+      <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8b5cf6"/></marker>
+    </defs>
+  </svg>
+  <figcaption>One CSV in, one ZIP of individually named barcode or QR images out — all rendered locally.</figcaption>
+</figure>
+
+<section class="wrap" style="padding-bottom:80px;">
+  <div class="bulk-layout">
+
+    <div class="card">
+
+      <label>1. Choose Code Type</label>
+      <select id="bulkType">
+        <optgroup label="Barcode">
+          <option value="CODE128">CODE128</option>
+          <option value="CODE39">CODE39</option>
+          <option value="EAN13">EAN13</option>
+          <option value="EAN8">EAN8</option>
+          <option value="UPC">UPC</option>
+          <option value="ITF14">ITF14</option>
+        </optgroup>
+        <optgroup label="QR Code">
+          <option value="QR">QR Code</option>
+        </optgroup>
+      </select>
+
+      <div style="margin-top:18px;">
+        <label>2. Upload CSV (one value per line, or a "value" column)</label>
+        <div class="dropzone" id="dropzone">
+          <span class="icon">📄</span>
+          <p><strong>Click to upload</strong> or drag a .csv file here</p>
+        </div>
+        <input type="file" id="csvFile" accept=".csv,text/csv">
+      </div>
+
+      <div style="margin-top:18px;">
+        <label>...or paste values, one per line</label>
+        <textarea id="pasteValues" placeholder="SKU-00123
+SKU-00124
+SKU-00125"></textarea>
+      </div>
+
+      <div class="grid" style="margin-top:10px;">
+        <div>
+          <label>Filename Prefix</label>
+          <input type="text" id="filePrefix" value="code">
+        </div>
+        <div>
+          <label>Image Size (px)</label>
+          <input type="number" id="bulkSize" value="400" min="100" max="1000">
+        </div>
+      </div>
+
+      <button class="btn-full" style="margin-top:20px;" onclick="runBulkGenerate()">Generate &amp; Download ZIP</button>
+
+      <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+      <div id="bulkNotice"></div>
+    </div>
+
+    <div class="card">
+      <label>Preview (first 8 values)</label>
+      <table class="preview-table" id="previewTable">
+        <thead><tr><th>#</th><th>Value</th></tr></thead>
+        <tbody id="previewBody">
+          <tr><td colspan="2" style="color:var(--dim);">No values loaded yet.</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--dim);font-size:13px;margin-top:14px;">
+        Total values loaded: <strong id="totalCount">0</strong>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom:80px;">
+  <h2 class="section-title">How <span class="gradient-text">bulk generation</span> works</h2>
+  <div class="step-list">
+    <div class="step">
+      <div class="num">STEP 1</div>
+      <h4>Upload or paste values</h4>
+      <p>A CSV file, or a simple list pasted straight into the box — one value per row.</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 2</div>
+      <h4>Pick a code type</h4>
+      <p>Choose any supported barcode symbology, or QR code, applied to every row.</p>
+    </div>
+    <div class="step">
+      <div class="num">STEP 3</div>
+      <h4>Download the ZIP</h4>
+      <p>Every code renders locally in your browser and is packaged into one ZIP file — nothing is uploaded.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap-narrow article" style="padding-bottom:80px;">
+  <h2>Formatting your CSV correctly</h2>
+  <p>
+    The bulk tool accepts two layouts. The simplest is one value per line with no header — just a plain list of SKUs, serial numbers, or URLs. If your spreadsheet export includes a header row, add a column literally named <strong>value</strong> (lowercase); the tool will detect it and pull data from that column specifically, ignoring any other columns in the file. This is useful if you're exporting straight from an inventory spreadsheet that also has price, description or quantity columns you don't want encoded.
+  </p>
+  <p>
+    Each line becomes exactly one code, so make sure the values are already in their final form before uploading — the tool doesn't pad, reformat, or validate check digits for you beyond what the underlying symbology requires to render at all.
+  </p>
+
+  <h2>Why some values get skipped</h2>
+  <p>
+    Different barcode symbologies accept different character sets. CODE39, for example, only supports uppercase letters, digits and a small set of symbols — lowercase letters or special punctuation will cause that row to fail. EAN-13 and UPC-A expect a specific digit count and will reject values that are too short, too long, or contain non-numeric characters. If your batch finishes with some values skipped, switching to CODE128 (which accepts the full ASCII range) is usually the fastest fix, provided your downstream system can read that format.
+  </p>
+
+  <h2>Choosing between barcode and QR for a bulk batch</h2>
+  <p>
+    If every row is a short ID that needs to integrate with an existing scanner or point-of-sale system, a linear format like CODE128 or EAN-13 is almost always the right call — that's what the receiving hardware expects. If each row is actually a full URL (for example, generating a unique tracking link per product), QR is the better fit, since a linear barcode can't practically encode a long web address. It's worth deciding this before running a batch of 300 codes, since re-running with a different format means starting over.
+  </p>
+
+  <h2>Working with large batches</h2>
+  <p>
+    Because every code renders in your browser rather than on a server, very large batches are limited by your device's memory rather than any account quota. We cap batches at 500 values as a practical ceiling for smooth performance across most laptops and phones; if you have a larger list, splitting it into a few CSV files and running each separately avoids slowdowns and keeps each ZIP download to a manageable size.
+  </p>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">BarcodePro</div>
+      <p>Free, unlimited barcode and QR code tools that run entirely in your browser. Nothing you generate or scan is ever uploaded to a server.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="index.html#generator">Barcode Generator</a>
+      <a href="qr-generator.html">QR Code Generator</a>
+      <a href="bulk-generator.html">Bulk Generator</a>
+      <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
+</footer>
+
+<script>
+let loadedValues = [];
+
+const dropzone = document.getElementById("dropzone");
+const fileInput = document.getElementById("csvFile");
+
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("dragover", (e) => { e.preventDefault(); dropzone.classList.add("dragover"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("dragover"));
+dropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragover");
+  if(e.dataTransfer.files.length){
+    fileInput.files = e.dataTransfer.files;
+    handleFile(e.dataTransfer.files[0]);
+  }
+});
+fileInput.addEventListener("change", () => {
+  if(fileInput.files.length) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file){
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    parseCSV(e.target.result);
+  };
+  reader.readAsText(file);
+}
+
+function parseCSV(text){
+  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+  if(lines.length === 0){ loadedValues = []; updatePreview(); return; }
+
+
+  const header = lines[0].split(",").map(h => h.trim().toLowerCase());
+  const valueIdx = header.indexOf("value");
+
+  if(valueIdx !== -1){
+    loadedValues = lines.slice(1).map(l => l.split(",")[valueIdx]?.trim()).filter(Boolean);
+  } else {
+    loadedValues = lines.map(l => l.split(",")[0].trim()).filter(Boolean);
+  }
+  updatePreview();
+}
+
+document.getElementById("pasteValues").addEventListener("input", (e) => {
+  const lines = e.target.value.split("\n").map(l => l.trim()).filter(Boolean);
+  if(lines.length > 0){
+    loadedValues = lines;
+    updatePreview();
+  }
+});
+
+function updatePreview(){
+  const body = document.getElementById("previewBody");
+  document.getElementById("totalCount").innerText = loadedValues.length;
+
+  if(loadedValues.length === 0){
+    body.innerHTML = `<tr><td colspan="2" style="color:var(--dim);">No values loaded yet.</td></tr>`;
+    return;
+  }
+
+  body.innerHTML = loadedValues.slice(0, 8).map((v, i) =>
+    `<tr><td>${i + 1}</td><td>${escapeHtml(v)}</td></tr>`
+  ).join("");
+}
+
+function escapeHtml(str){
+  const div = document.createElement("div");
+  div.innerText = str;
+  return div.innerHTML;
+}
+
+function showNotice(msg, type){
+  document.getElementById("bulkNotice").innerHTML = `<div class="notice notice-${type}">${msg}</div>`;
+}
+
+async function runBulkGenerate(){
+  if(loadedValues.length === 0){
+    showNotice("Load some values first — upload a CSV or paste a list.", "error");
+    return;
+  }
+  if(loadedValues.length > 500){
+    showNotice("Please keep bulk batches under 500 values for browser performance.", "error");
+    return;
+  }
+
+  const type = document.getElementById("bulkType").value;
+  const size = parseInt(document.getElementById("bulkSize").value) || 400;
+  const prefix = document.getElementById("filePrefix").value.trim() || "code";
+  const progressBar = document.getElementById("progressBar");
+
+  const zip = new JSZip();
+  let failures = 0;
+
+  for(let i = 0; i < loadedValues.length; i++){
+    const value = loadedValues[i];
+    try {
+      const dataUrl = await renderOne(value, type, size);
+      const base64 = dataUrl.split(",")[1];
+      zip.file(`${prefix}_${i + 1}_${sanitize(value)}.png`, base64, { base64: true });
+    } catch(err){
+      failures++;
+    }
+    progressBar.style.width = `${Math.round(((i + 1) / loadedValues.length) * 100)}%`;
+    
+    if(i % 25 === 0) await new Promise(r => setTimeout(r, 0));
+  }
+
+  const content = await zip.generateAsync({ type: "blob" });
+  const url = URL.createObjectURL(content);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${prefix}_batch.zip`;
+  link.click();
+  URL.revokeObjectURL(url);
+
+  progressBar.style.width = "100%";
+  if(failures > 0){
+    showNotice(`Done, with ${failures} value(s) skipped because they weren't valid for the chosen format.`, "error");
+  } else {
+    showNotice(`Generated ${loadedValues.length} codes and downloaded the ZIP.`, "success");
+  }
+}
+
+function sanitize(v){
+  return v.replace(/[^a-z0-9_-]/gi, "_").slice(0, 30);
+}
+
+function renderOne(value, type, size){
+  return new Promise((resolve, reject) => {
+    if(type === "QR"){
+      const canvas = document.createElement("canvas");
+      QRCode.toCanvas(canvas, value, { width: size, margin: 2 }, (err) => {
+        if(err) return reject(err);
+        resolve(canvas.toDataURL("image/png"));
+      });
+    } else {
+      try {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        JsBarcode(svg, value, { format: type, displayValue: true, width: 2, height: size / 3, margin: 10 });
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const img = new Image();
+        const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(svgBlob);
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width || size;
+          canvas.height = img.height || size / 3;
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(url);
+          resolve(canvas.toDataURL("image/png"));
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("render failed")); };
+        img.src = url;
+      } catch(err){
+        reject(err);
+      }
+    }
+  });
+}
+</script>
+
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
+</body>
+</html>

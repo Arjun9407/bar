@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FAQ | BarcodePro</title>
+<meta name="description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
+<link rel="canonical" href="https://barcodepro.pages.dev/faq.html">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="FAQ | BarcodePro">
+<meta property="og:description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
+<meta property="og:url" content="https://barcodepro.pages.dev/faq.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FAQ | BarcodePro">
+<meta name="twitter:description" content="Frequently asked questions about BarcodePro's barcode generator, QR code generator, bulk export and scanner tools.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "FAQ",
+      "item": "https://barcodepro.pages.dev/faq.html"
+    }
+  ]
+}
+</script>
+
+<style>
+
+
+:root{
+  --bg:#0f172a;
+  --header-bg:#111827;
+  --card:#1e293b;
+  --card-alt:#161f32;
+  --input-bg:#334155;
+  --text:#e2e8f0;
+  --muted:#cbd5e1;
+  --muted-2:#96a9c7;
+  --dim:#94a3b8;
+  --accent-1:#06b6d4;
+  --accent-2:#8b5cf6;
+  --accent-3:#38bdf8;
+  --border:rgba(255,255,255,0.08);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ text-decoration:none; }
+
+.gradient-text{
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-3);
+}
+
+.nav-links a.nav-cta{
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  padding:9px 16px;
+  border-radius:999px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+
+
+.page-hero{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  border:1px solid rgba(6,182,212,0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.page-hero h1{
+  font-size:46px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.page-hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  max-width:750px;
+  margin:auto;
+}
+
+
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.wrap-narrow{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:14px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:14px 15px;
+  margin:5px 0;
+  border:none;
+  border-radius:14px;
+  background:var(--input-bg);
+  color:white;
+  font-size:16px;
+  outline:none;
+  font-family:Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:2px solid var(--accent-1);
+}
+
+textarea{
+  resize:vertical;
+  height:140px;
+}
+
+button, .btn{
+  padding:15px 20px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  text-align:center;
+}
+
+button:hover, .btn:hover{ filter:brightness(1.08); }
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+
+.btn-full{ width:100%; }
+
+
+
+.section-title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  text-align:center;
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 40px;
+  line-height:1.7;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+
+.feature-card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  text-align:left;
+  transition:0.25s;
+  border:1px solid transparent;
+}
+
+.feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(139,92,246,0.35);
+}
+
+.feature-card .icon{
+  font-size:28px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.feature-card h3{
+  margin-bottom:10px;
+  font-size:19px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:15px;
+}
+
+
+
+.tool-card{
+  background:var(--card);
+  border-radius:22px;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.tool-card:hover{
+  border-color:rgba(6,182,212,0.4);
+  transform:translateY(-4px);
+}
+
+.tool-card .icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+.tool-card h3{ font-size:21px; }
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:15px;
+  flex-grow:1;
+}
+
+.tool-card .btn{
+  align-self:flex-start;
+}
+
+
+
+.result-container{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.result-card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.result-card svg,
+.result-card img,
+.result-card canvas{
+  width:100% !important;
+  height:auto;
+  max-width:280px;
+}
+
+.result-text{
+  margin-top:14px;
+  color:black;
+  font-weight:bold;
+  word-break:break-word;
+  font-size:14px;
+}
+
+.result-card .mini-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.result-card .mini-actions button{
+  padding:8px 14px;
+  font-size:12px;
+  border-radius:10px;
+}
+
+
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+.blog-card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.blog-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(6,182,212,0.35);
+}
+
+.blog-card .tag{
+  display:inline-block;
+  font-size:12px;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  width:fit-content;
+}
+
+.blog-card-body{
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex-grow:1;
+}
+
+.blog-card h3{ font-size:19px; line-height:1.35; }
+
+.blog-card p{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+  flex-grow:1;
+}
+
+.blog-card .read-more{
+  color:var(--accent-3);
+  font-weight:bold;
+  font-size:14px;
+}
+
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+
+.article h2{
+  font-size:26px;
+  margin:40px 0 16px;
+  color:var(--text);
+}
+
+.article p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin-bottom:18px;
+}
+
+.article ul,
+.article ol{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin:0 0 18px 22px;
+}
+
+.article ul li,
+.article ol li{ margin-bottom:8px; }
+
+.article .meta{
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+
+
+.step-list{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  margin:30px 0;
+}
+
+.step{
+  background:var(--card-alt);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+}
+
+.step .num{
+  font-size:13px;
+  color:var(--accent-1);
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.step h4{ margin-bottom:8px; font-size:16px; }
+
+.step p{ color:var(--muted); font-size:14px; line-height:1.6; }
+
+
+
+.notice{
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin:16px 0;
+}
+
+.notice-info{
+  background:rgba(6,182,212,0.08);
+  border:1px solid rgba(6,182,212,0.3);
+  color:#a5e6f2;
+}
+
+.notice-error{
+  background:rgba(239,68,68,0.08);
+  border:1px solid rgba(239,68,68,0.3);
+  color:#fca5a5;
+}
+
+.notice-success{
+  background:rgba(34,197,94,0.08);
+  border:1px solid rgba(34,197,94,0.3);
+  color:#86efac;
+}
+
+
+
+.dropzone{
+  border:2px dashed var(--border);
+  border-radius:18px;
+  padding:40px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--card-alt);
+}
+
+.dropzone:hover,
+.dropzone.dragover{
+  border-color:var(--accent-1);
+  background:rgba(6,182,212,0.06);
+}
+
+.dropzone p{ color:var(--muted); margin-top:8px; }
+.dropzone .icon{ font-size:34px; }
+
+
+
+footer.site-footer{
+  background:var(--header-bg);
+  padding:50px 20px 30px;
+  margin-top:80px;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+
+.footer-col h4{
+  color:var(--text);
+  font-size:15px;
+  margin-bottom:14px;
+}
+
+.footer-col p{
+  color:var(--dim);
+  font-size:14px;
+  line-height:1.7;
+  max-width:280px;
+}
+
+.footer-col a{
+  display:block;
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+  transition:0.2s;
+}
+
+.footer-col a:hover{ color:var(--accent-3); }
+
+.footer-bottom{
+  max-width:1200px;
+  margin:auto;
+  padding-top:24px;
+  text-align:center;
+  color:var(--dim);
+  font-size:13px;
+}
+
+
+
+.light{ background:white; color:black; }
+
+.light .card,
+.light .feature-card,
+.light .tool-card,
+.light .step,
+.light .blog-card{ background:#f1f5f9; color:black; }
+
+.light input,
+.light textarea,
+.light select{
+  background:white;
+  color:black;
+  border:1px solid #ccc;
+}
+
+
+
+@media(max-width:768px){
+  .page-hero h1{ font-size:32px; }
+  .section-title{ font-size:28px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:480px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .navbar{ padding:14px; }
+}
+
+
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+</style>
+<style>
+  .faq-item{
+    background:var(--card);
+    border-radius:16px;
+    padding:22px 26px;
+    margin-bottom:16px;
+  }
+  .faq-item h2{ font-size:18px; margin-bottom:8px; }
+  .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is BarcodePro free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 every tool, including bulk export and the scanner, is free with no usage limits, no account, and no watermark on the output. We don't have a paid tier; the site is supported by advertising rather than subscriptions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you store my barcodes or scanned images?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Generation and decoding both happen locally in your browser using JavaScript; the values you type and the images you upload to the scanner are never transmitted to a server. You can verify this yourself by opening your browser's network tab while generating or scanning a code \u2014 you won't see any request carrying that data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use generated barcodes commercially?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, codes you generate are yours to use for any purpose, commercial included, with no attribution required. One caveat worth knowing: generating a valid EAN-13 or UPC-A barcode does not register a product number with GS1 or any retail authority. If you plan to sell through a major retailer or marketplace that validates GS1-issued numbers, you'll need an officially assigned prefix from GS1 \u2014 our generator will happily encode any 12\u201313 digit number you give it, but it doesn't check whether that number is registered to you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which barcode types are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI and Pharmacode on the linear side, plus QR Code as our 2D format. See our barcode types guide for what each one is actually used for and how to pick between them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download PNG and SVG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 barcodes and QR codes can both be exported as PNG or SVG depending on the tool. PNG is the safer default for most printing workflows; SVG is worth using if you're placing the code into a vector design tool like Illustrator or Figma, since it scales without any loss of sharpness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Bulk Generator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP, with each file named after its source value. It's built for batches up to about 500 values \u2014 past that, browser memory becomes the limiting factor, so very large runs are best split into a few smaller batches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What image formats does the Scanner accept?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably \u2014 see the tips on the scanner page for what tends to trip up a decode (glare, steep angles, motion blur, and a code that only fills a small part of the frame are the usual culprits)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did my barcode fail to scan after I printed it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is almost always a printing issue rather than an encoding one. The most common causes, in order of frequency: the code was shrunk below its symbology's minimum reliable size, the \"quiet zone\" margin around the code got cropped off, the printed contrast was too low (grey-on-white, or a busy background image), or the file was compressed as a low-quality JPEG before printing. Our printing guide walks through each of these in detail."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between a barcode and a QR code, and which should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A linear barcode (CODE128, EAN-13, UPC-A, etc.) stores a short ID and is read by cheap, extremely fast dedicated scanners \u2014 the standard for retail checkout and warehouse logistics. A QR code stores far more data (a full URL, WiFi credentials, a contact card) and is read by any phone camera, which makes it the better fit for anything a consumer scans with their own device. Our QR vs. barcode comparison covers this in more depth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an internet connection to use BarcodePro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You need a connection to load the page the first time, but generation and scanning themselves happen entirely in your browser's JavaScript engine. In practice this means the tools are fast even on a slow or unstable connection, since there's no round-trip to a server involved once the page has loaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I customize the color of a QR code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the QR code generator lets you set both a foreground and background color. Keep in mind that scanners rely on strong contrast between the two \u2014 a QR code with low contrast between foreground and background (light grey on white, for instance) can fail to scan even though it looks fine on a bright screen. Dark-on-light combinations with a clear contrast difference are the safest choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the maximum amount of text a QR code can hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the error-correction level and content type, but a QR code can realistically hold a few thousand alphanumeric characters at the largest module count. In practice, most real-world uses \u2014 a URL, a WiFi password, a short vCard \u2014 use only a small fraction of that capacity. Cramming in unnecessarily long text does increase the module count and makes the resulting code visually denser and slightly harder to scan from a distance, so shorter payloads (like a short link instead of a long tracking URL) tend to scan more reliably."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does BarcodePro work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all four tools are fully responsive and work on phone and tablet browsers, including uploading a photo directly from your camera roll into the scanner."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">BarcodePro</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#generator">Generator</a>
+      <a href="qr-generator.html">QR Code</a>
+      <a href="bulk-generator.html">Bulk</a>
+      <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <span class="eyebrow">Support</span>
+  <h1>Frequently Asked <span class="gradient-text">Questions</span></h1>
+</section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A speech bubble asking a question next to a barcode, with a checkmark answer bubble">
+    <rect width="800" height="220" fill="#161f32"/>
+    <g transform="translate(70,50)">
+      <rect width="260" height="90" rx="20" fill="#1e293b" stroke="#334155"/>
+      <path d="M40,140 L40,110 L80,110 Z" fill="#1e293b" stroke="#334155"/>
+      <text x="130" y="45" fill="#38bdf8" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle">?</text>
+      <text x="130" y="70" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">"Why won't my barcode scan?"</text>
+    </g>
+
+    <g transform="translate(360,90)">
+      <rect x="0" y="0" width="90" height="45" fill="#ffffff" rx="4"/>
+      <g transform="translate(8,8)" fill="#0f172a"><rect x="0" width="3" height="28"/><rect x="6" width="5" height="28"/><rect x="14" width="3" height="28"/><rect x="20" width="6" height="28"/><rect x="30" width="3" height="28"/><rect x="36" width="5" height="28"/><rect x="45" width="3" height="28"/><rect x="52" width="6" height="28"/><rect x="62" width="3" height="28"/><rect x="68" width="5" height="28"/></g>
+    </g>
+
+    <g transform="translate(490,45)">
+      <rect width="240" height="90" rx="20" fill="#1e293b" stroke="#8b5cf6"/>
+      <path d="M60,135 L60,105 L20,105 Z" fill="#1e293b" stroke="#8b5cf6"/>
+      <circle cx="40" cy="45" r="16" fill="#8b5cf6"/>
+      <path d="M33,45 l5,5 l10,-11" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="150" y="40" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12.5" text-anchor="middle">Usually it's the</text>
+      <text x="150" y="58" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12.5" text-anchor="middle">quiet zone, size,</text>
+      <text x="150" y="76" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12.5" text-anchor="middle">or contrast.</text>
+    </g>
+  </svg>
+  <figcaption>Most questions about barcodes and QR codes come down to a handful of recurring answers — here they are.</figcaption>
+</figure>
+
+<section class="wrap-narrow" style="padding-bottom:90px;">
+
+  <div class="faq-item">
+    <h2>Is BarcodePro free?</h2>
+    <p>Yes — every tool, including bulk export and the scanner, is free with no usage limits, no account, and no watermark on the output. We don't have a paid tier; the site is supported by advertising rather than subscriptions.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Do you store my barcodes or scanned images?</h2>
+    <p>No. Generation and decoding both happen locally in your browser using JavaScript; the values you type and the images you upload to the scanner are never transmitted to a server. You can verify this yourself by opening your browser's network tab while generating or scanning a code — you won't see any request carrying that data.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Can I use generated barcodes commercially?</h2>
+    <p>Yes, codes you generate are yours to use for any purpose, commercial included, with no attribution required. One caveat worth knowing: generating a valid EAN-13 or UPC-A barcode does not register a product number with GS1 or any retail authority. If you plan to sell through a major retailer or marketplace that validates GS1-issued numbers, you'll need an officially assigned prefix from GS1 — our generator will happily encode any 12–13 digit number you give it, but it doesn't check whether that number is registered to you.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Which barcode types are supported?</h2>
+    <p>CODE128, CODE39, EAN-13, EAN-8, UPC-A, UPC-E, ITF-14, MSI and Pharmacode on the linear side, plus QR Code as our 2D format. See our <a href="blog-barcode-types-explained.html" style="color:var(--accent-3);">barcode types guide</a> for what each one is actually used for and how to pick between them.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Can I download PNG and SVG?</h2>
+    <p>Yes — barcodes and QR codes can both be exported as PNG or SVG depending on the tool. PNG is the safer default for most printing workflows; SVG is worth using if you're placing the code into a vector design tool like Illustrator or Figma, since it scales without any loss of sharpness.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>How does the Bulk Generator work?</h2>
+    <p>Upload a CSV (or paste a list) of values, pick a code type, and BarcodePro generates every code and packages them into a single downloadable ZIP, with each file named after its source value. It's built for batches up to about 500 values — past that, browser memory becomes the limiting factor, so very large runs are best split into a few smaller batches.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>What image formats does the Scanner accept?</h2>
+    <p>JPG, PNG and WEBP. Clear, well-lit, straight-on photos decode most reliably — see the tips on the <a href="scanner.html" style="color:var(--accent-3);">scanner page</a> for what tends to trip up a decode (glare, steep angles, motion blur, and a code that only fills a small part of the frame are the usual culprits).</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Why did my barcode fail to scan after I printed it?</h2>
+    <p>This is almost always a printing issue rather than an encoding one. The most common causes, in order of frequency: the code was shrunk below its symbology's minimum reliable size, the "quiet zone" margin around the code got cropped off, the printed contrast was too low (grey-on-white, or a busy background image), or the file was compressed as a low-quality JPEG before printing. Our <a href="blog-printing-barcode-labels.html" style="color:var(--accent-3);">printing guide</a> walks through each of these in detail.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>What's the difference between a barcode and a QR code, and which should I use?</h2>
+    <p>A linear barcode (CODE128, EAN-13, UPC-A, etc.) stores a short ID and is read by cheap, extremely fast dedicated scanners — the standard for retail checkout and warehouse logistics. A QR code stores far more data (a full URL, WiFi credentials, a contact card) and is read by any phone camera, which makes it the better fit for anything a consumer scans with their own device. Our <a href="blog-qr-vs-barcode.html" style="color:var(--accent-3);">QR vs. barcode comparison</a> covers this in more depth.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Do I need an internet connection to use BarcodePro?</h2>
+    <p>You need a connection to load the page the first time, but generation and scanning themselves happen entirely in your browser's JavaScript engine. In practice this means the tools are fast even on a slow or unstable connection, since there's no round-trip to a server involved once the page has loaded.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Can I customize the color of a QR code?</h2>
+    <p>Yes, the <a href="qr-generator.html" style="color:var(--accent-3);">QR code generator</a> lets you set both a foreground and background color. Keep in mind that scanners rely on strong contrast between the two — a QR code with low contrast between foreground and background (light grey on white, for instance) can fail to scan even though it looks fine on a bright screen. Dark-on-light combinations with a clear contrast difference are the safest choice.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>What's the maximum amount of text a QR code can hold?</h2>
+    <p>It depends on the error-correction level and content type, but a QR code can realistically hold a few thousand alphanumeric characters at the largest module count. In practice, most real-world uses — a URL, a WiFi password, a short vCard — use only a small fraction of that capacity. Cramming in unnecessarily long text does increase the module count and makes the resulting code visually denser and slightly harder to scan from a distance, so shorter payloads (like a short link instead of a long tracking URL) tend to scan more reliably.</p>
+  </div>
+
+  <div class="faq-item">
+    <h2>Does BarcodePro work on mobile devices?</h2>
+    <p>Yes, all four tools are fully responsive and work on phone and tablet browsers, including uploading a photo directly from your camera roll into the scanner.</p>
+  </div>
+
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">BarcodePro</div>
+      <p>Free, unlimited barcode and QR code tools that run entirely in your browser. Nothing you generate or scan is ever uploaded to a server.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="index.html#generator">Barcode Generator</a>
+      <a href="qr-generator.html">QR Code Generator</a>
+      <a href="bulk-generator.html">Bulk Generator</a>
+      <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
+</footer>
+
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
+</body>
+</html>

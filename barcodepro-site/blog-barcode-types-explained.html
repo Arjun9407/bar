@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Barcode Types Explained: CODE128, EAN, UPC and More | BarcodePro Blog</title>
+<meta name="description" content="A plain-English reference for the most common barcode symbologies — CODE128, CODE39, EAN-13, UPC, ITF, Data Matrix, PDF417 and Aztec — and where each is used.">
+<link rel="canonical" href="https://barcodepro.pages.dev/blog-barcode-types-explained.html">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="Barcode Types Explained: CODE128, EAN, UPC and More | BarcodePro Blog">
+<meta property="og:description" content="A plain-English reference for the most common barcode symbologies — CODE128, CODE39, EAN-13, UPC, ITF, Data Matrix, PDF417 and Aztec — and where each is used.">
+<meta property="og:url" content="https://barcodepro.pages.dev/blog-barcode-types-explained.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta property="article:published_time" content="2026-07-01">
+<meta property="article:modified_time" content="2026-07-01">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Barcode Types Explained: CODE128, EAN, UPC and More | BarcodePro Blog">
+<meta name="twitter:description" content="A plain-English reference for the most common barcode symbologies — CODE128, CODE39, EAN-13, UPC, ITF, Data Matrix, PDF417 and Aztec — and where each is used.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Barcode Types Explained",
+  "description": "A plain-English reference for the most common barcode symbologies \u2014 CODE128, CODE39, EAN-13, UPC, ITF, Data Matrix, PDF417 and Aztec \u2014 and where each is used.",
+  "url": "https://barcodepro.pages.dev/blog-barcode-types-explained.html",
+  "datePublished": "2026-07-01",
+  "dateModified": "2026-07-01",
+  "author": {
+    "@type": "Organization",
+    "name": "BarcodePro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BarcodePro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barcodepro.pages.dev/blog-barcode-types-explained.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://barcodepro.pages.dev/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Barcode Types Explained",
+      "item": "https://barcodepro.pages.dev/blog-barcode-types-explained.html"
+    }
+  ]
+}
+</script>
+
+<style>
+
+
+:root{
+  --bg:#0f172a;
+  --header-bg:#111827;
+  --card:#1e293b;
+  --card-alt:#161f32;
+  --input-bg:#334155;
+  --text:#e2e8f0;
+  --muted:#cbd5e1;
+  --muted-2:#96a9c7;
+  --dim:#94a3b8;
+  --accent-1:#06b6d4;
+  --accent-2:#8b5cf6;
+  --accent-3:#38bdf8;
+  --border:rgba(255,255,255,0.08);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ text-decoration:none; }
+
+.gradient-text{
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-3);
+}
+
+.nav-links a.nav-cta{
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  padding:9px 16px;
+  border-radius:999px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+
+
+.page-hero{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  border:1px solid rgba(6,182,212,0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.page-hero h1{
+  font-size:46px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.page-hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  max-width:750px;
+  margin:auto;
+}
+
+
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.wrap-narrow{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:14px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:14px 15px;
+  margin:5px 0;
+  border:none;
+  border-radius:14px;
+  background:var(--input-bg);
+  color:white;
+  font-size:16px;
+  outline:none;
+  font-family:Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:2px solid var(--accent-1);
+}
+
+textarea{
+  resize:vertical;
+  height:140px;
+}
+
+button, .btn{
+  padding:15px 20px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  text-align:center;
+}
+
+button:hover, .btn:hover{ filter:brightness(1.08); }
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+
+.btn-full{ width:100%; }
+
+
+
+.section-title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  text-align:center;
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 40px;
+  line-height:1.7;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+
+.feature-card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  text-align:left;
+  transition:0.25s;
+  border:1px solid transparent;
+}
+
+.feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(139,92,246,0.35);
+}
+
+.feature-card .icon{
+  font-size:28px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.feature-card h3{
+  margin-bottom:10px;
+  font-size:19px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:15px;
+}
+
+
+
+.tool-card{
+  background:var(--card);
+  border-radius:22px;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.tool-card:hover{
+  border-color:rgba(6,182,212,0.4);
+  transform:translateY(-4px);
+}
+
+.tool-card .icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+.tool-card h3{ font-size:21px; }
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:15px;
+  flex-grow:1;
+}
+
+.tool-card .btn{
+  align-self:flex-start;
+}
+
+
+
+.result-container{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.result-card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.result-card svg,
+.result-card img,
+.result-card canvas{
+  width:100% !important;
+  height:auto;
+  max-width:280px;
+}
+
+.result-text{
+  margin-top:14px;
+  color:black;
+  font-weight:bold;
+  word-break:break-word;
+  font-size:14px;
+}
+
+.result-card .mini-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.result-card .mini-actions button{
+  padding:8px 14px;
+  font-size:12px;
+  border-radius:10px;
+}
+
+
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+.blog-card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.blog-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(6,182,212,0.35);
+}
+
+.blog-card .tag{
+  display:inline-block;
+  font-size:12px;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  width:fit-content;
+}
+
+.blog-card-body{
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex-grow:1;
+}
+
+.blog-card h3{ font-size:19px; line-height:1.35; }
+
+.blog-card p{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+  flex-grow:1;
+}
+
+.blog-card .read-more{
+  color:var(--accent-3);
+  font-weight:bold;
+  font-size:14px;
+}
+
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+
+.article h2{
+  font-size:26px;
+  margin:40px 0 16px;
+  color:var(--text);
+}
+
+.article p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin-bottom:18px;
+}
+
+.article ul,
+.article ol{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin:0 0 18px 22px;
+}
+
+.article ul li,
+.article ol li{ margin-bottom:8px; }
+
+.article .meta{
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.article-figure{
+  margin:30px 0;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+
+.article-figure svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.article-figure figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+}
+
+
+
+.step-list{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  margin:30px 0;
+}
+
+.step{
+  background:var(--card-alt);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+}
+
+.step .num{
+  font-size:13px;
+  color:var(--accent-1);
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.step h4{ margin-bottom:8px; font-size:16px; }
+
+.step p{ color:var(--muted); font-size:14px; line-height:1.6; }
+
+
+
+.notice{
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin:16px 0;
+}
+
+.notice-info{
+  background:rgba(6,182,212,0.08);
+  border:1px solid rgba(6,182,212,0.3);
+  color:#a5e6f2;
+}
+
+.notice-error{
+  background:rgba(239,68,68,0.08);
+  border:1px solid rgba(239,68,68,0.3);
+  color:#fca5a5;
+}
+
+.notice-success{
+  background:rgba(34,197,94,0.08);
+  border:1px solid rgba(34,197,94,0.3);
+  color:#86efac;
+}
+
+
+
+.dropzone{
+  border:2px dashed var(--border);
+  border-radius:18px;
+  padding:40px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--card-alt);
+}
+
+.dropzone:hover,
+.dropzone.dragover{
+  border-color:var(--accent-1);
+  background:rgba(6,182,212,0.06);
+}
+
+.dropzone p{ color:var(--muted); margin-top:8px; }
+.dropzone .icon{ font-size:34px; }
+
+
+
+footer.site-footer{
+  background:var(--header-bg);
+  padding:50px 20px 30px;
+  margin-top:80px;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+
+.footer-col h4{
+  color:var(--text);
+  font-size:15px;
+  margin-bottom:14px;
+}
+
+.footer-col p{
+  color:var(--dim);
+  font-size:14px;
+  line-height:1.7;
+  max-width:280px;
+}
+
+.footer-col a{
+  display:block;
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+  transition:0.2s;
+}
+
+.footer-col a:hover{ color:var(--accent-3); }
+
+.footer-bottom{
+  max-width:1200px;
+  margin:auto;
+  padding-top:24px;
+  text-align:center;
+  color:var(--dim);
+  font-size:13px;
+}
+
+
+
+.light{ background:white; color:black; }
+
+.light .card,
+.light .feature-card,
+.light .tool-card,
+.light .step,
+.light .blog-card{ background:#f1f5f9; color:black; }
+
+.light input,
+.light textarea,
+.light select{
+  background:white;
+  color:black;
+  border:1px solid #ccc;
+}
+
+
+
+@media(max-width:768px){
+  .page-hero h1{ font-size:32px; }
+  .section-title{ font-size:28px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:480px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .navbar{ padding:14px; }
+}
+
+
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">BarcodePro</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#generator">Generator</a>
+      <a href="qr-generator.html">QR Code</a>
+      <a href="bulk-generator.html">Bulk</a>
+      <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero" style="padding-bottom:10px;">
+  <span class="eyebrow">Reference</span>
+  <h1>Barcode Types Explained</h1>
+</section>
+
+<article class="article">
+  <p class="meta">BarcodePro Team · Updated July 2026 · 6 min read</p>
+
+  <figure class="article-figure">
+    <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four barcode symbology families: linear, retail, stacked, and 2D">
+      <rect width="800" height="260" fill="#161f32"/>
+
+      <g transform="translate(40,40)">
+        <rect width="160" height="140" rx="14" fill="#1e293b" stroke="#334155"/>
+        <rect x="30" y="30" width="100" height="55" fill="#ffffff" rx="3"/>
+        <g transform="translate(38,40)" fill="#0f172a"><rect x="0" width="3" height="35"/><rect x="6" width="6" height="35"/><rect x="16" width="3" height="35"/><rect x="23" width="7" height="35"/><rect x="35" width="3" height="35"/><rect x="42" width="6" height="35"/><rect x="53" width="3" height="35"/><rect x="60" width="7" height="35"/><rect x="72" width="3" height="35"/><rect x="79" width="6" height="35"/></g>
+        <text x="80" y="115" fill="#38bdf8" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">CODE128/39</text>
+        <text x="80" y="130" fill="#96a9c7" font-family="Arial, sans-serif" font-size="10.5" text-anchor="middle">general purpose</text>
+      </g>
+
+      <g transform="translate(230,40)">
+        <rect width="160" height="140" rx="14" fill="#1e293b" stroke="#334155"/>
+        <rect x="20" y="30" width="120" height="55" fill="#ffffff" rx="3"/>
+        <g transform="translate(28,40)" fill="#0f172a"><rect x="0" width="4" height="35"/><rect x="8" width="3" height="35"/><rect x="15" width="6" height="35"/><rect x="25" width="3" height="35"/><rect x="32" width="4" height="35"/><rect x="42" width="6" height="35"/><rect x="53" width="3" height="35"/><rect x="60" width="4" height="35"/><rect x="70" width="6" height="35"/><rect x="81" width="3" height="35"/><rect x="88" width="4" height="35"/><rect x="98" width="6" height="35"/></g>
+        <text x="80" y="115" fill="#38bdf8" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">EAN / UPC</text>
+        <text x="80" y="130" fill="#96a9c7" font-family="Arial, sans-serif" font-size="10.5" text-anchor="middle">retail shelf</text>
+      </g>
+
+      <g transform="translate(420,40)">
+        <rect width="160" height="140" rx="14" fill="#1e293b" stroke="#334155"/>
+        <rect x="25" y="35" width="110" height="45" fill="#ffffff" rx="3"/>
+        <g transform="translate(32,40)" fill="#0f172a">
+          <rect x="0" y="0" width="96" height="6"/><rect x="0" y="9" width="70" height="6"/><rect x="0" y="18" width="96" height="6"/><rect x="0" y="27" width="55" height="6"/>
+        </g>
+        <text x="80" y="115" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">ITF-14 / PDF417</text>
+        <text x="80" y="130" fill="#96a9c7" font-family="Arial, sans-serif" font-size="10.5" text-anchor="middle">cartons &amp; IDs</text>
+      </g>
+
+      <g transform="translate(610,40)">
+        <rect width="160" height="140" rx="14" fill="#1e293b" stroke="#334155"/>
+        <rect x="40" y="28" width="80" height="80" fill="#ffffff" rx="3"/>
+        <g transform="translate(48,36)" fill="#0f172a">
+          <rect x="0" y="0" width="10" height="10"/><rect x="16" y="0" width="6" height="6"/><rect x="30" y="0" width="10" height="10"/><rect x="50" y="0" width="10" height="10"/>
+          <rect x="0" y="16" width="6" height="6"/><rect x="20" y="16" width="10" height="10"/><rect x="44" y="20" width="6" height="6"/>
+          <rect x="0" y="30" width="10" height="10"/><rect x="34" y="34" width="6" height="6"/><rect x="52" y="30" width="10" height="10"/>
+          <rect x="14" y="46" width="10" height="10"/><rect x="40" y="48" width="6" height="6"/>
+          <rect x="0" y="50" width="6" height="6"/><rect x="52" y="52" width="10" height="10"/>
+        </g>
+        <text x="80" y="122" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Data Matrix / QR</text>
+        <text x="80" y="137" fill="#96a9c7" font-family="Arial, sans-serif" font-size="10.5" text-anchor="middle">2D, dense data</text>
+      </g>
+    </svg>
+    <figcaption>Four broad families cover most real-world barcodes: general-purpose linear, retail numeric, stacked/carton, and dense 2D formats.</figcaption>
+  </figure>
+
+  <p>
+    "Barcode" isn't one format — it's a family of symbologies, each designed for a different job. Here's a plain-English rundown of the ones you'll actually run into.
+  </p>
+
+  <h2>CODE128</h2>
+  <p>
+    A compact, high-density format that can encode the full ASCII character set — letters, numbers and symbols. It's the default choice for shipping labels, internal inventory codes, and anywhere you need a flexible, general-purpose barcode.
+  </p>
+
+  <h2>CODE39</h2>
+  <p>
+    An older, less dense format limited to uppercase letters, digits and a handful of symbols. It's still common in government, defense and some manufacturing settings because it doesn't require a checksum to read reliably.
+  </p>
+
+  <h2>EAN-13 and EAN-8</h2>
+  <p>
+    The standard retail barcode used across Europe and most of the world — that's the code printed on nearly every product you buy in a supermarket. EAN-13 encodes a 13-digit product number; EAN-8 is a shorter version for small packaging.
+  </p>
+
+  <h2>UPC-A and UPC-E</h2>
+  <p>
+    The North American counterpart to EAN, found on retail products throughout the US and Canada. UPC-E is a compressed version used when shelf space is tight.
+  </p>
+
+  <h2>ITF (Interleaved 2 of 5)</h2>
+  <p>
+    Common on cardboard shipping cartons and pallets. It's tolerant of the lower print quality typical of corrugated packaging.
+  </p>
+
+  <h2>Data Matrix</h2>
+  <p>
+    A compact 2D format that packs a lot of data into a very small square — used heavily in electronics manufacturing and to mark small medical or pharmaceutical items where space is extremely limited.
+  </p>
+
+  <h2>PDF417</h2>
+  <p>
+    A 2D stacked format capable of storing large amounts of data, used on driver's licenses, boarding passes, and shipping documents that need to carry structured information offline.
+  </p>
+  <div style="margin:26px 0;">
+    <img src="assets/images/isbn-issn-datamatrix-collage.jpg" alt="Examples of ISBN, ISSN, and Data Matrix barcodes" style="max-width:420px;width:100%;border-radius:16px;background:white;padding:14px;">
+    <p style="color:var(--dim);font-size:13px;margin-top:8px;">Publishing formats like ISBN and ISSN are really just EAN-13 codes with a special prefix — see the <a href="glossary.html" style="color:var(--accent-3);">glossary</a> for the underlying encoding.</p>
+  </div>
+
+  <h2>Aztec</h2>
+  <p>
+    Another 2D format, popular for airline boarding passes and event tickets because it scans reliably even on a small phone screen.
+  </p>
+
+  <h2>Choosing the right one</h2>
+  <p>
+    If you're printing something for retail shelves, EAN or UPC is almost always mandatory. For internal logistics or inventory, CODE128 is the flexible default. If you need to pack in a lot of structured data on a small label, look at a 2D format like Data Matrix or PDF417. BarcodePro's <a href="index.html#generator" style="color:var(--accent-3);">generator</a> supports the most common symbologies for free — try a few and see which prints cleanest for your use case.
+  </p>
+</article>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">BarcodePro</div>
+      <p>Free, unlimited barcode and QR code tools that run entirely in your browser. Nothing you generate or scan is ever uploaded to a server.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="index.html#generator">Barcode Generator</a>
+      <a href="qr-generator.html">QR Code Generator</a>
+      <a href="bulk-generator.html">Bulk Generator</a>
+      <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
+</footer>
+
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://barcodepro.pages.dev/sitemap.xml

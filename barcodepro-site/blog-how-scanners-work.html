@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How Barcode Scanners Actually Read a Code | BarcodePro Blog</title>
+<meta name="description" content="A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.">
+<link rel="canonical" href="https://barcodepro.pages.dev/blog-how-scanners-work.html">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="How Barcode Scanners Actually Read a Code | BarcodePro Blog">
+<meta property="og:description" content="A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.">
+<meta property="og:url" content="https://barcodepro.pages.dev/blog-how-scanners-work.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta property="article:published_time" content="2026-08-01">
+<meta property="article:modified_time" content="2026-08-01">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How Barcode Scanners Actually Read a Code | BarcodePro Blog">
+<meta name="twitter:description" content="A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Barcode Scanners Actually Read a Code",
+  "description": "A look under the hood at how laser, camera and phone-based scanners decode barcodes and QR codes, and why some codes are harder to read than others.",
+  "url": "https://barcodepro.pages.dev/blog-how-scanners-work.html",
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01",
+  "author": {
+    "@type": "Organization",
+    "name": "BarcodePro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BarcodePro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn-icons-png.flaticon.com/512/1041/1041916.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barcodepro.pages.dev/blog-how-scanners-work.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://barcodepro.pages.dev/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How Barcode Scanners Actually Read a Code",
+      "item": "https://barcodepro.pages.dev/blog-how-scanners-work.html"
+    }
+  ]
+}
+</script>
+
+<style>
+
+
+:root{
+  --bg:#0f172a;
+  --header-bg:#111827;
+  --card:#1e293b;
+  --card-alt:#161f32;
+  --input-bg:#334155;
+  --text:#e2e8f0;
+  --muted:#cbd5e1;
+  --muted-2:#96a9c7;
+  --dim:#94a3b8;
+  --accent-1:#06b6d4;
+  --accent-2:#8b5cf6;
+  --accent-3:#38bdf8;
+  --border:rgba(255,255,255,0.08);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ text-decoration:none; }
+
+.gradient-text{
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-3);
+}
+
+.nav-links a.nav-cta{
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  padding:9px 16px;
+  border-radius:999px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+
+
+.page-hero{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  border:1px solid rgba(6,182,212,0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.page-hero h1{
+  font-size:46px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.page-hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  max-width:750px;
+  margin:auto;
+}
+
+
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.wrap-narrow{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:14px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:14px 15px;
+  margin:5px 0;
+  border:none;
+  border-radius:14px;
+  background:var(--input-bg);
+  color:white;
+  font-size:16px;
+  outline:none;
+  font-family:Arial, sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:2px solid var(--accent-1);
+}
+
+textarea{
+  resize:vertical;
+  height:140px;
+}
+
+button, .btn{
+  padding:15px 20px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  text-align:center;
+}
+
+button:hover, .btn:hover{ filter:brightness(1.08); }
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+
+.btn-full{ width:100%; }
+
+
+
+.section-title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  text-align:center;
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 40px;
+  line-height:1.7;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+
+.feature-card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  text-align:left;
+  transition:0.25s;
+  border:1px solid transparent;
+}
+
+.feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(139,92,246,0.35);
+}
+
+.feature-card .icon{
+  font-size:28px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.feature-card h3{
+  margin-bottom:10px;
+  font-size:19px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:15px;
+}
+
+
+
+.tool-card{
+  background:var(--card);
+  border-radius:22px;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.tool-card:hover{
+  border-color:rgba(6,182,212,0.4);
+  transform:translateY(-4px);
+}
+
+.tool-card .icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+.tool-card h3{ font-size:21px; }
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:15px;
+  flex-grow:1;
+}
+
+.tool-card .btn{
+  align-self:flex-start;
+}
+
+
+
+.result-container{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.result-card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.result-card svg,
+.result-card img,
+.result-card canvas{
+  width:100% !important;
+  height:auto;
+  max-width:280px;
+}
+
+.result-text{
+  margin-top:14px;
+  color:black;
+  font-weight:bold;
+  word-break:break-word;
+  font-size:14px;
+}
+
+.result-card .mini-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.result-card .mini-actions button{
+  padding:8px 14px;
+  font-size:12px;
+  border-radius:10px;
+}
+
+
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+.blog-card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  transition:0.25s;
+}
+
+.blog-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(6,182,212,0.35);
+}
+
+.blog-card .tag{
+  display:inline-block;
+  font-size:12px;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  width:fit-content;
+}
+
+.blog-card-body{
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex-grow:1;
+}
+
+.blog-card h3{ font-size:19px; line-height:1.35; }
+
+.blog-card p{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+  flex-grow:1;
+}
+
+.blog-card .read-more{
+  color:var(--accent-3);
+  font-weight:bold;
+  font-size:14px;
+}
+
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+
+.article h2{
+  font-size:26px;
+  margin:40px 0 16px;
+  color:var(--text);
+}
+
+.article p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin-bottom:18px;
+}
+
+.article ul,
+.article ol{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+  margin:0 0 18px 22px;
+}
+
+.article ul li,
+.article ol li{ margin-bottom:8px; }
+
+.article .meta{
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.article-figure{
+  margin:30px 0;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+
+.article-figure svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.article-figure figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+}
+
+
+
+.step-list{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  margin:30px 0;
+}
+
+.step{
+  background:var(--card-alt);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+}
+
+.step .num{
+  font-size:13px;
+  color:var(--accent-1);
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.step h4{ margin-bottom:8px; font-size:16px; }
+
+.step p{ color:var(--muted); font-size:14px; line-height:1.6; }
+
+
+
+.notice{
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin:16px 0;
+}
+
+.notice-info{
+  background:rgba(6,182,212,0.08);
+  border:1px solid rgba(6,182,212,0.3);
+  color:#a5e6f2;
+}
+
+.notice-error{
+  background:rgba(239,68,68,0.08);
+  border:1px solid rgba(239,68,68,0.3);
+  color:#fca5a5;
+}
+
+.notice-success{
+  background:rgba(34,197,94,0.08);
+  border:1px solid rgba(34,197,94,0.3);
+  color:#86efac;
+}
+
+
+
+.dropzone{
+  border:2px dashed var(--border);
+  border-radius:18px;
+  padding:40px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+  background:var(--card-alt);
+}
+
+.dropzone:hover,
+.dropzone.dragover{
+  border-color:var(--accent-1);
+  background:rgba(6,182,212,0.06);
+}
+
+.dropzone p{ color:var(--muted); margin-top:8px; }
+.dropzone .icon{ font-size:34px; }
+
+
+
+footer.site-footer{
+  background:var(--header-bg);
+  padding:50px 20px 30px;
+  margin-top:80px;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+
+.footer-col h4{
+  color:var(--text);
+  font-size:15px;
+  margin-bottom:14px;
+}
+
+.footer-col p{
+  color:var(--dim);
+  font-size:14px;
+  line-height:1.7;
+  max-width:280px;
+}
+
+.footer-col a{
+  display:block;
+  color:var(--dim);
+  font-size:14px;
+  margin-bottom:10px;
+  transition:0.2s;
+}
+
+.footer-col a:hover{ color:var(--accent-3); }
+
+.footer-bottom{
+  max-width:1200px;
+  margin:auto;
+  padding-top:24px;
+  text-align:center;
+  color:var(--dim);
+  font-size:13px;
+}
+
+
+
+.light{ background:white; color:black; }
+
+.light .card,
+.light .feature-card,
+.light .tool-card,
+.light .step,
+.light .blog-card{ background:#f1f5f9; color:black; }
+
+.light input,
+.light textarea,
+.light select{
+  background:white;
+  color:black;
+  border:1px solid #ccc;
+}
+
+
+
+@media(max-width:768px){
+  .page-hero h1{ font-size:32px; }
+  .section-title{ font-size:28px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:480px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .navbar{ padding:14px; }
+}
+
+
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">BarcodePro</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#generator">Generator</a>
+      <a href="qr-generator.html">QR Code</a>
+      <a href="bulk-generator.html">Bulk</a>
+      <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero" style="padding-bottom:10px;">
+  <span class="eyebrow">How It Works</span>
+  <h1>How Barcode Scanners <span class="gradient-text">Actually Read a Code</span></h1>
+</section>
+
+<article class="article">
+  <p class="meta">BarcodePro Team · Updated August 2026 · 6 min read</p>
+
+  <figure class="article-figure">
+    <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a laser scanner reading a barcode and a camera scanner reading a QR code via finder patterns">
+      <rect width="800" height="260" fill="#161f32"/>
+
+      <text x="200" y="35" fill="#38bdf8" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Laser sweep (1D)</text>
+      <rect x="90" y="70" width="220" height="90" fill="#ffffff" rx="4"/>
+      <g transform="translate(100,80)" fill="#0f172a"><rect x="0" width="3" height="70"/><rect x="7" width="6" height="70"/><rect x="18" width="3" height="70"/><rect x="26" width="8" height="70"/><rect x="40" width="3" height="70"/><rect x="48" width="6" height="70"/><rect x="59" width="3" height="70"/><rect x="67" width="8" height="70"/><rect x="81" width="3" height="70"/><rect x="89" width="6" height="70"/><rect x="100" width="3" height="70"/><rect x="108" width="8" height="70"/><rect x="122" width="3" height="70"/><rect x="130" width="6" height="70"/><rect x="141" width="3" height="70"/><rect x="149" width="8" height="70"/><rect x="163" width="3" height="70"/><rect x="171" width="6" height="70"/><rect x="182" width="3" height="70"/><rect x="190" width="8" height="70"/></g>
+      <line x1="90" y1="115" x2="310" y2="115" stroke="#ef4444" stroke-width="2" opacity="0.85"/>
+      <circle cx="90" cy="115" r="4" fill="#ef4444"/>
+      <circle cx="310" cy="115" r="4" fill="#ef4444"/>
+      <text x="200" y="190" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Beam measures reflected light</text>
+      <text x="200" y="206" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">across a single line</text>
+
+      <line x1="400" y1="30" x2="400" y2="230" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+      <text x="600" y="35" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Camera capture (2D)</text>
+      <rect x="530" y="65" width="140" height="140" fill="#ffffff" rx="4"/>
+      <g transform="translate(545,80)" fill="#0f172a">
+        <rect x="0" y="0" width="28" height="28"/><rect x="7" y="7" width="14" height="14" fill="#ffffff"/><rect x="10" y="10" width="8" height="8" fill="#0f172a"/>
+        <rect x="82" y="0" width="28" height="28"/><rect x="89" y="7" width="14" height="14" fill="#ffffff"/><rect x="92" y="10" width="8" height="8" fill="#0f172a"/>
+        <rect x="0" y="82" width="28" height="28"/><rect x="7" y="89" width="14" height="14" fill="#ffffff"/><rect x="10" y="92" width="8" height="8" fill="#0f172a"/>
+        <rect x="40" y="6" width="6" height="6"/><rect x="52" y="10" width="6" height="6"/><rect x="64" y="6" width="6" height="6"/>
+        <rect x="36" y="40" width="6" height="6"/><rect x="50" y="48" width="6" height="6"/><rect x="64" y="40" width="6" height="6"/><rect x="76" y="52" width="6" height="6"/>
+        <rect x="40" y="82" width="6" height="6"/><rect x="52" y="90" width="6" height="6"/><rect x="64" y="82" width="6" height="6"/>
+        <rect x="82" y="40" width="6" height="6"/><rect x="94" y="50" width="6" height="6"/><rect x="82" y="62" width="6" height="6"/><rect x="100" y="70" width="6" height="6"/>
+      </g>
+      <rect x="540" y="75" width="24" height="24" fill="none" stroke="#f87171" stroke-width="2"/>
+      <rect x="626" y="75" width="24" height="24" fill="none" stroke="#f87171" stroke-width="2"/>
+      <rect x="540" y="161" width="24" height="24" fill="none" stroke="#f87171" stroke-width="2"/>
+      <text x="600" y="222" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Finder patterns locate &amp;</text>
+      <text x="600" y="238" fill="#96a9c7" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">orient the whole grid</text>
+    </svg>
+    <figcaption>A laser measures reflected light along one line; a camera captures a full grid and finds it using corner markers.</figcaption>
+  </figure>
+
+  <p>
+    A barcode scanner turning a pattern of black bars into a product name feels almost instant, but there are a few distinct steps happening behind that beep — and understanding them explains why some perfectly legible-looking codes still fail to scan.
+  </p>
+
+  <h2>Laser scanners: reading light, not shapes</h2>
+  <p>
+    A classic laser scanner — the kind still common at grocery checkouts — sweeps a thin beam of light across the barcode and measures how much light bounces back. Black bars absorb light and reflect very little; white spaces reflect much more. The scanner reads this as a pattern of light and dark pulses over time, translates the pulse widths into a sequence of bar and space widths, and matches that sequence against the encoding rules for the symbology it's reading.
+  </p>
+  <p>
+    Because a laser scanner is measuring reflected light rather than analyzing a full image, it's extremely fast and works well even on curved or slightly uneven surfaces — but it also means contrast matters enormously. A barcode with poor contrast between the bars and background can produce a weak, ambiguous reflectance signal that the scanner can't confidently decode.
+  </p>
+
+  <h2>Camera-based (imaging) scanners</h2>
+  <p>
+    Modern handheld scanners, phone apps, and most 2D-capable scanners use a small camera sensor instead of a laser. They capture a full image of the code, then run image-processing software to locate the code within the frame, correct for any skew or rotation, and decode the pattern. This is what makes 2D formats like QR Code and Data Matrix possible in the first place — a single-beam laser sweep can only read a 1D pattern, but a camera can see an entire two-dimensional grid at once.
+  </p>
+  <p>
+    This is also how our own <a href="scanner.html" style="color:var(--accent-3);">browser-based scanner</a> works: it treats an uploaded photo the same way a camera scanner treats a live frame, searching the image for the recognizable finder patterns of a barcode or QR code and decoding whatever it finds.
+  </p>
+
+  <h2>Why QR codes have those three corner squares</h2>
+  <p>
+    The three large square patterns in the corners of every QR code aren't decorative — they're finder patterns that let a scanner instantly locate the code and work out its orientation and rotation, even if the photo was taken at a slight angle. This is a big part of why QR codes tolerate imperfect phone photos so well compared to a 1D barcode, which has no equivalent built-in landmark and instead relies on the scanner sweeping cleanly across it.
+  </p>
+
+  <h2>Why some scans fail even when the code "looks fine"</h2>
+  <p>
+    A few failure modes come up again and again, for both laser and camera scanners:
+  </p>
+  <ul>
+    <li><strong>Insufficient quiet zone:</strong> the blank margin around a code isn't just aesthetic — scanners use it to know where the code starts and ends. Crop it too tight and the scanner can't isolate the pattern.</li>
+    <li><strong>Low print resolution:</strong> thermal and low-end inkjet printers can blur bars that are packed close together, especially in dense 2D formats, merging modules that should be distinct.</li>
+    <li><strong>Specular glare:</strong> a laminated or glossy label under bright light can reflect a bright hotspot directly onto part of the code, effectively erasing that section of data from what the scanner can see.</li>
+    <li><strong>Curved or wrinkled surfaces:</strong> a barcode wrapped around a bottle or crumpled on a shipping bag distorts the geometry the decoder expects, which is harder for camera scanners to correct for than for a laser sweep at the right angle.</li>
+  </ul>
+
+  <h2>What this means for generating your own codes</h2>
+  <p>
+    Understanding the scanning side explains most of the practical guidance for generating and printing codes: keep the quiet zone intact, keep contrast high, size the code generously for its content, and print at a resolution that keeps bars and modules distinct rather than blurred together. Our <a href="blog-printing-barcode-labels.html" style="color:var(--accent-3);">printing guide</a> covers the specifics, and you can test any code you generate immediately using our own <a href="scanner.html" style="color:var(--accent-3);">scanner tool</a> before committing to a full print run.
+  </p>
+</article>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">BarcodePro</div>
+      <p>Free, unlimited barcode and QR code tools that run entirely in your browser. Nothing you generate or scan is ever uploaded to a server.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="index.html#generator">Barcode Generator</a>
+      <a href="qr-generator.html">QR Code Generator</a>
+      <a href="bulk-generator.html">Bulk Generator</a>
+      <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
+</footer>
+
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
+</body>
+</html>

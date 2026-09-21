@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QR Code Contrast &amp; Scannability Checker | BarcodePro</title>
+<meta name="description" content="Check whether your QR code's foreground and background colors have enough contrast to scan reliably, with a live preview and a WCAG-style contrast ratio.">
+<link rel="canonical" href="https://barcodepro.pages.dev/qr-contrast-checker.html">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BarcodePro">
+<meta property="og:title" content="QR Code Contrast &amp; Scannability Checker | BarcodePro">
+<meta property="og:description" content="Check whether your QR code's foreground and background colors have enough contrast to scan reliably, with a live preview and a WCAG-style contrast ratio.">
+<meta property="og:url" content="https://barcodepro.pages.dev/qr-contrast-checker.html">
+<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QR Code Contrast &amp; Scannability Checker | BarcodePro">
+<meta name="twitter:description" content="Check whether your QR code's foreground and background colors have enough contrast to scan reliably, with a live preview and a WCAG-style contrast ratio.">
+<meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QR Contrast & Scannability Checker",
+  "url": "https://barcodepro.pages.dev/qr-contrast-checker.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Check whether your QR code's foreground and background colors have enough contrast to scan reliably, with a live preview and a WCAG-style contrast ratio.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://barcodepro.pages.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://barcodepro.pages.dev/tools.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "QR Contrast & Scannability Checker",
+      "item": "https://barcodepro.pages.dev/qr-contrast-checker.html"
+    }
+  ]
+}
+</script>
+
+<style>
+
+:root{
+  --bg:#0f172a;
+  --header-bg:#111827;
+  --card:#1e293b;
+  --card-alt:#161f32;
+  --input-bg:#334155;
+  --text:#e2e8f0;
+  --muted:#cbd5e1;
+  --muted-2:#96a9c7;
+  --dim:#94a3b8;
+  --accent-1:#06b6d4;
+  --accent-2:#8b5cf6;
+  --accent-3:#38bdf8;
+  --border:rgba(255,255,255,0.08);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{ text-decoration:none; }
+
+.gradient-text{
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+  background:linear-gradient(to right,var(--accent-3),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:15px;
+  transition:0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-3);
+}
+
+.page-hero{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent-1);
+  background:rgba(6,182,212,0.1);
+  border:1px solid rgba(6,182,212,0.3);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.page-hero h1{
+  font-size:46px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.page-hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+  max-width:750px;
+  margin:auto;
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.wrap-narrow{
+  max-width:850px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:14px;
+}
+
+input[type="color"]{
+  width:100%;
+  padding:4px;
+  height:52px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  background:var(--input-bg);
+}
+
+input[type="text"]{
+  width:100%;
+  padding:12px 14px;
+  margin-top:6px;
+  border:none;
+  border-radius:12px;
+  background:var(--input-bg);
+  color:white;
+  font-size:14px;
+  outline:none;
+  font-family:"Courier New", monospace;
+}
+
+button, .btn{
+  padding:15px 20px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(to right,var(--accent-1),var(--accent-2));
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  text-align:center;
+}
+
+button:hover, .btn:hover{ filter:brightness(1.08); }
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+
+.btn-full{ width:100%; }
+
+.checker-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:start;
+}
+@media(max-width:900px){ .checker-layout{ grid-template-columns:1fr; } }
+
+.color-field{ margin-bottom:18px; }
+
+.preview-box{
+  background:white;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+}
+
+.qr-preview-svg{
+  width:100%;
+  max-width:260px;
+  height:auto;
+  margin:0 auto;
+  display:block;
+}
+
+.notice{
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin:16px 0;
+}
+.notice-info{ background:rgba(6,182,212,0.08); border:1px solid rgba(6,182,212,0.3); color:#a5e6f2; }
+.notice-error{ background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); color:#fca5a5; }
+.notice-success{ background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.3); color:#86efac; }
+
+.ratio-badge{
+  display:inline-block;
+  font-size:28px;
+  font-weight:bold;
+  margin-top:6px;
+}
+
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+.article h2{ font-size:26px; margin:40px 0 16px; color:var(--text); }
+.article p{ color:var(--muted); font-size:17px; line-height:1.85; margin-bottom:18px; }
+.article ul{ color:var(--muted); font-size:17px; line-height:1.85; margin:0 0 18px 22px; }
+.article ul li{ margin-bottom:8px; }
+
+footer.site-footer{
+  background:var(--header-bg);
+  padding:50px 20px 30px;
+  margin-top:80px;
+}
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+.footer-col h4{ color:var(--text); font-size:15px; margin-bottom:14px; }
+.footer-col p{ color:var(--dim); font-size:14px; line-height:1.7; max-width:280px; }
+.footer-col a{ display:block; color:var(--dim); font-size:14px; margin-bottom:10px; transition:0.2s; }
+.footer-col a:hover{ color:var(--accent-3); }
+.footer-bottom{ max-width:1200px; margin:auto; padding-top:24px; text-align:center; color:var(--dim); font-size:13px; }
+
+@media(max-width:768px){
+  .page-hero h1{ font-size:32px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .navbar{ padding:14px; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">BarcodePro</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#generator">Generator</a>
+      <a href="qr-generator.html">QR Code</a>
+      <a href="bulk-generator.html">Bulk</a>
+      <a href="scanner.html">Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheets</a>
+      <a href="qr-contrast-checker.html" class="active">Contrast Checker</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <span class="eyebrow">Free Utility</span>
+  <h1>QR Code Contrast &amp; <span class="gradient-text">Scannability Checker</span></h1>
+  <p>Pick a foreground and background color and see, before you print anything, whether the contrast between them is strong enough for a phone camera to read reliably.</p>
+</section>
+
+<section class="wrap" style="padding-bottom:40px;">
+  <div class="checker-layout">
+
+    <div class="card">
+      <div class="color-field">
+        <label>Foreground (module) color</label>
+        <input type="color" id="ccFg" value="#0f172a" oninput="onColorChange()">
+        <input type="text" id="ccFgHex" value="#0f172a" oninput="onHexTyped('ccFg','ccFgHex')">
+      </div>
+      <div class="color-field">
+        <label>Background color</label>
+        <input type="color" id="ccBg" value="#ffffff" oninput="onColorChange()">
+        <input type="text" id="ccBgHex" value="#ffffff" oninput="onHexTyped('ccBg','ccBgHex')">
+      </div>
+
+      <button class="btn-outline btn-full" onclick="swapColors()">Swap Colors</button>
+
+      <div id="ccResult"></div>
+    </div>
+
+    <div class="preview-box">
+      <div id="ccPreviewWrap" style="--qr-fg:#0f172a; --qr-bg:#ffffff;">
+        <svg class="qr-preview-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="var(--qr-bg)"/>
+          <g fill="var(--qr-fg)">
+            <rect x="10" y="10" width="40" height="40"/>
+            <rect x="20" y="20" width="20" height="20" fill="var(--qr-bg)"/>
+            <rect x="25" y="25" width="10" height="10" fill="var(--qr-fg)"/>
+            <rect x="150" y="10" width="40" height="40"/>
+            <rect x="160" y="20" width="20" height="20" fill="var(--qr-bg)"/>
+            <rect x="165" y="25" width="10" height="10" fill="var(--qr-fg)"/>
+            <rect x="10" y="150" width="40" height="40"/>
+            <rect x="20" y="160" width="20" height="20" fill="var(--qr-bg)"/>
+            <rect x="25" y="165" width="10" height="10" fill="var(--qr-fg)"/>
+
+            <rect x="70" y="15" width="10" height="10"/><rect x="90" y="15" width="10" height="10"/><rect x="110" y="20" width="10" height="10"/><rect x="130" y="15" width="10" height="10"/>
+            <rect x="65" y="65" width="10" height="10"/><rect x="85" y="80" width="10" height="10"/><rect x="100" y="60" width="10" height="10"/><rect x="120" y="90" width="10" height="10"/><rect x="140" y="70" width="10" height="10"/>
+            <rect x="70" y="150" width="10" height="10"/><rect x="90" y="165" width="10" height="10"/><rect x="110" y="150" width="10" height="10"/><rect x="130" y="170" width="10" height="10"/>
+            <rect x="150" y="70" width="10" height="10"/><rect x="170" y="90" width="10" height="10"/><rect x="150" y="110" width="10" height="10"/><rect x="180" y="120" width="10" height="10"/><rect x="160" y="130" width="10" height="10"/>
+            <rect x="60" y="110" width="10" height="10"/><rect x="80" y="120" width="10" height="10"/><rect x="60" y="130" width="10" height="10"/><rect x="40" y="140" width="10" height="10"/>
+          </g>
+        </svg>
+      </div>
+      <p style="color:#475569;font-size:12.5px;margin-top:14px;">Illustrative preview — not a decodable QR code. Generate an actual code on the <a href="qr-generator.html" style="color:#0891b2;">QR generator</a>.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="wrap-narrow article" style="padding-bottom:90px;">
+  <h2>How to read the result</h2>
+  <p>
+    This tool borrows the WCAG relative-luminance contrast formula — the same math used to check whether text is readable against a background — as a practical stand-in for barcode scannability, since both problems come down to the same thing: can a sensor reliably tell two colors apart. A ratio of <strong>4.5:1 or higher</strong> is a safe target for most printed QR codes; between <strong>2.5 and 4.5</strong> is workable but risky in poor lighting, on a small screen, or after printing softens the edges; below <strong>2.5</strong> is likely to cause failed or slow scans.
+  </p>
+  <h2>Why dark-on-light is the safer default</h2>
+  <p>
+    Most QR decoders — including phone cameras — are tuned to expect dark modules on a light background, since that's the overwhelming majority of real-world codes. An inverted combination (light modules on a dark background) can still pass a strong contrast ratio and may scan fine on modern phones, but it's worth testing on a couple of actual devices before committing to a print run, especially if the code will also be scanned by older or dedicated hardware scanners.
+  </p>
+  <h2>Contrast survives print, don't assume it survives print quality</h2>
+  <p>
+    A good ratio on screen doesn't guarantee a good result on paper. Low-end inkjet and thermal printers can shift color saturation, and glossy or textured stock can introduce glare that effectively lowers contrast in certain lighting. See our <a href="blog-printing-barcode-labels.html" style="color:var(--accent-3);">printing guide</a> for the other factors — sizing, quiet zone, file format — that combine with contrast to determine whether a code actually scans once it's out of the browser.
+  </p>
+  <p>
+    Happy with your colors? Build the real, scannable code on the <a href="qr-generator.html" style="color:var(--accent-3);">QR code generator</a>, which uses the same foreground and background fields.
+  </p>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">BarcodePro</div>
+      <p>Free, unlimited barcode and QR code tools that run entirely in your browser. Nothing you generate or scan is ever uploaded to a server.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="index.html#generator">Barcode Generator</a>
+      <a href="qr-generator.html">QR Code Generator</a>
+      <a href="bulk-generator.html">Bulk Generator</a>
+      <a href="scanner.html">Barcode Scanner</a>
+      <a href="check-digit-calculator.html">Check Digit Calculator</a>
+      <a href="size-calculator.html">Size Calculator</a>
+      <a href="serial-generator.html">Serial Generator</a>
+      <a href="label-sheet-generator.html">Label Sheet Generator</a>
+      <a href="qr-contrast-checker.html">Contrast Checker</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BarcodePro. All rights reserved.</div>
+</footer>
+
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:2000;background:#0b1220;border-top:1px solid rgba(255,255,255,0.1);padding:16px 20px;font-family:Arial, sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+    <p style="color:#cbd5e1;font-size:13.5px;line-height:1.6;margin:0;max-width:720px;">
+      We use cookies for basic site functionality and to support advertising, including personalized ads served via Google AdSense. See our
+      <a href="privacy.html" style="color:#38bdf8;">Privacy Policy</a> for details and opt-out options.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="bpSetCookieConsent(false)" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;">Decline</button>
+      <button onclick="bpSetCookieConsent(true)" style="background:linear-gradient(to right,#06b6d4,#8b5cf6);border:none;color:white;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function bpGetConsent(){ try { return localStorage.getItem('bp_cookie_consent'); } catch(e){ return null; } }
+  window.bpSetCookieConsent = function(accepted){
+    try { localStorage.setItem('bp_cookie_consent', accepted ? 'accepted' : 'declined'); } catch(e){}
+    var el = document.getElementById('cookieBanner');
+    if(el) el.style.display = 'none';
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!bpGetConsent()){
+      var el = document.getElementById('cookieBanner');
+      if(el) el.style.display = 'block';
+    }
+  });
+})();
+</script>
+
+<script>
+function hexToRgb(hex){
+  hex = (hex || "").replace('#','').trim();
+  if(hex.length === 3){ hex = hex.split('').map(c => c + c).join(''); }
+  const num = parseInt(hex, 16);
+  if(isNaN(num) || hex.length !== 6) return null;
+  return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
+}
+
+function relLuminance(rgb){
+  const srgb = [rgb.r, rgb.g, rgb.b].map(v => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2];
+}
+
+function contrastRatio(hex1, hex2){
+  const rgb1 = hexToRgb(hex1);
+  const rgb2 = hexToRgb(hex2);
+  if(!rgb1 || !rgb2) return null;
+  const L1 = relLuminance(rgb1);
+  const L2 = relLuminance(rgb2);
+  const lighter = Math.max(L1, L2);
+  const darker = Math.min(L1, L2);
+  return { ratio: (lighter + 0.05) / (darker + 0.05), L1: relLuminance(rgb1), L2: relLuminance(rgb2) };
+}
+
+function onHexTyped(colorId, hexId){
+  const val = document.getElementById(hexId).value.trim();
+  if(/^#?[0-9a-fA-F]{6}$/.test(val)){
+    const normalized = val.startsWith('#') ? val : '#' + val;
+    document.getElementById(colorId).value = normalized;
+    onColorChange();
+  }
+}
+
+function onColorChange(){
+  const fg = document.getElementById("ccFg").value;
+  const bg = document.getElementById("ccBg").value;
+  document.getElementById("ccFgHex").value = fg;
+  document.getElementById("ccBgHex").value = bg;
+  checkContrast();
+}
+
+function swapColors(){
+  const fg = document.getElementById("ccFg").value;
+  const bg = document.getElementById("ccBg").value;
+  document.getElementById("ccFg").value = bg;
+  document.getElementById("ccBg").value = fg;
+  onColorChange();
+}
+
+function checkContrast(){
+  const fg = document.getElementById("ccFg").value;
+  const bg = document.getElementById("ccBg").value;
+
+  document.getElementById("ccPreviewWrap").style.setProperty("--qr-fg", fg);
+  document.getElementById("ccPreviewWrap").style.setProperty("--qr-bg", bg);
+
+  const result = contrastRatio(fg, bg);
+  if(!result){
+    document.getElementById("ccResult").innerHTML = `<div class="notice notice-error">Could not read one of the colors.</div>`;
+    return;
+  }
+
+  let verdict, cls;
+  if(result.ratio >= 4.5){
+    verdict = "Good contrast — should scan reliably in most lighting and print conditions.";
+    cls = "success";
+  } else if(result.ratio >= 2.5){
+    verdict = "Marginal contrast — may fail in low light, on a small or glare-lit screen, or after printing. Consider increasing the difference between your colors.";
+    cls = "info";
+  } else {
+    verdict = "Poor contrast — this combination is likely to fail scanning outright. Choose a darker foreground and/or a lighter background.";
+    cls = "error";
+  }
+
+  let invertedNote = "";
+  if(result.L1 >= result.L2){
+    invertedNote = "<br><br><strong>Note:</strong> your foreground is lighter than your background (inverted colors). Most scanners assume dark modules on a light background — a high ratio here can still work, but test on a real device before printing.";
+  }
+
+  document.getElementById("ccResult").innerHTML = `
+    <div class="notice notice-${cls}">
+      <div class="ratio-badge">${result.ratio.toFixed(2)}:1</div><br>
+      ${verdict}${invertedNote}
+    </div>
+  `;
+}
+
+checkContrast();
+</script>
+</body>
+</html>
