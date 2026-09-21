@@ -678,6 +678,28 @@ footer.site-footer{
   }
   .faq-item h2{ font-size:18px; margin-bottom:8px; }
   .faq-item p{ color:var(--muted); line-height:1.7; font-size:15px; }
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
 </style>
 </head>
 <body>
@@ -709,6 +731,44 @@ footer.site-footer{
   <h1>Barcode &amp; QR <span class="gradient-text">Glossary</span></h1>
   <p>Plain-English definitions for the terms you'll run into when working with barcodes and QR codes — from symbology to quiet zone to GTIN.</p>
 </section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Labeled diagram of barcode and QR code terminology: quiet zone, module, GTIN, check digit, and finder pattern">
+    <rect width="800" height="260" fill="#161f32"/>
+
+    <rect x="90" y="60" width="260" height="110" fill="#ffffff" rx="4"/>
+    <g transform="translate(115,80)" fill="#0f172a"><rect x="0" width="3" height="60"/><rect x="7" width="6" height="60"/><rect x="18" width="3" height="60"/><rect x="26" width="8" height="60"/><rect x="40" width="3" height="60"/><rect x="48" width="6" height="60"/><rect x="59" width="3" height="60"/><rect x="67" width="8" height="60"/><rect x="81" width="3" height="60"/><rect x="89" width="6" height="60"/><rect x="100" width="3" height="60"/><rect x="108" width="8" height="60"/><rect x="122" width="3" height="60"/><rect x="130" width="6" height="60"/><rect x="141" width="3" height="60"/><rect x="149" width="8" height="60"/><rect x="163" width="3" height="60"/><rect x="171" width="6" height="60"/><rect x="182" width="3" height="60"/><rect x="190" width="8" height="60"/></g>
+    <text x="220" y="158" fill="#0f172a" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold">0 123456 789012</text>
+
+    <rect x="90" y="60" width="18" height="110" fill="none" stroke="#06b6d4" stroke-width="2" stroke-dasharray="3,3"/>
+    <line x1="99" y1="60" x2="99" y2="30" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="99" y="20" fill="#06b6d4" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Quiet zone</text>
+
+    <line x1="130" y1="80" x2="130" y2="30" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="130" y="20" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Module (bar)</text>
+
+    <line x1="330" y1="150" x2="400" y2="200" stroke="#f87171" stroke-width="1.5"/>
+    <text x="470" y="205" fill="#f87171" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Check digit (last digit)</text>
+
+    <line x1="180" y1="158" x2="180" y2="230" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="180" y="245" fill="#38bdf8" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">GTIN / product number</text>
+
+    <rect x="480" y="55" width="120" height="120" fill="#ffffff" rx="4"/>
+    <g transform="translate(492,67)" fill="#0f172a">
+      <rect x="0" y="0" width="28" height="28"/><rect x="7" y="7" width="14" height="14" fill="#ffffff"/><rect x="10" y="10" width="8" height="8" fill="#0f172a"/>
+      <rect x="68" y="0" width="28" height="28"/><rect x="75" y="7" width="14" height="14" fill="#ffffff"/><rect x="78" y="10" width="8" height="8" fill="#0f172a"/>
+      <rect x="0" y="68" width="28" height="28"/><rect x="7" y="75" width="14" height="14" fill="#ffffff"/><rect x="10" y="78" width="8" height="8" fill="#0f172a"/>
+      <rect x="38" y="6" width="6" height="6"/><rect x="50" y="10" width="6" height="6"/><rect x="34" y="40" width="6" height="6"/><rect x="50" y="48" width="6" height="6"/><rect x="66" y="40" width="6" height="6"/><rect x="38" y="68" width="6" height="6"/><rect x="50" y="76" width="6" height="6"/><rect x="68" y="60" width="6" height="6"/>
+    </g>
+    <rect x="480" y="55" width="28" height="28" fill="none" stroke="#f87171" stroke-width="2"/>
+    <line x1="494" y1="55" x2="640" y2="35" stroke="#f87171" stroke-width="1.5"/>
+    <text x="700" y="30" fill="#f87171" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Finder pattern</text>
+
+    <line x1="540" y1="115" x2="700" y2="115" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="740" y="120" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Module</text>
+  </svg>
+  <figcaption>The terms defined below, pointed at the parts of a real barcode and QR code they describe.</figcaption>
+</figure>
 
 <section class="wrap-narrow" style="padding-bottom:90px;">
 

@@ -667,6 +667,28 @@ footer.site-footer{
   *{ transition:none !important; animation:none !important; }
 }
 
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
 </style>
 </head>
 <body>
@@ -699,6 +721,31 @@ footer.site-footer{
   <h1>The BarcodePro <span class="gradient-text">Blog</span></h1>
   <p>Practical guides on barcodes and QR codes — which format to pick, how to print labels that actually scan, and how the technology works under the hood.</p>
 </section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A stack of article pages next to a magnifying glass, representing a library of guides">
+    <rect width="800" height="170" fill="#161f32"/>
+    <g transform="translate(320,25)">
+      <rect x="16" y="10" width="130" height="110" rx="6" fill="#334155"/>
+      <rect x="8" y="4" width="130" height="110" rx="6" fill="#1e293b" stroke="#8b5cf6"/>
+      <line x1="24" y1="30" x2="122" y2="30" stroke="#8b5cf6" stroke-width="3"/>
+      <line x1="24" y1="48" x2="122" y2="48" stroke="#475569" stroke-width="2"/>
+      <line x1="24" y1="60" x2="122" y2="60" stroke="#475569" stroke-width="2"/>
+      <line x1="24" y1="72" x2="90" y2="72" stroke="#475569" stroke-width="2"/>
+      <line x1="24" y1="92" x2="122" y2="92" stroke="#475569" stroke-width="2"/>
+      <line x1="24" y1="104" x2="100" y2="104" stroke="#475569" stroke-width="2"/>
+    </g>
+    <g transform="translate(500,80)">
+      <circle r="28" fill="none" stroke="#38bdf8" stroke-width="4"/>
+      <line x1="20" y1="20" x2="42" y2="42" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g font-family="Arial, sans-serif" font-size="12" fill="#96a9c7">
+      <text x="150" y="60">History &amp;</text><text x="150" y="76">Reference</text>
+      <text x="640" y="60" fill="#a5e6f2">How-To &amp;</text><text x="640" y="76" fill="#a5e6f2">Comparisons</text>
+    </g>
+  </svg>
+  <figcaption>Seven guides covering history, symbology reference, printing, GS1 numbering, and how scanners actually work.</figcaption>
+</figure>
 
 <section class="wrap" style="padding-bottom:90px;">
   <div class="blog-grid">

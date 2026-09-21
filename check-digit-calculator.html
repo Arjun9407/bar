@@ -685,6 +685,28 @@ footer.site-footer{
   *{ transition:none !important; animation:none !important; }
 }
 
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
 </style>
 </head>
 <body>
@@ -717,6 +739,35 @@ footer.site-footer{
   <h1>Check Digit <span class="gradient-text">Calculator &amp; Validator</span></h1>
   <p>Calculate the correct check digit for UPC-A, EAN-13, EAN-8 or ITF-14, or paste in a full number to check whether it's valid.</p>
 </section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the mod 10 check digit calculation: digits alternately weighted by 3 and 1, summed, and rounded up to the check digit">
+    <rect width="800" height="200" fill="#161f32"/>
+    <g font-family="Arial, sans-serif">
+      <g transform="translate(90,40)">
+        <text x="0" y="0" fill="#e2e8f0" font-size="26" font-weight="bold">0 1 2 3 4 5 6 7 8 9 0 1</text>
+      </g>
+      <g font-size="11" fill="#96a9c7" text-anchor="middle">
+        <text x="97" y="65">×1</text><text x="122" y="65">×3</text><text x="147" y="65">×1</text><text x="172" y="65">×3</text><text x="197" y="65">×1</text><text x="222" y="65">×3</text><text x="247" y="65">×1</text><text x="272" y="65">×3</text><text x="297" y="65">×1</text><text x="322" y="65">×3</text><text x="347" y="65">×1</text><text x="372" y="65">×3</text>
+      </g>
+      <path d="M90,80 L600,80" stroke="#334155" stroke-width="1.5"/>
+      <text x="620" y="85" fill="#8b5cf6" font-size="13" font-weight="bold">= sum</text>
+
+      <path d="M620,100 L620,130" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow3)"/>
+      <text x="500" y="150" fill="#96a9c7" font-size="12.5" text-anchor="middle">Round the sum up to the next multiple of 10 —</text>
+      <text x="500" y="167" fill="#96a9c7" font-size="12.5" text-anchor="middle">the gap between them is the check digit.</text>
+
+      <g transform="translate(680,120)">
+        <rect width="70" height="46" rx="8" fill="#f87171"/>
+        <text x="35" y="31" fill="#1e293b" font-size="22" font-weight="bold" text-anchor="middle">6</text>
+      </g>
+    </g>
+    <defs>
+      <marker id="arrow3" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L4,6 L8,0 Z" fill="#8b5cf6"/></marker>
+    </defs>
+  </svg>
+  <figcaption>The mod-10 weighting used by UPC-A, EAN-13, EAN-8 and ITF-14 — alternate ×3 and ×1, sum, then find the gap to the next ten.</figcaption>
+</figure>
 
 <section class="wrap-narrow" style="padding-bottom:40px;">
   <div class="card">

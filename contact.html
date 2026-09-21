@@ -666,6 +666,28 @@ footer.site-footer{
   *{ transition:none !important; animation:none !important; }
 }
 
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
 </style>
 </head>
 <body>
@@ -698,6 +720,23 @@ footer.site-footer{
   <h1>Contact <span class="gradient-text">Us</span></h1>
   <p>Questions, feedback, or a feature you'd like to see? Send us a message — we usually reply within 48 hours.</p>
 </section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An envelope with a barcode stamp sending a message">
+    <rect width="800" height="200" fill="#161f32"/>
+    <g transform="translate(300,45)">
+      <rect x="0" y="0" width="200" height="120" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+      <path d="M0,10 L100,80 L200,10" fill="none" stroke="#334155" stroke-width="2"/>
+      <rect x="30" y="30" width="60" height="24" fill="#ffffff" rx="2"/>
+      <g transform="translate(34,34)" fill="#0f172a"><rect x="0" width="2" height="16"/><rect x="4" width="3" height="16"/><rect x="9" width="2" height="16"/><rect x="13" width="4" height="16"/><rect x="19" width="2" height="16"/><rect x="23" width="3" height="16"/><rect x="28" width="2" height="16"/><rect x="32" width="4" height="16"/><rect x="38" width="2" height="16"/><rect x="42" width="3" height="16"/><rect x="47" width="2" height="16"/><rect x="51" width="4" height="16"/></g>
+    </g>
+    <path d="M510,105 C560,95 600,60 630,40" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6,6"/>
+    <circle cx="630" cy="40" r="5" fill="#8b5cf6"/>
+    <text x="670" y="45" fill="#a5e6f2" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">Reply in</text>
+    <text x="670" y="62" fill="#a5e6f2" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">~48 hours</text>
+  </svg>
+  <figcaption>Send a message using the form below, or email us directly — either way reaches the same inbox.</figcaption>
+</figure>
 
 <section class="wrap-narrow" style="padding-bottom:90px;">
   <div class="card">

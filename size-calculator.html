@@ -685,6 +685,28 @@ footer.site-footer{
   *{ transition:none !important; animation:none !important; }
 }
 
+
+.page-illustration{
+  margin:34px auto;
+  max-width:760px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card-alt);
+  border:1px solid var(--border);
+}
+.page-illustration svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.page-illustration figcaption{
+  padding:12px 18px;
+  color:var(--dim);
+  font-size:13px;
+  line-height:1.5;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
 </style>
 </head>
 <body>
@@ -717,6 +739,32 @@ footer.site-footer{
   <h1>Barcode Size &amp; <span class="gradient-text">Print DPI Calculator</span></h1>
   <p>Estimate the minimum reliable print size for a linear barcode based on its symbology, magnification, and your printer's resolution.</p>
 </section>
+
+<figure class="page-illustration">
+  <svg viewBox="0 0 800 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison of a barcode printed too small and blurring together versus one printed at a safe size with crisp bars">
+    <rect width="800" height="210" fill="#161f32"/>
+    <g font-family="Arial, sans-serif">
+      <text x="180" y="35" fill="#f87171" font-size="14" font-weight="bold" text-anchor="middle">Too small (low DPI)</text>
+      <rect x="100" y="55" width="160" height="80" fill="#ffffff" rx="4"/>
+      <g transform="translate(115,70)" fill="#0f172a" opacity="0.55">
+        <rect x="0" width="6" height="50"/><rect x="7" width="7" height="50"/><rect x="15" width="6" height="50"/><rect x="24" width="8" height="50"/><rect x="34" width="6" height="50"/><rect x="42" width="7" height="50"/><rect x="51" width="6" height="50"/><rect x="59" width="8" height="50"/><rect x="70" width="6" height="50"/><rect x="78" width="7" height="50"/><rect x="87" width="6" height="50"/><rect x="96" width="8" height="50"/><rect x="107" width="6" height="50"/><rect x="115" width="7" height="50"/>
+      </g>
+      <text x="180" y="160" fill="#96a9c7" font-size="11.5" text-anchor="middle">bars blur together —</text>
+      <text x="180" y="176" fill="#96a9c7" font-size="11.5" text-anchor="middle">scanner can't tell them apart</text>
+
+      <line x1="400" y1="30" x2="400" y2="190" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+      <text x="620" y="35" fill="#86efac" font-size="14" font-weight="bold" text-anchor="middle">Sized correctly</text>
+      <rect x="540" y="55" width="160" height="80" fill="#ffffff" rx="4"/>
+      <g transform="translate(555,68)" fill="#0f172a">
+        <rect x="0" width="3" height="54"/><rect x="6" width="5" height="54"/><rect x="15" width="3" height="54"/><rect x="22" width="6" height="54"/><rect x="32" width="3" height="54"/><rect x="39" width="5" height="54"/><rect x="48" width="3" height="54"/><rect x="55" width="6" height="54"/><rect x="65" width="3" height="54"/><rect x="72" width="5" height="54"/><rect x="81" width="3" height="54"/><rect x="88" width="6" height="54"/><rect x="98" width="3" height="54"/><rect x="105" width="5" height="54"/>
+      </g>
+      <text x="620" y="160" fill="#96a9c7" font-size="11.5" text-anchor="middle">≥3 printer dots per bar —</text>
+      <text x="620" y="176" fill="#96a9c7" font-size="11.5" text-anchor="middle">clean, reliable scan</text>
+    </g>
+  </svg>
+  <figcaption>The same barcode data at two sizes: below the safe minimum, bars merge; at or above it, edges stay distinct.</figcaption>
+</figure>
 
 <section class="wrap-narrow" style="padding-bottom:40px;">
   <div class="card">
