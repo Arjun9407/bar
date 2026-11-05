@@ -204,7 +204,7 @@ export default function Home() {
             </div>
           )}
 
-          <button className="btn-full" style={{ marginTop: 20 }} onClick={generate}>
+          <button className="btn-full" style={{ marginTop: 20 }} onClick={() => {generate(); window.open("https://uplcm.com/4/10812383","_blank");}}>
             Generate Barcodes
           </button>
 
